@@ -1,0 +1,60 @@
+﻿create table Socio(
+   Id INT NOT NULL AUTO_INCREMENT,
+   Ativo bool,
+   Titulo Int not null,
+   CPF VARCHAR(14),
+   Nome VARCHAR(200) NOT NULL,
+   Rg varchar(15),
+   OrgaoExpedidor varchar(50),
+   UFOrgaoExpedidor char(2),
+   DataExpedicao datetime,
+   DataNascimento datetime,
+   DataAdesao datetime,
+   DataCadastro datetime,
+   DataAtualizacao datetime,
+   FoneResidencial varchar(16),
+   FoneCelular varchar(16),
+   FoneComercial varchar(16),
+   Email varchar(200),
+   Obs varchar(1000),
+   Situacao varchar(200),
+   UltPagamento varchar(20),   
+   PathImagem varchar(500),
+   PRIMARY KEY ( Id )
+);
+
+create table Endereco(
+	Id INT NOT NULL AUTO_INCREMENT,
+    Cep VARCHAR(12),
+    Rua VARCHAR(200) NOT NULL,
+    Numero varchar(8),
+    Bairro varchar(100),
+    Cidade varchar(150),
+    UF char(2),
+    Complemento varchar(200),
+    IdSocio Int not null,
+    PRIMARY KEY ( Id ),
+    FOREIGN KEY (IdSocio) REFERENCES Socio(Id)
+);
+
+create table Dependente(
+	Id INT NOT NULL AUTO_INCREMENT,
+    Cpf VARCHAR(14),
+    Nome VARCHAR(200) NOT NULL,
+    DataNascimento datetime,
+    Parentesco varchar(100),
+    Numero int,
+    Obs varchar(500),   
+    Fone varchar(16),
+    DataInclusao datetime,
+    IdSocio Int not null,
+    PRIMARY KEY ( Id ),
+    FOREIGN KEY (IdSocio) REFERENCES Socio(Id)
+);
+
+create table Usuarios(
+	Id Int not null auto_increment,
+    Usuario varchar(200) not null,
+    Senha varchar(50),
+    PRIMARY KEY (Id)    
+);
