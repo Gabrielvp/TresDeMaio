@@ -92,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backup\Backup.cs" />
     <Compile Include="DAL\DependenteDAL.cs" />
     <Compile Include="DAL\EnderecoDAL.cs" />
     <Compile Include="DAL\SocioDAL.cs" />
@@ -173,7 +174,9 @@
   <ItemGroup>
     <None Include="Resources\icons8-fundo-da-conferência-selecionado-48.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\Enums\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo3DeMaio2.png" />
   </ItemGroup>
@@ -183,6 +186,10 @@
   <ItemGroup>
     <Content Include="BD\TextFile1.txt" />
     <Content Include="Images\imgCadSocio.jpg" />
+    <None Include="Resources\icons8-configurações-16.png" />
+    <None Include="Resources\icons8-documento-48%281%29.png" />
+    <None Include="Resources\icons8-saco-de-dinheiro-50.png" />
+    <None Include="Resources\icons8-configurações-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

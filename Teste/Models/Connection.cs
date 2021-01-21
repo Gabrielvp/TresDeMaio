@@ -1,11 +1,35 @@
-﻿namespace Teste.Models
+﻿using System;
+using System.Configuration;
+using System.Windows.Forms;
+
+namespace Teste.Models
 {
     public class Connection
     {
+        static string Server = null;
+        static string User = null;
+        static string DataBase = null;
+        static string Password = null;
+
         public static string Conexao()
+        {            
+            CarregaConfiguracoesBD();           
+            return $"Server={Server};User Id={User};Database={DataBase};password={Password}";
+        }
+
+        private static void CarregaConfiguracoesBD()
         {
-            //mConn = new MySqlConnection("Server=localhost;User Id=root;Database=TresDeMaio_DB;password=102910");           
-            return "Server=localhost;User Id=root;Database=TresDeMaio_DB;password=102910";
+            try
+            {
+                Server = ConfigurationManager.AppSettings["Server"];
+                User = ConfigurationManager.AppSettings["User"];
+                DataBase = ConfigurationManager.AppSettings["DataBase"];
+                Password = ConfigurationManager.AppSettings["Password"];
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

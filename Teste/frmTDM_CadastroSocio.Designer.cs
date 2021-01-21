@@ -79,7 +79,11 @@ namespace Teste
             this.picImagemSocio = new System.Windows.Forms.PictureBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtAdicionaisObs = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblIdDependente = new System.Windows.Forms.Label();
             this.cmdAdicionar = new System.Windows.Forms.Button();
             this.lstDependentes = new System.Windows.Forms.ListView();
             this.Nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -88,6 +92,7 @@ namespace Teste
             this.DtNascimento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Numero = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Observacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.idDependente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtObservacaoDependente = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.mskFoneDependente = new System.Windows.Forms.MaskedTextBox();
@@ -102,9 +107,6 @@ namespace Teste
             this.label27 = new System.Windows.Forms.Label();
             this.txtNomeDependente = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txtAdicionaisObs = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.txtTitulo = new System.Windows.Forms.TextBox();
             this.cmdGravar = new System.Windows.Forms.Button();
@@ -118,11 +120,12 @@ namespace Teste
             this.label26 = new System.Windows.Forms.Label();
             this.ofdImagem = new System.Windows.Forms.OpenFileDialog();
             this.lblId = new System.Windows.Forms.Label();
+            this.cmdExcluir = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagemSocio)).BeginInit();
-            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -369,6 +372,34 @@ namespace Teste
             // 
             this.cmbUfEndereco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUfEndereco.FormattingEnabled = true;
+            this.cmbUfEndereco.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
             this.cmbUfEndereco.Location = new System.Drawing.Point(585, 229);
             this.cmbUfEndereco.Name = "cmbUfEndereco";
             this.cmbUfEndereco.Size = new System.Drawing.Size(46, 21);
@@ -518,6 +549,34 @@ namespace Teste
             // 
             this.cmbUfOrgaoExpedidor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUfOrgaoExpedidor.FormattingEnabled = true;
+            this.cmbUfOrgaoExpedidor.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
             this.cmbUfOrgaoExpedidor.Location = new System.Drawing.Point(231, 91);
             this.cmbUfOrgaoExpedidor.Name = "cmbUfOrgaoExpedidor";
             this.cmbUfOrgaoExpedidor.Size = new System.Drawing.Size(46, 21);
@@ -611,11 +670,44 @@ namespace Teste
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.AccessibleDescription = "tpAdicionais";
+            this.tabPage3.AccessibleName = "tpAdicionais";
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.txtAdicionaisObs);
+            this.tabPage3.Controls.Add(this.label35);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(824, 437);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Adicionais";
+            // 
+            // txtAdicionaisObs
+            // 
+            this.txtAdicionaisObs.Location = new System.Drawing.Point(20, 61);
+            this.txtAdicionaisObs.Multiline = true;
+            this.txtAdicionaisObs.Name = "txtAdicionaisObs";
+            this.txtAdicionaisObs.Size = new System.Drawing.Size(780, 360);
+            this.txtAdicionaisObs.TabIndex = 30;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(15, 20);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(167, 29);
+            this.label35.TabIndex = 0;
+            this.label35.Text = "Observações";
+            // 
             // tabPage2
             // 
             this.tabPage2.AccessibleDescription = "tpDependentes";
             this.tabPage2.AccessibleName = "tpDependentes";
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.cmdExcluir);
+            this.tabPage2.Controls.Add(this.lblIdDependente);
             this.tabPage2.Controls.Add(this.cmdAdicionar);
             this.tabPage2.Controls.Add(this.lstDependentes);
             this.tabPage2.Controls.Add(this.txtObservacaoDependente);
@@ -639,9 +731,20 @@ namespace Teste
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dependentes";
             // 
+            // lblIdDependente
+            // 
+            this.lblIdDependente.AutoSize = true;
+            this.lblIdDependente.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblIdDependente.Location = new System.Drawing.Point(736, 13);
+            this.lblIdDependente.Name = "lblIdDependente";
+            this.lblIdDependente.Size = new System.Drawing.Size(74, 13);
+            this.lblIdDependente.TabIndex = 52;
+            this.lblIdDependente.Text = "idDependente";
+            this.lblIdDependente.Visible = false;
+            // 
             // cmdAdicionar
             // 
-            this.cmdAdicionar.Location = new System.Drawing.Point(593, 108);
+            this.cmdAdicionar.Location = new System.Drawing.Point(513, 108);
             this.cmdAdicionar.Name = "cmdAdicionar";
             this.cmdAdicionar.Size = new System.Drawing.Size(75, 23);
             this.cmdAdicionar.TabIndex = 51;
@@ -657,7 +760,8 @@ namespace Teste
             this.Contato,
             this.DtNascimento,
             this.Numero,
-            this.Observacao});
+            this.Observacao,
+            this.idDependente});
             this.lstDependentes.FullRowSelect = true;
             this.lstDependentes.GridLines = true;
             this.lstDependentes.HideSelection = false;
@@ -667,6 +771,8 @@ namespace Teste
             this.lstDependentes.TabIndex = 50;
             this.lstDependentes.UseCompatibleStateImageBehavior = false;
             this.lstDependentes.View = System.Windows.Forms.View.Details;
+            this.lstDependentes.SelectedIndexChanged += new System.EventHandler(this.lstDependentes_SelectedIndexChanged);
+            this.lstDependentes.DoubleClick += new System.EventHandler(this.lstDependentes_DoubleClick);
             // 
             // Nome
             // 
@@ -698,6 +804,11 @@ namespace Teste
             // 
             this.Observacao.Text = "Obs.";
             this.Observacao.Width = 300;
+            // 
+            // idDependente
+            // 
+            this.idDependente.Text = "ID";
+            this.idDependente.Width = 0;
             // 
             // txtObservacaoDependente
             // 
@@ -816,37 +927,6 @@ namespace Teste
             this.label28.Size = new System.Drawing.Size(35, 13);
             this.label28.TabIndex = 4;
             this.label28.Text = "Nome";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.AccessibleDescription = "tpAdicionais";
-            this.tabPage3.AccessibleName = "tpAdicionais";
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.txtAdicionaisObs);
-            this.tabPage3.Controls.Add(this.label35);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(824, 437);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Adicionais";
-            // 
-            // txtAdicionaisObs
-            // 
-            this.txtAdicionaisObs.Location = new System.Drawing.Point(20, 61);
-            this.txtAdicionaisObs.Multiline = true;
-            this.txtAdicionaisObs.Name = "txtAdicionaisObs";
-            this.txtAdicionaisObs.Size = new System.Drawing.Size(780, 360);
-            this.txtAdicionaisObs.TabIndex = 30;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(15, 20);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(167, 29);
-            this.label35.TabIndex = 0;
-            this.label35.Text = "Observações";
             // 
             // label22
             // 
@@ -967,6 +1047,17 @@ namespace Teste
             this.lblId.Text = "idSocio";
             this.lblId.Visible = false;
             // 
+            // cmdExcluir
+            // 
+            this.cmdExcluir.BackColor = System.Drawing.Color.Salmon;
+            this.cmdExcluir.Location = new System.Drawing.Point(593, 108);
+            this.cmdExcluir.Name = "cmdExcluir";
+            this.cmdExcluir.Size = new System.Drawing.Size(75, 23);
+            this.cmdExcluir.TabIndex = 53;
+            this.cmdExcluir.Text = "Excluir";
+            this.cmdExcluir.UseVisualStyleBackColor = false;
+            this.cmdExcluir.Click += new System.EventHandler(this.cmdExcluir_Click);
+            // 
             // frmTDM_CadastroSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -998,10 +1089,10 @@ namespace Teste
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagemSocio)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1096,5 +1187,8 @@ namespace Teste
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Button cmdAdicionar;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblIdDependente;
+        private System.Windows.Forms.ColumnHeader idDependente;
+        private System.Windows.Forms.Button cmdExcluir;
     }
 }

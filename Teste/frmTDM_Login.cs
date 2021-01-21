@@ -1,23 +1,40 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows.Forms;
+using Teste.Models;
 
 namespace Teste
 {
     public partial class frmTDM_Login : Form
     {
         MySqlConnection mConn;
+        string strConexao = Connection.Conexao();
         public frmTDM_Login()
         {
             InitializeComponent();
-            mConn = new MySqlConnection("Server=localhost;User Id=root;Database=TresDeMaio_DB;password=102910");
+            TesteConexao();
+        }
+
+        private void TesteConexao()
+        {
+            strConexao = Connection.Conexao();
+            mConn = new MySqlConnection(strConexao);            
+            try
+
+            {
+                mConn.Open();                
+                mConn.Close();
+            }
+            catch(SystemException ex)
+            {
+                MessageBox.Show("Não foi possível conectar ao banco de dados", "Mensagem");
+                cmdConfigConexao.Visible = true;
+            }
+            finally
+            {
+                mConn.Close();
+            }            
         }
 
         private void cmdSair_Click(object sender, EventArgs e)
@@ -28,8 +45,8 @@ namespace Teste
         private void cmdEntrar_Click(object sender, EventArgs e)
         {
             if (!Login())
-            {                
-                MessageBox.Show("Usuário ou senha incorretos","Mensagem");
+            {
+                MessageBox.Show("Usuário ou senha incorretos", "Mensagem");
                 txtSenha.Text = "";
             }
             else
@@ -40,6 +57,7 @@ namespace Teste
 
         private bool Login()
         {
+            mConn = new MySqlConnection(strConexao);
             bool encontrado = false;
             try
             {
@@ -71,6 +89,45 @@ namespace Teste
             }
             mConn.Close();
             return encontrado;
+        }
+
+        private void cmdGravar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+                settings["Server"].Value = txtServer.Text;
+                settings["User"].Value = txtUser.Text;
+                settings["DataBase"].Value = txtDataBase.Text;
+                settings["Password"].Value = txtPassword.Text;
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+
+                cmdConfigConexao.Visible = false;
+                pnlConexao.Visible = false;
+                TesteConexao();
+            }
+            catch(SystemException ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso");
+            }
+        }
+
+        private void cmdConfigConexao_Click(object sender, EventArgs e)
+        {
+            pnlConexao.Visible = true;
+            try
+            {
+                txtServer.Text = ConfigurationManager.AppSettings["Server"];
+                txtUser.Text = ConfigurationManager.AppSettings["User"];
+                txtDataBase.Text = ConfigurationManager.AppSettings["DataBase"];
+                txtPassword.Text = ConfigurationManager.AppSettings["Password"];
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

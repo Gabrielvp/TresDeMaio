@@ -10,7 +10,7 @@ namespace Teste
     public partial class frmTDM_CadastroSocio : Form
     {
         private MySqlConnection mConn;
-        private string foto = null;        
+        private string foto = null;
 
         public frmTDM_CadastroSocio()
         {
@@ -72,7 +72,7 @@ namespace Teste
                         EnderecoDAL eDal = new EnderecoDAL();
                         eDal.InsertEndereco(E);
                     }
-                }                
+                }
             }
             catch
             {
@@ -81,10 +81,12 @@ namespace Teste
             }
             if (gravou)
             {
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frm.Show();
                 Limpar();
                 LimparDependente();
             }
-        }       
+        }
 
         private void mskDtAdesao_Leave(object sender, EventArgs e)
         {
@@ -125,7 +127,7 @@ namespace Teste
             txtEmail.Text = "";
             mskDtCadastroSocio.Text = DateTime.Now.ToShortDateString();
             mskDtAtualizacaoSocio.Text = DateTime.Now.ToShortDateString();
-            ckbSocioAtivo.Checked = true;            
+            ckbSocioAtivo.Checked = true;
 
             // tab dependentes
             //-----------------------------------------------------------------------------
@@ -156,7 +158,7 @@ namespace Teste
         }
 
         private void cmdCarregarImagem_Click(object sender, EventArgs e)
-        {            
+        {
             ofdImagem.Title = "Abrir Foto";
             ofdImagem.Filter = "JPG(*.jpg)|*.jpg" + "|All files(*.*)|*.*";
 
@@ -441,10 +443,10 @@ namespace Teste
                     ckbSocioAtivo.Checked = bool.Parse(rd["Ativo"].ToString());
                     lblUltPgto.Text = rd["UltPagamento"].ToString();
                     txtAdicionaisObs.Text = rd["Obs"].ToString();
-                    if(rd["PathImagem"].ToString() != "")
+                    if (rd["PathImagem"].ToString() != "")
                     {
                         picImagemSocio.Image = new Bitmap(rd["PathImagem"].ToString());
-                    }                    
+                    }
                 }
                 rd.Close();
             }
@@ -529,6 +531,7 @@ namespace Teste
                     item.SubItems.Add(rd["DataNascimento"].ToString());
                     item.SubItems.Add(rd["Numero"].ToString());
                     item.SubItems.Add(rd["Obs"].ToString());
+                    item.SubItems.Add(rd["Id"].ToString());
                     lstDependentes.Items.Add(item);
                 }
                 rd.Close();
@@ -547,7 +550,7 @@ namespace Teste
 
         private void cmdAdicionar_Click(object sender, EventArgs e)
         {
-            ListViewItem item;            
+            ListViewItem item;
             DependenteDAL dDal = new DependenteDAL();
             bool gravou = false;
 
@@ -582,7 +585,7 @@ namespace Teste
                     item.SubItems.Add(mskDtNascimentoDependente.Text);
                     item.SubItems.Add(txtNumeroDependente.Text);
                     item.SubItems.Add(txtObservacaoDependente.Text);
-                    lstDependentes.Items.Add(item);                    
+                    lstDependentes.Items.Add(item);
 
                     frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Adicionado com sucesso!", 1);
                     frmSucesso.Show();
@@ -603,6 +606,62 @@ namespace Teste
             if (e.KeyCode == Keys.Enter)
             {
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+            }
+        }
+
+        private void lstDependentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstDependentes_DoubleClick(object sender, EventArgs e)
+        {
+            long id = long.Parse(lstDependentes.FocusedItem.SubItems[6].Text);
+            DependenteDAL dDal = new DependenteDAL();
+            Dependente d = dDal.RetornaDepentendeByID(id);
+            lblIdDependente.Text = d.Id.ToString();
+            mskCpfDependente.Text = d.Cpf.ToString();
+            txtNomeDependente.Text = d.Nome.ToString();
+            txtObservacaoDependente.Text = d.Obs.ToString();
+            mskDtNascimentoDependente.Text = d.DataNascimento.ToString();
+            txtParentesco.Text = d.Parentesco.ToString();
+            txtNumeroDependente.Text = d.Numero.ToString();
+            mskFoneDependente.Text = d.Fone.ToString();
+        }
+
+        private void cmdExcluir_Click(object sender, EventArgs e)
+        {
+            if (lblIdDependente.Text.Equals("idDependente"))
+            {
+                MessageBox.Show("Selecione o dependente.", "Mensagem");
+            }
+            else
+            {
+                DialogResult dr = new DialogResult();
+                dr = MessageBox.Show($"Deseja excuir o dependente\n {txtNomeDependente.Text} ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    try
+                    {
+                        int id = int.Parse(lblIdDependente.Text);
+                        int idSocio = int.Parse(lblId.Text);
+                        bool deletado = false;
+                        DependenteDAL dDal = new DependenteDAL();
+                        deletado = dDal.DeletaDependente(id);
+                        if (deletado)
+                        {
+                            lstDependentes.Items.Clear();
+                            RetornaDependentes(idSocio);
+                            LimparDependente();
+                            frmTDM_Menssagem frm = new frmTDM_Menssagem("Dependente excluído.", 1);
+                            frm.Show();
+                        }
+                    }
+                    catch (SystemException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
         }
     }

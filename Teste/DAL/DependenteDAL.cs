@@ -61,5 +61,86 @@ namespace Teste.DAL
             mConn.Close();
             return gravou;
         }
+
+        public Dependente RetornaDepentendeByID(long idDependente)
+        {
+            Dependente d = null;
+            mConn = new MySqlConnection(strConexao);            
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            try
+            {
+                string sql = "SELECT * FROM Dependente WHERE Id = " + idDependente;
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    d = new Dependente
+                    {
+                        Id = int.Parse(rd["Id"].ToString()),
+                        Cpf = rd["Cpf"].ToString(),
+                        Nome = rd["Nome"].ToString(),
+                        DataNascimento = DateTime.Parse(rd["DataNascimento"].ToString()),
+                        Parentesco = rd["Parentesco"].ToString(),
+                        Numero = int.Parse(rd["Numero"].ToString()),
+                        Obs = rd["Obs"].ToString(),
+                        Fone = rd["Fone"].ToString(),
+                        DataInclusao = DateTime.Parse(rd["DataInclusao"].ToString()),
+                        IdSocio = int.Parse(rd["IdSocio"].ToString())
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return d;            
+        }
+
+        public bool DeletaDependente(long idDependente)
+        {
+            bool deletado = false;
+            Dependente d = null;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            try
+            {
+                string sql = "DELETE FROM Dependente WHERE Id = " + idDependente;
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                deletado = true;
+            }
+            catch (Exception ex)
+            {
+                deletado = false;
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return deletado;
+        }
     }
 }

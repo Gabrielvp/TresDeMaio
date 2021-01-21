@@ -63,9 +63,49 @@ namespace Teste.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_configurações_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-configurações-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_configurações_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-configurações-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_documento_48_1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-documento-48(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_fundo_da_conferência_selecionado_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-fundo-da-conferência-selecionado-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_saco_de_dinheiro_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-saco-de-dinheiro-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
