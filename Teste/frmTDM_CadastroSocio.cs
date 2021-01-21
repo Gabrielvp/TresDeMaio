@@ -11,7 +11,7 @@ namespace Teste
     {
         private MySqlConnection mConn;
         private string foto = null;
-
+        string strConexao = Connection.Conexao();
         public frmTDM_CadastroSocio()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace Teste
             }
             mskDtAtualizacaoSocio.Text = DateTime.Now.ToShortDateString();
             mskDtAdesao.Text = DateTime.Now.ToShortDateString();
-            mConn = new MySqlConnection("Server=localhost;User Id=root;Database=TresDeMaio_DB;password=102910");
+            mConn = new MySqlConnection(strConexao);
 
         }
 
@@ -112,6 +112,8 @@ namespace Teste
             mskDtExpedicao.Text = "";
             txtSituacao.Text = "";
             mskDtNascimentoSocio.Text = "";
+            lblNome.Text = "-";
+            lblNome.Visible = false;
 
             mskCep.Text = "";
             txtRua.Text = "";
@@ -424,6 +426,9 @@ namespace Teste
                 {
                     id = long.Parse(rd["Id"].ToString());
 
+                    lblNome.Text = rd["Nome"].ToString();
+                    lblNome.Visible = true;
+
                     lblId.Text = id.ToString();
                     mskDtAdesao.Text = rd["DataAdesao"].ToString();
                     mskCpf.Text = rd["Cpf"].ToString();
@@ -663,6 +668,6 @@ namespace Teste
                     }
                 }
             }
-        }
+        }               
     }
 }

@@ -83,6 +83,7 @@ namespace Teste
             this.txtAdicionaisObs = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cmdExcluir = new System.Windows.Forms.Button();
             this.lblIdDependente = new System.Windows.Forms.Label();
             this.cmdAdicionar = new System.Windows.Forms.Button();
             this.lstDependentes = new System.Windows.Forms.ListView();
@@ -120,7 +121,7 @@ namespace Teste
             this.label26 = new System.Windows.Forms.Label();
             this.ofdImagem = new System.Windows.Forms.OpenFileDialog();
             this.lblId = new System.Windows.Forms.Label();
-            this.cmdExcluir = new System.Windows.Forms.Button();
+            this.lblNome = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagemSocio)).BeginInit();
@@ -731,6 +732,17 @@ namespace Teste
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dependentes";
             // 
+            // cmdExcluir
+            // 
+            this.cmdExcluir.BackColor = System.Drawing.Color.Salmon;
+            this.cmdExcluir.Location = new System.Drawing.Point(593, 108);
+            this.cmdExcluir.Name = "cmdExcluir";
+            this.cmdExcluir.Size = new System.Drawing.Size(75, 23);
+            this.cmdExcluir.TabIndex = 53;
+            this.cmdExcluir.Text = "Excluir";
+            this.cmdExcluir.UseVisualStyleBackColor = false;
+            this.cmdExcluir.Click += new System.EventHandler(this.cmdExcluir_Click);
+            // 
             // lblIdDependente
             // 
             this.lblIdDependente.AutoSize = true;
@@ -1047,22 +1059,23 @@ namespace Teste
             this.lblId.Text = "idSocio";
             this.lblId.Visible = false;
             // 
-            // cmdExcluir
+            // lblNome
             // 
-            this.cmdExcluir.BackColor = System.Drawing.Color.Salmon;
-            this.cmdExcluir.Location = new System.Drawing.Point(593, 108);
-            this.cmdExcluir.Name = "cmdExcluir";
-            this.cmdExcluir.Size = new System.Drawing.Size(75, 23);
-            this.cmdExcluir.TabIndex = 53;
-            this.cmdExcluir.Text = "Excluir";
-            this.cmdExcluir.UseVisualStyleBackColor = false;
-            this.cmdExcluir.Click += new System.EventHandler(this.cmdExcluir_Click);
+            this.lblNome.AutoSize = true;
+            this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNome.Location = new System.Drawing.Point(228, 45);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Size = new System.Drawing.Size(108, 31);
+            this.lblNome.TabIndex = 33;
+            this.lblNome.Text = "label38";
+            this.lblNome.Visible = false;
             // 
             // frmTDM_CadastroSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 577);
+            this.Controls.Add(this.lblNome);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.mskDtAdesao);
             this.Controls.Add(this.label26);
@@ -1190,5 +1203,6 @@ namespace Teste
         private System.Windows.Forms.Label lblIdDependente;
         private System.Windows.Forms.ColumnHeader idDependente;
         private System.Windows.Forms.Button cmdExcluir;
+        private System.Windows.Forms.Label lblNome;
     }
 }
