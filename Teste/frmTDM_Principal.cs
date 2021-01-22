@@ -60,12 +60,12 @@ namespace Teste
         private void button2_Click(object sender, EventArgs e)
         {
             frmTDM_CadastroSocio frm = new frmTDM_CadastroSocio();
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
+        }        
     }
 }

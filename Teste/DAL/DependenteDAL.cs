@@ -62,6 +62,64 @@ namespace Teste.DAL
             return gravou;
         }
 
+        public bool UpdateDependente(Dependente d)
+        {
+            mConn = new MySqlConnection(strConexao);
+            bool gravou = false;
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            // verifica se a conexão está aberta
+            if (mConn.State == ConnectionState.Open)
+            {
+                MySqlCommand comm = mConn.CreateCommand();
+
+                comm.CommandText = "UPDATE Dependente SET " +
+                                   "    Cpf = @Cpf," +
+                                   "    Nome = @Nome," +
+                                   "    Obs = @Obs," +
+                                   "    DataNascimento = @DataNascimento," +
+                                   "    Parentesco = @Parentesco," +
+                                   "    Numero = @Numero," +
+                                   "    Fone = @Fone," +
+                                   "    DataInclusao = @DataInclusao " +
+                                   "WHERE ID =" + d.Id;                
+
+                try
+                {
+                    comm.Parameters.AddWithValue("@Cpf", d.Cpf);
+                    comm.Parameters.AddWithValue("@Nome", d.Nome);
+                    comm.Parameters.AddWithValue("@Obs", d.Obs);
+                    comm.Parameters.AddWithValue("@DataNascimento", d.DataNascimento);
+                    comm.Parameters.AddWithValue("@Parentesco", d.Parentesco);
+                    comm.Parameters.AddWithValue("@Numero", d.Numero);
+                    comm.Parameters.AddWithValue("@Fone", d.Fone);
+                    comm.Parameters.AddWithValue("@DataInclusao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ssss"));                   
+                    comm.ExecuteNonQuery();
+                    gravou = true;
+                }
+                catch (SystemException e)
+                {
+                    gravou = false;
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!" + e.Message, 2);
+                    frmErro.Show();
+                }
+                finally
+                {
+                    mConn.Close();
+                }
+            }
+            mConn.Close();
+            return gravou;
+        }
+
         public Dependente RetornaDepentendeByID(long idDependente)
         {
             Dependente d = null;
@@ -111,8 +169,7 @@ namespace Teste.DAL
 
         public bool DeletaDependente(long idDependente)
         {
-            bool deletado = false;
-            Dependente d = null;
+            bool deletado = false;            
             mConn = new MySqlConnection(strConexao);
             try
             {

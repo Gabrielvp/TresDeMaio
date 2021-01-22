@@ -7,7 +7,7 @@
     <ProjectGuid>{C8F12DE5-24BD-4ED3-898E-8565BAC23F63}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Teste</RootNamespace>
-    <AssemblyName>Teste</AssemblyName>
+    <AssemblyName>3 de Maio</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,9 +60,15 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo3DeMaio.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Correios.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Correios.CEP.Net.1.1.6\lib\Correios.Net.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
@@ -103,6 +109,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -215,6 +222,7 @@
   <ItemGroup>
     <Content Include="BD\TextFile1.txt" />
     <Content Include="Images\imgCadSocio.jpg" />
+    <Content Include="logo3DeMaio.ico" />
     <None Include="Resources\icons8-configurações-16.png" />
     <None Include="Resources\icons8-documento-48%281%29.png" />
     <None Include="Resources\icons8-saco-de-dinheiro-50.png" />

@@ -19,14 +19,14 @@ namespace Teste
         private void TesteConexao()
         {
             strConexao = Connection.Conexao();
-            mConn = new MySqlConnection(strConexao);            
+            mConn = new MySqlConnection(strConexao);
             try
 
             {
-                mConn.Open();                
+                mConn.Open();
                 mConn.Close();
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show("Não foi possível conectar ao banco de dados", "Mensagem");
                 cmdConfigConexao.Visible = true;
@@ -34,7 +34,7 @@ namespace Teste
             finally
             {
                 mConn.Close();
-            }            
+            }
         }
 
         private void cmdSair_Click(object sender, EventArgs e)
@@ -108,7 +108,7 @@ namespace Teste
                 pnlConexao.Visible = false;
                 TesteConexao();
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show(ex.Message, "Aviso");
             }
@@ -116,7 +116,15 @@ namespace Teste
 
         private void cmdConfigConexao_Click(object sender, EventArgs e)
         {
-            pnlConexao.Visible = true;
+            if (pnlConexao.Visible == false)
+            {
+                pnlConexao.Visible = true;
+            }
+            else
+            {
+                pnlConexao.Visible = false; ;
+            }
+            pnlConexao.Dock = DockStyle.Fill;
             try
             {
                 txtServer.Text = ConfigurationManager.AppSettings["Server"];

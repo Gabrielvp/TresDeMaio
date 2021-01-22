@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Teste.DAL;
 using Teste.Models;
+using Correios.Net;
 
 namespace Teste
 {
@@ -81,6 +82,7 @@ namespace Teste
             }
             if (gravou)
             {
+                tabControl1.SelectedTab = tabPage1;                
                 frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
                 frm.Show();
                 Limpar();
@@ -555,16 +557,39 @@ namespace Teste
 
         private void cmdAdicionar_Click(object sender, EventArgs e)
         {
+            string cpf = mskCpfDependente.Text.Replace(",", ".");
+            if(cpf.Equals("   .   .   -")){
+                MessageBox.Show("Informe o CPF.", "Mensagem");
+                return;
+            }
+            try
+            {                
+                if (lblIdDependente.Text.Equals("idDependente"))
+                {
+                    AdicionarDependente();
+                }
+                else
+                {
+                    AtualizarDependente();
+                }
+            }catch(SystemException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void AdicionarDependente()
+        {
             ListViewItem item;
             DependenteDAL dDal = new DependenteDAL();
             bool gravou = false;
 
             if (lblId.Text.Equals("idSocio"))
             {
-                MessageBox.Show("Nenhum sócio selecionado.", "Mensagem");
-                // retorna para tab sócios
-                tabControl1.SelectedTab = tabPage1;
-                txtTitulo.Focus();
+                MessageBox.Show("Nenhum sócio selecionado.\n" +
+                    "Cadastro em andamento, primeiro finalizar o cadastro do sócio\n" +
+                    "para fazer inclusão dos dependentes.", "Mensagem");
+                // retorna para tab sócios                
             }
             else
             {
@@ -599,11 +624,58 @@ namespace Teste
             }
         }
 
+        private void AtualizarDependente()
+        {
+            ListViewItem item;
+            DependenteDAL dDal = new DependenteDAL();
+            bool gravou = false;
+
+            if (lblId.Text.Equals("idSocio"))
+            {
+                MessageBox.Show("Nenhum sócio selecionado.\n" +
+                    "Cadastro em andamento, primeiro finalizar o cadastro do sócio\n" +
+                    "para fazer inclusão dos dependentes.", "Mensagem");
+                // retorna para tab sócios                
+            }
+            else
+            {
+                Dependente d = new Dependente
+                {
+                    Id = int.Parse(lblIdDependente.Text),
+                    Cpf = mskCpfDependente.Text,
+                    Nome = txtNomeDependente.Text,
+                    Obs = txtObservacaoDependente.Text,
+                    DataNascimento = DateTime.Parse(mskDtNascimentoDependente.Text),
+                    Parentesco = txtParentesco.Text,
+                    Numero = int.Parse(txtNumeroDependente.Text),
+                    Fone = mskFoneDependente.Text,                    
+                };
+
+                gravou = dDal.UpdateDependente(d);
+                if (gravou)
+                {
+                    RetornaDependentes(int.Parse(lblId.Text));
+
+                    frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Atualizado com sucesso!", 1);
+                    frmSucesso.Show();
+                    LimparDependente();
+                }
+            }
+        }
+
 
         private void txtTitulo_Enter(object sender, EventArgs e)
         {
-            Limpar();
-            LimparDependente();
+            if (txtTitulo.Text != "")
+            {
+                DialogResult dr = new DialogResult();
+                dr = MessageBox.Show("Deseja limpar a tela e iniciar novo cadastro?", "Mensagem", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    Limpar();
+                    LimparDependente();
+                }
+            }
         }
 
         private void frmTDM_CadastroSocio_KeyDown(object sender, KeyEventArgs e)
@@ -612,11 +684,6 @@ namespace Teste
             {
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
             }
-        }
-
-        private void lstDependentes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void lstDependentes_DoubleClick(object sender, EventArgs e)
@@ -668,6 +735,32 @@ namespace Teste
                     }
                 }
             }
-        }               
+        }
+
+        private void mskCep_Leave(object sender, EventArgs e)
+        {
+            LocalizarCEP();
+        }
+
+        private void LocalizarCEP()
+        {
+            string cep = mskCep.Text.Replace(".", "");
+            cep = cep.Replace(",", "");
+            cep = cep.Replace("-", "");
+            try
+            {
+                Address endereco = SearchZip.GetAddress(cep);
+                if (endereco.Zip != null)
+                {
+                    txtRua.Text = endereco.Street;
+                    txtBairro.Text = endereco.District;
+                    txtCidade.Text = endereco.City;
+                    cmbUfEndereco.Text = endereco.State;
+                }
+            }catch(SystemException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -455,6 +455,7 @@ namespace Teste
             this.mskCep.Size = new System.Drawing.Size(73, 20);
             this.mskCep.TabIndex = 7;
             this.mskCep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mskCep.Leave += new System.EventHandler(this.mskCep_Leave);
             // 
             // label12
             // 
@@ -783,7 +784,6 @@ namespace Teste
             this.lstDependentes.TabIndex = 50;
             this.lstDependentes.UseCompatibleStateImageBehavior = false;
             this.lstDependentes.View = System.Windows.Forms.View.Details;
-            this.lstDependentes.SelectedIndexChanged += new System.EventHandler(this.lstDependentes_SelectedIndexChanged);
             this.lstDependentes.DoubleClick += new System.EventHandler(this.lstDependentes_DoubleClick);
             // 
             // Nome
