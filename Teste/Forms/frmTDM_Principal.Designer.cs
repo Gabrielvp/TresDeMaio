@@ -127,7 +127,7 @@ namespace Teste
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 58);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(187, 785);
+            this.panel2.Size = new System.Drawing.Size(187, 730);
             this.panel2.TabIndex = 7;
             // 
             // cmdRelatorios
@@ -167,6 +167,7 @@ namespace Teste
             this.cmdReceitas.Text = "Receitas";
             this.cmdReceitas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdReceitas.UseVisualStyleBackColor = true;
+            this.cmdReceitas.Click += new System.EventHandler(this.cmdReceitas_Click);
             // 
             // cmdConfiguracoes
             // 
@@ -179,7 +180,7 @@ namespace Teste
             this.cmdConfiguracoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdConfiguracoes.ForeColor = System.Drawing.Color.White;
             this.cmdConfiguracoes.Image = global::Teste.Properties.Resources.icons8_configurações_48;
-            this.cmdConfiguracoes.Location = new System.Drawing.Point(3, 710);
+            this.cmdConfiguracoes.Location = new System.Drawing.Point(3, 655);
             this.cmdConfiguracoes.Name = "cmdConfiguracoes";
             this.cmdConfiguracoes.Size = new System.Drawing.Size(181, 63);
             this.cmdConfiguracoes.TabIndex = 1;
@@ -213,7 +214,7 @@ namespace Teste
             this.pictureBox1.Image = global::Teste.Properties.Resources.logo3DeMaio21;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1216, 843);
+            this.pictureBox1.Size = new System.Drawing.Size(1216, 788);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -222,7 +223,7 @@ namespace Teste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1216, 843);
+            this.ClientSize = new System.Drawing.Size(1216, 788);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

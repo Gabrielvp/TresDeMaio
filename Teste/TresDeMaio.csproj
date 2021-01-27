@@ -73,6 +73,9 @@
     <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Compression.LZ4.1.2.6\lib\net46\K4os.Compression.LZ4.dll</HintPath>
     </Reference>
@@ -85,8 +88,8 @@
     <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Renci.SshNet, Version=2020.0.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
-      <HintPath>..\packages\SSH.NET.2020.0.0\lib\net40\Renci.SshNet.dll</HintPath>
+    <Reference Include="Renci.SshNet, Version=2020.0.1.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2020.0.1\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -127,51 +130,69 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backup\Backup.cs" />
     <Compile Include="DAL\DependenteDAL.cs" />
     <Compile Include="DAL\EnderecoDAL.cs" />
     <Compile Include="DAL\SocioDAL.cs" />
-    <Compile Include="frmTDM_CadastroSocio.cs">
+    <Compile Include="Forms\frmTDM_CadastroSocio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTDM_CadastroSocio.Designer.cs">
+    <Compile Include="Forms\frmTDM_CadastroSocio.Designer.cs">
       <DependentUpon>frmTDM_CadastroSocio.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTDM_Login.cs">
+    <Compile Include="Forms\frmTDM_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTDM_Login.Designer.cs">
+    <Compile Include="Forms\frmTDM_Login.Designer.cs">
       <DependentUpon>frmTDM_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTDM_Menssagem.cs">
+    <Compile Include="Forms\frmTDM_Menssagem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTDM_Menssagem.Designer.cs">
+    <Compile Include="Forms\frmTDM_Menssagem.Designer.cs">
       <DependentUpon>frmTDM_Menssagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTDM_PesquisaSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTDM_PesquisaSocio.Designer.cs">
+      <DependentUpon>frmTDM_PesquisaSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTDM_Receitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTDM_Receitas.Designer.cs">
+      <DependentUpon>frmTDM_Receitas.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Dependente.cs" />
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\Singleton.cs" />
     <Compile Include="Models\Socio.cs" />
-    <Compile Include="frmTDM_Principal.cs">
+    <Compile Include="Forms\frmTDM_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTDM_Principal.Designer.cs">
+    <Compile Include="Forms\frmTDM_Principal.Designer.cs">
       <DependentUpon>frmTDM_Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmTDM_CadastroSocio.resx">
+    <EmbeddedResource Include="Forms\frmTDM_CadastroSocio.resx">
       <DependentUpon>frmTDM_CadastroSocio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTDM_Login.resx">
+    <EmbeddedResource Include="Forms\frmTDM_Login.resx">
       <DependentUpon>frmTDM_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTDM_Menssagem.resx">
+    <EmbeddedResource Include="Forms\frmTDM_Menssagem.resx">
       <DependentUpon>frmTDM_Menssagem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTDM_Principal.resx">
+    <EmbeddedResource Include="Forms\frmTDM_PesquisaSocio.resx">
+      <DependentUpon>frmTDM_PesquisaSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTDM_Principal.resx">
       <DependentUpon>frmTDM_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTDM_Receitas.resx">
+      <DependentUpon>frmTDM_Receitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -222,6 +243,7 @@
   <ItemGroup>
     <Content Include="BD\TextFile1.txt" />
     <Content Include="Images\imgCadSocio.jpg" />
+    <Content Include="Images\logo3DeMaio.png" />
     <Content Include="logo3DeMaio.ico" />
     <None Include="Resources\icons8-configurações-16.png" />
     <None Include="Resources\icons8-documento-48%281%29.png" />

@@ -5,6 +5,9 @@ using System.Windows.Forms;
 using Teste.DAL;
 using Teste.Models;
 using Correios.Net;
+using System.Net;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Teste
 {
@@ -27,6 +30,18 @@ namespace Teste
         }
 
         private void cmdGravar_Click(object sender, EventArgs e)
+        {
+            if (lblId.Text.Equals("idSocio"))
+            {
+                InserirSocio();
+            }
+            else
+            {
+                AtualizarSocio();
+            }
+        }
+
+        private void InserirSocio()
         {
             bool gravou = false;
             try
@@ -82,13 +97,81 @@ namespace Teste
             }
             if (gravou)
             {
-                tabControl1.SelectedTab = tabPage1;                
+                tabControl1.SelectedTab = tabPage1;
                 frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
                 frm.Show();
                 Limpar();
                 LimparDependente();
             }
         }
+
+        private void AtualizarSocio()
+        {
+
+            bool gravou = false;
+            try
+            {
+                SocioDAL sDal = new SocioDAL();
+                Socio S = new Socio
+                {
+                    Id = int.Parse(lblId.Text),
+                    Titulo = int.Parse(txtTitulo.Text),
+                    DataAdesao = DateTime.Parse(mskDtAdesao.Text),
+                    Cpf = mskCpf.Text,
+                    Nome = txtNome.Text,
+                    Rg = txtRg.Text,
+                    OrgaoExpedidor = txtOrgaoExpedidor.Text,
+                    UfOrgaoExpedidor = cmbUfOrgaoExpedidor.Text,
+                    DataExpedicao = DateTime.Parse(mskDtExpedicao.Text),
+                    Situacao = txtSituacao.Text,
+                    DataNascimento = DateTime.Parse(mskDtNascimentoSocio.Text),
+                    FoneResidencial = mskResidencial.Text,
+                    FoneCelular = mskCelular.Text,
+                    FoneComercial = mskComercial.Text,
+                    Email = txtEmail.Text,
+                    DataCadastro = DateTime.Parse(mskDtCadastroSocio.Text),
+                    DataAtualizacao = DateTime.Parse(mskDtAtualizacaoSocio.Text),
+                    Ativo = bool.Parse(ckbSocioAtivo.Checked.ToString()),
+                    Obs = txtAdicionaisObs.Text,
+                    PathImagem = foto
+                };
+                if (!lblId.Text.Equals("idSocio"))
+                {
+                    gravou = sDal.UpdatedSocio(S);
+                    if (gravou)
+                    {
+                        Endereco E = new Endereco()
+                        {
+                            Cep = mskCep.Text,
+                            Rua = txtRua.Text,
+                            Numero = int.Parse(txtNumero.Text),
+                            Bairro = txtBairro.Text,
+                            Cidade = txtCidade.Text,
+                            Uf = cmbUfEndereco.Text,
+                            Complemento = txtComplemento.Text,
+                            IdSocio = int.Parse(lblId.Text)
+                        };
+                        EnderecoDAL eDal = new EnderecoDAL();
+                        eDal.UpdateEndereco(E);
+                    }
+                }
+            }
+            catch
+            {
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2);
+                frmErro.Show();
+            }
+            if (gravou)
+            {
+                tabControl1.SelectedTab = tabPage1;
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frm.Show();
+                Limpar();
+                LimparDependente();
+            }
+        }
+
+
 
         private void mskDtAdesao_Leave(object sender, EventArgs e)
         {
@@ -180,181 +263,6 @@ namespace Teste
             }
             ofdImagem.Dispose();
         }
-
-        //private void InsertSocio()
-        //{
-        //    bool erro = false;
-        //    try
-        //    {
-        //        // abre conexão com banco
-        //        mConn.Open();
-        //    }
-        //    catch (System.Exception e)
-        //    {
-        //        MessageBox.Show(e.Message.ToString());
-        //    }
-
-        //    // verifica se a conexão está aberta
-        //    if (mConn.State == ConnectionState.Open)
-        //    {
-        //        MySqlCommand comm = mConn.CreateCommand();
-
-        //        comm.CommandText = "INSERT INTO Socio(Titulo, CPF, Nome, Rg, OrgaoExpedidor, UFOrgaoExpedidor," +
-        //        " DataExpedicao, DataNascimento, DataAdesao, DataCadastro, DataAtualizacao, FoneResidencial, FoneCelular, FoneComercial," +
-        //        "Email, Obs, Situacao, UltPagamento, Ativo)" +
-        //        "VALUES" +
-        //        "(@Titulo, @CPF, @Nome, @Rg, @OrgaoExpedidor, @UFOrgaoExpedidor, @DataExpedicao, @DataNascimento, @DataAdesao," +
-        //        "@DataCadastro, @DataAtualizacao, @FoneResidencial, @FoneCelular, @FoneComercial, @Email, @Obs, @Situacao, @UltPagamento, @Ativo)";
-
-        //        try
-        //        {
-        //            comm.Parameters.AddWithValue("@Titulo", txtTitulo.Text);
-        //            comm.Parameters.AddWithValue("@CPF", mskCpf.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Nome", txtNome.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Rg", txtRg.Text.ToString());
-        //            comm.Parameters.AddWithValue("@OrgaoExpedidor", txtOrgaoExpedidor.Text.ToString());
-        //            comm.Parameters.AddWithValue("@UFOrgaoExpedidor", cmbUfOrgaoExpedidor.Text.ToString());
-        //            comm.Parameters.AddWithValue("@DataExpedicao", DateTime.Parse(mskDtExpedicao.Text).ToString("yyyy-MM-dd HH:mm:ssss"));
-        //            comm.Parameters.AddWithValue("@DataNascimento", DateTime.Parse(mskDtNascimentoSocio.Text).ToString("yyyy-MM-dd HH:mm:ssss"));
-        //            comm.Parameters.AddWithValue("@DataAdesao", DateTime.Parse(mskDtAdesao.Text).ToString("yyyy-MM-dd HH:mm:ssss"));
-        //            comm.Parameters.AddWithValue("@DataCadastro", DateTime.Parse(mskDtCadastroSocio.Text).ToString("yyyy-MM-dd HH:mm:ssss"));
-        //            comm.Parameters.AddWithValue("@DataAtualizacao", DateTime.Parse(mskDtAtualizacaoSocio.Text).ToString("yyyy-MM-dd HH:mm:ssss"));
-        //            comm.Parameters.AddWithValue("@FoneResidencial", mskResidencial.Text.ToString());
-        //            comm.Parameters.AddWithValue("@FoneCelular", mskCelular.Text.ToString());
-        //            comm.Parameters.AddWithValue("@FoneComercial", mskComercial.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Email", txtEmail.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Obs", txtAdicionaisObs.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Situacao", txtSituacao.Text);
-        //            comm.Parameters.AddWithValue("@UltPagamento", "");
-        //            comm.Parameters.AddWithValue("@Ativo", ckbSocioAtivo.Checked);
-        //            comm.ExecuteNonQuery();
-        //        }
-        //        catch (SystemException e)
-        //        {
-        //            //MessageBox.Show(e.Message.ToString());
-        //            frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!", 2);
-        //            frmErro.Show();
-        //            erro = true;
-        //        }
-
-        //    }
-        //    mConn.Close();
-        //    if (erro == false)
-        //    {
-        //        InsertEndereco(ReturnIdGeradoSocio());
-        //    }
-        //}
-
-        //private void InsertEndereco(long idSocio)
-        //{
-        //    bool erro = false;
-
-        //    string query = "INSERT INTO Endereco(Cep, Rua, Numero, Bairro, Cidade," +
-        //                   " UF, Complemento, IdSocio)" +
-        //                   "VALUES" +
-        //                   "(@Cep, @Rua, @Numero, @Bairro, @Cidade, @UF, @Complemento, @IdSocio)";
-
-        //    try
-        //    {
-        //        // abre conexão com banco
-        //        mConn.Open();
-        //    }
-        //    catch (System.Exception e)
-        //    {
-        //        MessageBox.Show(e.Message.ToString());
-        //    }
-
-        //    MySqlCommand comm = mConn.CreateCommand();
-        //    comm.CommandText = query;
-
-        //    try
-        //    {
-        //        comm.Parameters.AddWithValue("@Cep", mskCep.Text.ToString());
-        //        comm.Parameters.AddWithValue("@Rua", txtRua.Text.ToString());
-        //        comm.Parameters.AddWithValue("@Numero", txtNumero.Text.ToString());
-        //        comm.Parameters.AddWithValue("@Bairro", txtBairro.Text.ToString());
-        //        comm.Parameters.AddWithValue("@Cidade", txtCidade.Text.ToString());
-        //        comm.Parameters.AddWithValue("@UF", cmbUfEndereco.Text.ToString());
-        //        comm.Parameters.AddWithValue("@Complemento", txtComplemento.Text.ToString());
-        //        comm.Parameters.AddWithValue("@IdSocio", idSocio);
-        //        comm.ExecuteNonQuery();
-        //    }
-        //    catch (SystemException e)
-        //    {
-        //        frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Erro! Revise os dados!", 2);
-        //        frmErro.Show();
-        //        erro = true;
-        //    }
-        //    mConn.Close();
-        //    if (erro == false)
-        //    {
-        //        frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
-        //        frmSucesso.Show();
-        //        Limpar();
-        //    }
-        //}
-
-        //private void InsertDependente()
-        //{
-        //    ListViewItem item;
-        //    bool erro = false;
-        //    try
-        //    {
-        //        // abre conexão com banco
-        //        mConn.Open();
-        //    }
-        //    catch (System.Exception e)
-        //    {
-        //        MessageBox.Show(e.Message.ToString());
-        //    }
-
-        //    // verifica se a conexão está aberta
-        //    if (mConn.State == ConnectionState.Open)
-        //    {
-        //        MySqlCommand comm = mConn.CreateCommand();
-
-        //        comm.CommandText = "INSERT INTO Dependente(Cpf, Nome, Obs, DataNascimento, Parentesco, Numero, Fone, DataInclusao, IdSocio)" +
-        //        "VALUES" +
-        //        "(@Cpf, @Nome, @Obs, @DataNascimento, @Parentesco, @Numero, @Fone, @DataInclusao, @IdSocio)";
-
-        //        try
-        //        {
-        //            comm.Parameters.AddWithValue("@Cpf", mskCpfDependente.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Nome", txtNomeDependente.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Obs", txtObservacaoDependente.Text.ToString());
-        //            comm.Parameters.AddWithValue("@DataNascimento", DateTime.Parse(mskDtNascimentoDependente.Text).ToString("yyyy-MM-dd HH:mm:ssss"));
-        //            comm.Parameters.AddWithValue("@Parentesco", txtParentesco.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Numero", txtNumeroDependente.Text.ToString());
-        //            comm.Parameters.AddWithValue("@Fone", mskFoneDependente.Text.ToString());
-        //            comm.Parameters.AddWithValue("@DataInclusao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ssss"));
-        //            comm.Parameters.AddWithValue("@IdSocio", lblId.Text.ToString());
-        //            comm.ExecuteNonQuery();
-
-        //            item = new ListViewItem();
-        //            item.Text = txtNomeDependente.Text;
-        //            item.SubItems.Add(txtParentesco.Text);
-        //            item.SubItems.Add(mskFoneDependente.Text);
-        //            item.SubItems.Add(mskDtNascimentoDependente.Text);
-        //            item.SubItems.Add(txtNumeroDependente.Text);
-        //            item.SubItems.Add(txtObservacaoDependente.Text);
-        //            lstDependentes.Items.Add(item);
-
-        //        }
-        //        catch (SystemException e)
-        //        {
-        //            erro = true;
-        //            frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!" + e.Message, 2);
-        //            frmErro.Show();
-        //        }
-        //        if (!erro)
-        //        {
-        //            frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Adicionado com sucesso!", 1);
-        //            frmSucesso.Show();
-        //            LimparDependente();
-        //        }
-        //    }
-        //    mConn.Close();
-        //}
 
         private void LimparDependente()
         {
@@ -453,6 +361,7 @@ namespace Teste
                     if (rd["PathImagem"].ToString() != "")
                     {
                         picImagemSocio.Image = new Bitmap(rd["PathImagem"].ToString());
+
                     }
                 }
                 rd.Close();
@@ -558,12 +467,13 @@ namespace Teste
         private void cmdAdicionar_Click(object sender, EventArgs e)
         {
             string cpf = mskCpfDependente.Text.Replace(",", ".");
-            if(cpf.Equals("   .   .   -")){
+            if (cpf.Equals("   .   .   -"))
+            {
                 MessageBox.Show("Informe o CPF.", "Mensagem");
                 return;
             }
             try
-            {                
+            {
                 if (lblIdDependente.Text.Equals("idDependente"))
                 {
                     AdicionarDependente();
@@ -572,7 +482,8 @@ namespace Teste
                 {
                     AtualizarDependente();
                 }
-            }catch(SystemException ex)
+            }
+            catch (SystemException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -626,7 +537,6 @@ namespace Teste
 
         private void AtualizarDependente()
         {
-            ListViewItem item;
             DependenteDAL dDal = new DependenteDAL();
             bool gravou = false;
 
@@ -648,7 +558,7 @@ namespace Teste
                     DataNascimento = DateTime.Parse(mskDtNascimentoDependente.Text),
                     Parentesco = txtParentesco.Text,
                     Numero = int.Parse(txtNumeroDependente.Text),
-                    Fone = mskFoneDependente.Text,                    
+                    Fone = mskFoneDependente.Text,
                 };
 
                 gravou = dDal.UpdateDependente(d);
@@ -739,28 +649,123 @@ namespace Teste
 
         private void mskCep_Leave(object sender, EventArgs e)
         {
-            LocalizarCEP();
+            //LocalizarCEP();
+            BuscaCep();
         }
 
-        private void LocalizarCEP()
+        private void BuscaCep()
         {
             string cep = mskCep.Text.Replace(".", "");
             cep = cep.Replace(",", "");
-            cep = cep.Replace("-", "");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + cep + "/json/");
+            request.AllowAutoRedirect = false;
+            HttpWebResponse ChecaServidor = (HttpWebResponse)request.GetResponse();
+            if (ChecaServidor.StatusCode != HttpStatusCode.OK)
+            {
+                MessageBox.Show("Servidor indisponível");
+                return; // Sai da rotina
+            }
             try
             {
-                Address endereco = SearchZip.GetAddress(cep);
-                if (endereco.Zip != null)
+                using (Stream webStream = ChecaServidor.GetResponseStream())
                 {
-                    txtRua.Text = endereco.Street;
-                    txtBairro.Text = endereco.District;
-                    txtCidade.Text = endereco.City;
-                    cmbUfEndereco.Text = endereco.State;
+                    if (webStream != null)
+                    {
+                        using (StreamReader responseReader = new StreamReader(webStream))
+                        {
+                            string response = responseReader.ReadToEnd();
+                            response = Regex.Replace(response, "[{},]", string.Empty);
+                            response = response.Replace("\"", "");
+
+                            String[] substrings = response.Split('\n');
+
+                            int cont = 0;
+                            foreach (var substring in substrings)
+                            {
+                                if (cont == 1)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    if (valor[0] == "  erro")
+                                    {
+                                        MessageBox.Show("CEP não encontrado");
+                                        mskCep.Focus();
+                                        return;
+                                    }
+                                }
+
+                                //Logradouro
+                                if (cont == 2)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txtRua.Text = valor[1];
+                                }
+
+                                //Complemento
+                                if (cont == 3)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    //txtComplemento.Text = valor[1];
+                                }
+
+                                //Bairro
+                                if (cont == 4)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txtBairro.Text = valor[1];
+                                }
+
+                                //Cidade
+                                if (cont == 5)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    txtCidade.Text = valor[1];
+                                }
+
+                                //Estado (UF)
+                                if (cont == 6)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    cmbUfEndereco.Text = valor[1].Substring(1, 2);
+                                }
+                                cont++;
+                            }
+                        }
+                    }
                 }
-            }catch(SystemException ex)
+            }
+            catch (SystemException ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+
+
+        //private void LocalizarCEP()
+        //{
+        //    string cep = mskCep.Text.Replace(".", "");
+        //    cep = cep.Replace(",", "");
+        //    cep = cep.Replace("-", "");
+        //    try
+        //    {
+        //        Address endereco = SearchZip.GetAddress(cep);
+        //        if (endereco.Zip != null)
+        //        {
+        //            txtRua.Text = endereco.Street;
+        //            txtBairro.Text = endereco.District;
+        //            txtCidade.Text = endereco.City;
+        //            cmbUfEndereco.Text = endereco.State;
+        //        }
+        //    }
+        //    catch (SystemException ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
+
+        private void cmdRemoverImagem_Click(object sender, EventArgs e)
+        {
+            picImagemSocio.Image = Properties.Resources.imgCadSocio;
+        }       
     }
 }

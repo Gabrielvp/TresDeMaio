@@ -70,5 +70,54 @@ namespace Teste.DAL
             }
             return gravou;
         }
+
+        public bool UpdateEndereco(Endereco e)
+        {
+            bool gravou = false;
+            string query = " UPDATE Endereco SET " +
+                           "    Cep = @Cep," +
+                           "    Rua = @Rua," +
+                           "    Numero = @Numero," +
+                           "    Bairro = @Bairro," +
+                           "    Cidade = @Cidade," +
+                           "    UF = @UF," +
+                           "    Complemento = @Complemento" +                                                      
+                           " WHERE " +
+                           "    idSocio =" + e.IdSocio;
+
+            MySqlCommand comm = mConn.CreateCommand();
+            comm.CommandText = query;
+
+            try
+            {
+                comm.Parameters.AddWithValue("@Cep", e.Cep);
+                comm.Parameters.AddWithValue("@Rua", e.Rua);
+                comm.Parameters.AddWithValue("@Numero", e.Numero);
+                comm.Parameters.AddWithValue("@Bairro", e.Bairro);
+                comm.Parameters.AddWithValue("@Cidade", e.Cidade);
+                comm.Parameters.AddWithValue("@UF", e.Uf);                
+                comm.Parameters.AddWithValue("@Complemento", e.Complemento);                
+                comm.ExecuteNonQuery();
+                gravou = true;
+                mConn.Close();
+            }
+            catch (SystemException ex)
+            {
+                gravou = false;
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Erro! Revise os dados!", 2);
+                frmErro.Show();
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            if (gravou)
+            {
+                frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frmSucesso.Show();
+            }
+            return gravou;
+        }
     }
 }

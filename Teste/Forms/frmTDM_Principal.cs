@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-
+using Teste.Forms;
 
 namespace Teste
 {
@@ -66,6 +66,12 @@ namespace Teste
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }        
+        }
+
+        private void cmdReceitas_Click(object sender, EventArgs e)
+        {
+            frmTDM_Receitas frm = new frmTDM_Receitas();
+            frm.ShowDialog();
+        }
     }
 }

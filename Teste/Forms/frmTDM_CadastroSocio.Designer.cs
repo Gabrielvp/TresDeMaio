@@ -32,6 +32,8 @@ namespace Teste
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTDM_CadastroSocio));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cmdPesquisaFatura = new System.Windows.Forms.Button();
+            this.cmdRemoverImagem = new System.Windows.Forms.Button();
             this.lblUltPgto = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.txtSituacao = new System.Windows.Forms.TextBox();
@@ -145,6 +147,8 @@ namespace Teste
             this.tabPage1.AccessibleDescription = "tpSocio";
             this.tabPage1.AccessibleName = "tpSocio";
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.cmdPesquisaFatura);
+            this.tabPage1.Controls.Add(this.cmdRemoverImagem);
             this.tabPage1.Controls.Add(this.lblUltPgto);
             this.tabPage1.Controls.Add(this.label37);
             this.tabPage1.Controls.Add(this.txtSituacao);
@@ -198,6 +202,25 @@ namespace Teste
             this.tabPage1.Size = new System.Drawing.Size(824, 437);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sócio";
+            // 
+            // cmdPesquisaFatura
+            // 
+            this.cmdPesquisaFatura.Location = new System.Drawing.Point(637, 44);
+            this.cmdPesquisaFatura.Name = "cmdPesquisaFatura";
+            this.cmdPesquisaFatura.Size = new System.Drawing.Size(32, 23);
+            this.cmdPesquisaFatura.TabIndex = 47;
+            this.cmdPesquisaFatura.Text = "P...";
+            this.cmdPesquisaFatura.UseVisualStyleBackColor = true;
+            // 
+            // cmdRemoverImagem
+            // 
+            this.cmdRemoverImagem.Location = new System.Drawing.Point(684, 200);
+            this.cmdRemoverImagem.Name = "cmdRemoverImagem";
+            this.cmdRemoverImagem.Size = new System.Drawing.Size(124, 21);
+            this.cmdRemoverImagem.TabIndex = 46;
+            this.cmdRemoverImagem.Text = "Remover imagem";
+            this.cmdRemoverImagem.UseVisualStyleBackColor = true;
+            this.cmdRemoverImagem.Click += new System.EventHandler(this.cmdRemoverImagem_Click);
             // 
             // lblUltPgto
             // 
@@ -660,7 +683,7 @@ namespace Teste
             // 
             this.txtNome.Location = new System.Drawing.Point(119, 46);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(545, 20);
+            this.txtNome.Size = new System.Drawing.Size(512, 20);
             this.txtNome.TabIndex = 1;
             // 
             // label1
@@ -1204,5 +1227,7 @@ namespace Teste
         private System.Windows.Forms.ColumnHeader idDependente;
         private System.Windows.Forms.Button cmdExcluir;
         private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.Button cmdRemoverImagem;
+        private System.Windows.Forms.Button cmdPesquisaFatura;
     }
 }
