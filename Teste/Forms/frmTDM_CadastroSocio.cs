@@ -1,13 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Drawing;
+using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Teste.DAL;
 using Teste.Models;
-using Correios.Net;
-using System.Net;
-using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Teste
 {
