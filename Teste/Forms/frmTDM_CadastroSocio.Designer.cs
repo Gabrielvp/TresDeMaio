@@ -32,7 +32,7 @@ namespace Teste
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTDM_CadastroSocio));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cmdPesquisaFatura = new System.Windows.Forms.Button();
+            this.cmdPesquisaSocio = new System.Windows.Forms.Button();
             this.cmdRemoverImagem = new System.Windows.Forms.Button();
             this.lblUltPgto = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
@@ -147,7 +147,7 @@ namespace Teste
             this.tabPage1.AccessibleDescription = "tpSocio";
             this.tabPage1.AccessibleName = "tpSocio";
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.cmdPesquisaFatura);
+            this.tabPage1.Controls.Add(this.cmdPesquisaSocio);
             this.tabPage1.Controls.Add(this.cmdRemoverImagem);
             this.tabPage1.Controls.Add(this.lblUltPgto);
             this.tabPage1.Controls.Add(this.label37);
@@ -203,14 +203,15 @@ namespace Teste
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sócio";
             // 
-            // cmdPesquisaFatura
+            // cmdPesquisaSocio
             // 
-            this.cmdPesquisaFatura.Location = new System.Drawing.Point(637, 44);
-            this.cmdPesquisaFatura.Name = "cmdPesquisaFatura";
-            this.cmdPesquisaFatura.Size = new System.Drawing.Size(32, 23);
-            this.cmdPesquisaFatura.TabIndex = 47;
-            this.cmdPesquisaFatura.Text = "P...";
-            this.cmdPesquisaFatura.UseVisualStyleBackColor = true;
+            this.cmdPesquisaSocio.Location = new System.Drawing.Point(637, 44);
+            this.cmdPesquisaSocio.Name = "cmdPesquisaSocio";
+            this.cmdPesquisaSocio.Size = new System.Drawing.Size(32, 23);
+            this.cmdPesquisaSocio.TabIndex = 2;
+            this.cmdPesquisaSocio.Text = "P...";
+            this.cmdPesquisaSocio.UseVisualStyleBackColor = true;
+            this.cmdPesquisaSocio.Click += new System.EventHandler(this.cmdPesquisaSocio_Click);
             // 
             // cmdRemoverImagem
             // 
@@ -245,8 +246,7 @@ namespace Teste
             this.txtSituacao.Location = new System.Drawing.Point(447, 91);
             this.txtSituacao.Name = "txtSituacao";
             this.txtSituacao.Size = new System.Drawing.Size(103, 20);
-            this.txtSituacao.TabIndex = 42;
-            this.txtSituacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSituacao.TabIndex = 7;
             // 
             // label36
             // 
@@ -263,7 +263,7 @@ namespace Teste
             this.mskDtNascimentoSocio.Mask = "99/99/9999";
             this.mskDtNascimentoSocio.Name = "mskDtNascimentoSocio";
             this.mskDtNascimentoSocio.Size = new System.Drawing.Size(94, 20);
-            this.mskDtNascimentoSocio.TabIndex = 6;
+            this.mskDtNascimentoSocio.TabIndex = 8;
             this.mskDtNascimentoSocio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label29
@@ -280,7 +280,7 @@ namespace Teste
             this.txtEmail.Location = new System.Drawing.Point(19, 409);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(310, 20);
-            this.txtEmail.TabIndex = 17;
+            this.txtEmail.TabIndex = 19;
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // label25
@@ -297,7 +297,7 @@ namespace Teste
             this.cmdCarregarImagem.Location = new System.Drawing.Point(684, 177);
             this.cmdCarregarImagem.Name = "cmdCarregarImagem";
             this.cmdCarregarImagem.Size = new System.Drawing.Size(124, 21);
-            this.cmdCarregarImagem.TabIndex = 22;
+            this.cmdCarregarImagem.TabIndex = 21;
             this.cmdCarregarImagem.Text = "Carregar imagem";
             this.cmdCarregarImagem.UseVisualStyleBackColor = true;
             this.cmdCarregarImagem.Click += new System.EventHandler(this.cmdCarregarImagem_Click);
@@ -308,7 +308,7 @@ namespace Teste
             this.mskComercial.Mask = "(99) 9999-9999";
             this.mskComercial.Name = "mskComercial";
             this.mskComercial.Size = new System.Drawing.Size(82, 20);
-            this.mskComercial.TabIndex = 16;
+            this.mskComercial.TabIndex = 18;
             this.mskComercial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // mskCelular
@@ -317,7 +317,7 @@ namespace Teste
             this.mskCelular.Mask = "(99) 99999-9999";
             this.mskCelular.Name = "mskCelular";
             this.mskCelular.Size = new System.Drawing.Size(82, 20);
-            this.mskCelular.TabIndex = 15;
+            this.mskCelular.TabIndex = 17;
             this.mskCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label21
@@ -344,7 +344,7 @@ namespace Teste
             this.mskResidencial.Mask = "(99) 9999-9999";
             this.mskResidencial.Name = "mskResidencial";
             this.mskResidencial.Size = new System.Drawing.Size(82, 20);
-            this.mskResidencial.TabIndex = 14;
+            this.mskResidencial.TabIndex = 16;
             this.mskResidencial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label19
@@ -381,7 +381,7 @@ namespace Teste
             this.txtComplemento.Location = new System.Drawing.Point(19, 272);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(612, 20);
-            this.txtComplemento.TabIndex = 13;
+            this.txtComplemento.TabIndex = 15;
             // 
             // label16
             // 
@@ -396,6 +396,7 @@ namespace Teste
             // 
             this.cmbUfEndereco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUfEndereco.FormattingEnabled = true;
+            this.cmbUfEndereco.ItemHeight = 13;
             this.cmbUfEndereco.Items.AddRange(new object[] {
             "AC",
             "AL",
@@ -427,7 +428,7 @@ namespace Teste
             this.cmbUfEndereco.Location = new System.Drawing.Point(585, 229);
             this.cmbUfEndereco.Name = "cmbUfEndereco";
             this.cmbUfEndereco.Size = new System.Drawing.Size(46, 21);
-            this.cmbUfEndereco.TabIndex = 12;
+            this.cmbUfEndereco.TabIndex = 14;
             // 
             // label15
             // 
@@ -443,7 +444,7 @@ namespace Teste
             this.txtCidade.Location = new System.Drawing.Point(286, 230);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(293, 20);
-            this.txtCidade.TabIndex = 11;
+            this.txtCidade.TabIndex = 13;
             // 
             // label14
             // 
@@ -459,7 +460,7 @@ namespace Teste
             this.txtBairro.Location = new System.Drawing.Point(19, 230);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(261, 20);
-            this.txtBairro.TabIndex = 10;
+            this.txtBairro.TabIndex = 12;
             // 
             // label13
             // 
@@ -476,7 +477,7 @@ namespace Teste
             this.mskCep.Mask = "99.999-999";
             this.mskCep.Name = "mskCep";
             this.mskCep.Size = new System.Drawing.Size(73, 20);
-            this.mskCep.TabIndex = 7;
+            this.mskCep.TabIndex = 9;
             this.mskCep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskCep.Leave += new System.EventHandler(this.mskCep_Leave);
             // 
@@ -494,7 +495,7 @@ namespace Teste
             this.txtNumero.Location = new System.Drawing.Point(585, 186);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(63, 20);
-            this.txtNumero.TabIndex = 9;
+            this.txtNumero.TabIndex = 11;
             this.txtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
@@ -511,7 +512,7 @@ namespace Teste
             this.txtRua.Location = new System.Drawing.Point(98, 186);
             this.txtRua.Name = "txtRua";
             this.txtRua.Size = new System.Drawing.Size(481, 20);
-            this.txtRua.TabIndex = 8;
+            this.txtRua.TabIndex = 10;
             // 
             // label10
             // 
@@ -558,7 +559,7 @@ namespace Teste
             this.mskDtExpedicao.Mask = "99/99/9999";
             this.mskDtExpedicao.Name = "mskDtExpedicao";
             this.mskDtExpedicao.Size = new System.Drawing.Size(94, 20);
-            this.mskDtExpedicao.TabIndex = 5;
+            this.mskDtExpedicao.TabIndex = 6;
             this.mskDtExpedicao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
@@ -574,6 +575,7 @@ namespace Teste
             // 
             this.cmbUfOrgaoExpedidor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUfOrgaoExpedidor.FormattingEnabled = true;
+            this.cmbUfOrgaoExpedidor.ItemHeight = 13;
             this.cmbUfOrgaoExpedidor.Items.AddRange(new object[] {
             "AC",
             "AL",
@@ -605,7 +607,7 @@ namespace Teste
             this.cmbUfOrgaoExpedidor.Location = new System.Drawing.Point(231, 91);
             this.cmbUfOrgaoExpedidor.Name = "cmbUfOrgaoExpedidor";
             this.cmbUfOrgaoExpedidor.Size = new System.Drawing.Size(46, 21);
-            this.cmbUfOrgaoExpedidor.TabIndex = 4;
+            this.cmbUfOrgaoExpedidor.TabIndex = 5;
             // 
             // label5
             // 
@@ -621,7 +623,7 @@ namespace Teste
             this.txtOrgaoExpedidor.Location = new System.Drawing.Point(119, 91);
             this.txtOrgaoExpedidor.Name = "txtOrgaoExpedidor";
             this.txtOrgaoExpedidor.Size = new System.Drawing.Size(103, 20);
-            this.txtOrgaoExpedidor.TabIndex = 3;
+            this.txtOrgaoExpedidor.TabIndex = 4;
             this.txtOrgaoExpedidor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
@@ -638,7 +640,7 @@ namespace Teste
             this.txtRg.Location = new System.Drawing.Point(19, 91);
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(94, 20);
-            this.txtRg.TabIndex = 2;
+            this.txtRg.TabIndex = 3;
             this.txtRg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
@@ -658,6 +660,7 @@ namespace Teste
             this.mskCpf.Size = new System.Drawing.Size(94, 20);
             this.mskCpf.TabIndex = 0;
             this.mskCpf.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mskCpf.Leave += new System.EventHandler(this.mskCpf_Leave);
             // 
             // label2
             // 
@@ -714,7 +717,7 @@ namespace Teste
             this.txtAdicionaisObs.Multiline = true;
             this.txtAdicionaisObs.Name = "txtAdicionaisObs";
             this.txtAdicionaisObs.Size = new System.Drawing.Size(780, 360);
-            this.txtAdicionaisObs.TabIndex = 30;
+            this.txtAdicionaisObs.TabIndex = 0;
             // 
             // label35
             // 
@@ -762,7 +765,7 @@ namespace Teste
             this.cmdExcluir.Location = new System.Drawing.Point(593, 108);
             this.cmdExcluir.Name = "cmdExcluir";
             this.cmdExcluir.Size = new System.Drawing.Size(75, 23);
-            this.cmdExcluir.TabIndex = 53;
+            this.cmdExcluir.TabIndex = 8;
             this.cmdExcluir.Text = "Excluir";
             this.cmdExcluir.UseVisualStyleBackColor = false;
             this.cmdExcluir.Click += new System.EventHandler(this.cmdExcluir_Click);
@@ -783,7 +786,7 @@ namespace Teste
             this.cmdAdicionar.Location = new System.Drawing.Point(513, 108);
             this.cmdAdicionar.Name = "cmdAdicionar";
             this.cmdAdicionar.Size = new System.Drawing.Size(75, 23);
-            this.cmdAdicionar.TabIndex = 51;
+            this.cmdAdicionar.TabIndex = 7;
             this.cmdAdicionar.Text = "Adicionar";
             this.cmdAdicionar.UseVisualStyleBackColor = true;
             this.cmdAdicionar.Click += new System.EventHandler(this.cmdAdicionar_Click);
@@ -850,7 +853,7 @@ namespace Teste
             this.txtObservacaoDependente.Location = new System.Drawing.Point(23, 69);
             this.txtObservacaoDependente.Name = "txtObservacaoDependente";
             this.txtObservacaoDependente.Size = new System.Drawing.Size(645, 20);
-            this.txtObservacaoDependente.TabIndex = 25;
+            this.txtObservacaoDependente.TabIndex = 2;
             // 
             // label34
             // 
@@ -867,7 +870,7 @@ namespace Teste
             this.mskFoneDependente.Mask = "(99) 9999-9999";
             this.mskFoneDependente.Name = "mskFoneDependente";
             this.mskFoneDependente.Size = new System.Drawing.Size(82, 20);
-            this.mskFoneDependente.TabIndex = 29;
+            this.mskFoneDependente.TabIndex = 6;
             this.mskFoneDependente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label33
@@ -884,7 +887,7 @@ namespace Teste
             this.txtNumeroDependente.Location = new System.Drawing.Point(329, 111);
             this.txtNumeroDependente.Name = "txtNumeroDependente";
             this.txtNumeroDependente.Size = new System.Drawing.Size(47, 20);
-            this.txtNumeroDependente.TabIndex = 28;
+            this.txtNumeroDependente.TabIndex = 5;
             // 
             // label32
             // 
@@ -901,7 +904,7 @@ namespace Teste
             this.mskDtNascimentoDependente.Mask = "99/99/9999";
             this.mskDtNascimentoDependente.Name = "mskDtNascimentoDependente";
             this.mskDtNascimentoDependente.Size = new System.Drawing.Size(82, 20);
-            this.mskDtNascimentoDependente.TabIndex = 26;
+            this.mskDtNascimentoDependente.TabIndex = 3;
             this.mskDtNascimentoDependente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label31
@@ -918,7 +921,7 @@ namespace Teste
             this.txtParentesco.Location = new System.Drawing.Point(123, 111);
             this.txtParentesco.Name = "txtParentesco";
             this.txtParentesco.Size = new System.Drawing.Size(200, 20);
-            this.txtParentesco.TabIndex = 27;
+            this.txtParentesco.TabIndex = 4;
             // 
             // label30
             // 
@@ -935,7 +938,7 @@ namespace Teste
             this.mskCpfDependente.Mask = "999.999.999-99";
             this.mskCpfDependente.Name = "mskCpfDependente";
             this.mskCpfDependente.Size = new System.Drawing.Size(94, 20);
-            this.mskCpfDependente.TabIndex = 23;
+            this.mskCpfDependente.TabIndex = 0;
             this.mskCpfDependente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label27
@@ -952,7 +955,7 @@ namespace Teste
             this.txtNomeDependente.Location = new System.Drawing.Point(123, 29);
             this.txtNomeDependente.Name = "txtNomeDependente";
             this.txtNomeDependente.Size = new System.Drawing.Size(545, 20);
-            this.txtNomeDependente.TabIndex = 24;
+            this.txtNomeDependente.TabIndex = 1;
             // 
             // label28
             // 
@@ -988,7 +991,7 @@ namespace Teste
             this.cmdGravar.Location = new System.Drawing.Point(601, 531);
             this.cmdGravar.Name = "cmdGravar";
             this.cmdGravar.Size = new System.Drawing.Size(113, 29);
-            this.cmdGravar.TabIndex = 4;
+            this.cmdGravar.TabIndex = 22;
             this.cmdGravar.Text = "Gravar";
             this.cmdGravar.UseVisualStyleBackColor = true;
             this.cmdGravar.Click += new System.EventHandler(this.cmdGravar_Click);
@@ -998,7 +1001,7 @@ namespace Teste
             this.cmdLimpar.Location = new System.Drawing.Point(721, 531);
             this.cmdLimpar.Name = "cmdLimpar";
             this.cmdLimpar.Size = new System.Drawing.Size(113, 29);
-            this.cmdLimpar.TabIndex = 31;
+            this.cmdLimpar.TabIndex = 23;
             this.cmdLimpar.Text = "Limpar";
             this.cmdLimpar.UseVisualStyleBackColor = true;
             this.cmdLimpar.Click += new System.EventHandler(this.cmdLimpar_Click);
@@ -1228,6 +1231,6 @@ namespace Teste
         private System.Windows.Forms.Button cmdExcluir;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Button cmdRemoverImagem;
-        private System.Windows.Forms.Button cmdPesquisaFatura;
+        private System.Windows.Forms.Button cmdPesquisaSocio;
     }
 }

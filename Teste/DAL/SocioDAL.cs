@@ -196,7 +196,6 @@ namespace Teste.DAL
 
         public List<Socio> RetornaSocioByNome(string nome)
         {
-            Socio s;
             List<Socio> list = new List<Socio>();
             try
             {
@@ -220,6 +219,32 @@ namespace Teste.DAL
             }
             mConn.Close();
             return list;
+        }
+
+        public Socio RetornaSocioByCpf(string cpf)
+        {
+            Socio s = new Socio();
+            try
+            {
+                string sql = "SELECT Titulo FROM Socio WHERE Cpf ='" + cpf + "'";
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    s.Titulo = int.Parse(rd["Titulo"].ToString());
+                }
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return s;
         }
     }
 }

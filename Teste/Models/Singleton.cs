@@ -1,6 +1,6 @@
 ﻿namespace Teste.Models
 {
-    public sealed class Singleton<T> where T: class, new()
+    public sealed class Singleton<T> where T : class, new()
     {
         private static T instance;
 

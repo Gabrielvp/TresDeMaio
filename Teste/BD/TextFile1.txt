@@ -1,8 +1,11 @@
-﻿create table Socio(
+﻿create database TresDeMaio_DB;
+use TresDeMaio_DB;
+
+create table Socio(
    Id INT NOT NULL AUTO_INCREMENT,
    Ativo bool,
    Titulo Int not null,
-   CPF VARCHAR(14),
+   CPF VARCHAR(14) unique,
    Nome VARCHAR(200) NOT NULL,
    Rg varchar(15),
    OrgaoExpedidor varchar(50),

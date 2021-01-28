@@ -9,10 +9,22 @@ namespace Teste.Forms
     public partial class frmTDM_PesquisaSocio : Form
     {
         public Form ReferenciaForm { get; set; }        
+        public string NomeReferencia { get; set; }
 
         public frmTDM_PesquisaSocio()
         {
-            InitializeComponent();            
+            InitializeComponent();                   
+        }
+
+        public frmTDM_PesquisaSocio(string nome)
+        {
+            InitializeComponent();
+            NomeReferencia = nome;
+            if (NomeReferencia != null)
+            {
+                txtNome.Text = NomeReferencia;
+                cmdPesquisaFatura_Click(null, null);
+            }
         }
 
         private void cmdPesquisaFatura_Click(object sender, EventArgs e)

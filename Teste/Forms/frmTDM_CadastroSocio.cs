@@ -6,6 +6,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Teste.DAL;
+using Teste.Forms;
 using Teste.Models;
 
 namespace Teste
@@ -648,8 +649,13 @@ namespace Teste
 
         private void mskCep_Leave(object sender, EventArgs e)
         {
+            string cep = mskCep.Text.Replace(".", "");
+            cep = cep.Replace(",", "");
             //LocalizarCEP();
-            BuscaCep();
+            if (cep != "     -")
+            {
+                BuscaCep();
+            }            
         }
 
         private void BuscaCep()
@@ -687,7 +693,7 @@ namespace Teste
                                     if (valor[0] == "  erro")
                                     {
                                         MessageBox.Show("CEP não encontrado");
-                                        mskCep.Focus();
+                                        //mskCep.Focus();
                                         return;
                                     }
                                 }
@@ -765,6 +771,39 @@ namespace Teste
         private void cmdRemoverImagem_Click(object sender, EventArgs e)
         {
             picImagemSocio.Image = Properties.Resources.imgCadSocio;
-        }       
+        }
+
+        private void mskCpf_Leave(object sender, EventArgs e)
+        {
+            string cpf = mskCpf.Text.Replace(".","");
+            cpf = cpf.Replace(",", "");
+            if (cpf != "         -")
+            {
+                SocioDAL sDal = new SocioDAL();
+                Socio s = sDal.RetornaSocioByCpf(mskCpf.Text);
+                if(s.Titulo != 0)
+                {
+                    txtTitulo.Text = s.Titulo.ToString();
+                    txtTitulo_Leave(null, null);
+                }                
+            }
+        }        
+
+        private void cmdPesquisaSocio_Click(object sender, EventArgs e)
+        {
+            Socio s = Singleton<Socio>.Instance();
+            frmTDM_PesquisaSocio frm;
+            if (txtNome.Text.Trim() != "")
+            {
+                 frm = new frmTDM_PesquisaSocio(txtNome.Text.Trim());
+            }
+            else
+            {
+                frm = new frmTDM_PesquisaSocio();
+            }
+            frm.ShowDialog();
+            txtTitulo.Text = s.Titulo.ToString();
+            txtTitulo_Leave(null, null);
+        }
     }
 }
