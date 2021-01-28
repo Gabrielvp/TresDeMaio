@@ -41,10 +41,20 @@ namespace Teste
             this.cmdConfiguracoes = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlRelatorios = new System.Windows.Forms.Panel();
+            this.lblRelRecebido = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblRelAtrasados = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblRelAReceber = new System.Windows.Forms.Label();
+            this.lblRelRelacaoSocios = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlRelatorios.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -148,6 +158,7 @@ namespace Teste
             this.cmdRelatorios.Text = "Relatórios";
             this.cmdRelatorios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdRelatorios.UseVisualStyleBackColor = true;
+            this.cmdRelatorios.Click += new System.EventHandler(this.cmdRelatorios_Click);
             // 
             // cmdReceitas
             // 
@@ -219,12 +230,122 @@ namespace Teste
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pnlRelatorios
+            // 
+            this.pnlRelatorios.BackColor = System.Drawing.Color.Goldenrod;
+            this.pnlRelatorios.Controls.Add(this.lblRelRecebido);
+            this.pnlRelatorios.Controls.Add(this.label9);
+            this.pnlRelatorios.Controls.Add(this.lblRelAtrasados);
+            this.pnlRelatorios.Controls.Add(this.label7);
+            this.pnlRelatorios.Controls.Add(this.lblRelAReceber);
+            this.pnlRelatorios.Controls.Add(this.lblRelRelacaoSocios);
+            this.pnlRelatorios.Controls.Add(this.label3);
+            this.pnlRelatorios.Controls.Add(this.label5);
+            this.pnlRelatorios.Location = new System.Drawing.Point(187, 424);
+            this.pnlRelatorios.Name = "pnlRelatorios";
+            this.pnlRelatorios.Size = new System.Drawing.Size(149, 240);
+            this.pnlRelatorios.TabIndex = 8;
+            this.pnlRelatorios.Visible = false;
+            // 
+            // lblRelRecebido
+            // 
+            this.lblRelRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelRecebido.ForeColor = System.Drawing.Color.White;
+            this.lblRelRecebido.Location = new System.Drawing.Point(2, 122);
+            this.lblRelRecebido.Name = "lblRelRecebido";
+            this.lblRelRecebido.Size = new System.Drawing.Size(144, 16);
+            this.lblRelRecebido.TabIndex = 6;
+            this.lblRelRecebido.Text = "Recebido               >";
+            this.lblRelRecebido.MouseEnter += new System.EventHandler(this.lblRelRecebido_MouseEnter);
+            this.lblRelRecebido.MouseLeave += new System.EventHandler(this.lblRelRecebido_MouseLeave);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(-2, 133);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(152, 16);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "__________________";
+            // 
+            // lblRelAtrasados
+            // 
+            this.lblRelAtrasados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelAtrasados.ForeColor = System.Drawing.Color.White;
+            this.lblRelAtrasados.Location = new System.Drawing.Point(2, 88);
+            this.lblRelAtrasados.Name = "lblRelAtrasados";
+            this.lblRelAtrasados.Size = new System.Drawing.Size(144, 16);
+            this.lblRelAtrasados.TabIndex = 4;
+            this.lblRelAtrasados.Text = "Atrasados              >";
+            this.lblRelAtrasados.MouseEnter += new System.EventHandler(this.lblRelAtrasados_MouseEnter);
+            this.lblRelAtrasados.MouseLeave += new System.EventHandler(this.lblRelAtrasados_MouseLeave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(-2, 99);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 16);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "__________________";
+            // 
+            // lblRelAReceber
+            // 
+            this.lblRelAReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelAReceber.ForeColor = System.Drawing.Color.White;
+            this.lblRelAReceber.Location = new System.Drawing.Point(2, 52);
+            this.lblRelAReceber.Name = "lblRelAReceber";
+            this.lblRelAReceber.Size = new System.Drawing.Size(144, 16);
+            this.lblRelAReceber.TabIndex = 2;
+            this.lblRelAReceber.Text = " A Receber            >";
+            this.lblRelAReceber.MouseEnter += new System.EventHandler(this.lblRelAReceber_MouseEnter);
+            this.lblRelAReceber.MouseLeave += new System.EventHandler(this.lblRelAReceber_MouseLeave);
+            // 
+            // lblRelRelacaoSocios
+            // 
+            this.lblRelRelacaoSocios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelRelacaoSocios.ForeColor = System.Drawing.Color.White;
+            this.lblRelRelacaoSocios.Location = new System.Drawing.Point(1, 14);
+            this.lblRelRelacaoSocios.Name = "lblRelRelacaoSocios";
+            this.lblRelRelacaoSocios.Size = new System.Drawing.Size(146, 16);
+            this.lblRelRelacaoSocios.TabIndex = 0;
+            this.lblRelRelacaoSocios.Text = " Relação Sócios   >";
+            this.lblRelRelacaoSocios.MouseEnter += new System.EventHandler(this.lblRelRelacaoSocios_MouseEnter);
+            this.lblRelRelacaoSocios.MouseLeave += new System.EventHandler(this.lblRelRelacaoSocios_MouseLeave);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(-2, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "__________________";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(-2, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(152, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "__________________";
+            // 
             // frmTDM_Princiapal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1216, 788);
             this.ControlBox = false;
+            this.Controls.Add(this.pnlRelatorios);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
@@ -240,6 +361,8 @@ namespace Teste
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlRelatorios.ResumeLayout(false);
+            this.pnlRelatorios.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -257,6 +380,15 @@ namespace Teste
         private System.Windows.Forms.Button cmdConfiguracoes;
         private System.Windows.Forms.Button cmdRelatorios;
         private System.Windows.Forms.Button cmdReceitas;
+        private System.Windows.Forms.Panel pnlRelatorios;
+        private System.Windows.Forms.Label lblRelAtrasados;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblRelAReceber;
+        private System.Windows.Forms.Label lblRelRelacaoSocios;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblRelRecebido;
+        private System.Windows.Forms.Label label9;
     }
 }
 

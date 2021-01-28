@@ -73,5 +73,59 @@ namespace Teste
             frmTDM_Receitas frm = new frmTDM_Receitas();
             frm.ShowDialog();
         }
+
+        private void cmdRelatorios_Click(object sender, EventArgs e)
+        {
+            if(pnlRelatorios.Visible == false)
+            {
+                pnlRelatorios.Visible = true;
+                cmdRelatorios.BackColor = Color.Goldenrod;
+            }
+            else
+            {
+                pnlRelatorios.Visible = false;
+                cmdRelatorios.BackColor =  Color.FromArgb(37, 46, 59);
+            }
+        }
+
+        private void lblRelRelacaoSocios_MouseEnter(object sender, EventArgs e)
+        {
+            lblRelRelacaoSocios.BackColor = Color.DarkGoldenrod;
+        }
+
+        private void lblRelRelacaoSocios_MouseLeave(object sender, EventArgs e)
+        {
+            lblRelRelacaoSocios.BackColor = Color.Goldenrod;
+        }
+
+        private void lblRelAReceber_MouseEnter(object sender, EventArgs e)
+        {
+            lblRelAReceber.BackColor = Color.DarkGoldenrod;
+        }
+
+        private void lblRelAReceber_MouseLeave(object sender, EventArgs e)
+        {
+            lblRelAReceber.BackColor = Color.Goldenrod;
+        }
+
+        private void lblRelAtrasados_MouseEnter(object sender, EventArgs e)
+        {
+            lblRelAtrasados.BackColor = Color.DarkGoldenrod;
+        }
+
+        private void lblRelAtrasados_MouseLeave(object sender, EventArgs e)
+        {
+            lblRelAtrasados.BackColor = Color.Goldenrod;
+        }
+
+        private void lblRelRecebido_MouseEnter(object sender, EventArgs e)
+        {
+            lblRelRecebido.BackColor = Color.DarkGoldenrod;
+        }
+
+        private void lblRelRecebido_MouseLeave(object sender, EventArgs e)
+        {
+            lblRelRecebido.BackColor = Color.Goldenrod;
+        }
     }
 }

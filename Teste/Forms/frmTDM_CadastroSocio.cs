@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Teste.DAL;
 using Teste.Forms;
+using Teste.Funcoes;
 using Teste.Models;
 
 namespace Teste
@@ -175,6 +176,28 @@ namespace Teste
 
         private void mskDtAdesao_Leave(object sender, EventArgs e)
         {
+            Validacoes v = new Validacoes();
+            if (mskDtAdesao.Text.Length == 10)
+            {
+                if (v.ValidaData(mskDtAdesao.Text) == false)
+                {
+                    MessageBox.Show("Data inválida.", "Mensagem");
+                    mskDtAdesao.Focus();
+                    return;
+                }
+            }
+            if (mskDtAdesao.Text == "  /  /")
+            {
+                MessageBox.Show("Data de vencimento inválida.", "Mensagem");
+                mskDtAdesao.Focus();
+                return;
+            }
+            if (mskDtAdesao.Text.Length != 10)
+            {
+                MessageBox.Show("Data inválida.", "Mensagem");
+                mskDtAdesao.Focus();
+                return;
+            }
             mskCpf.Focus();
         }
 
@@ -744,8 +767,6 @@ namespace Teste
             }
         }
 
-
-
         //private void LocalizarCEP()
         //{
         //    string cep = mskCep.Text.Replace(".", "");
@@ -771,6 +792,7 @@ namespace Teste
         private void cmdRemoverImagem_Click(object sender, EventArgs e)
         {
             picImagemSocio.Image = Properties.Resources.imgCadSocio;
+            foto = null;   
         }
 
         private void mskCpf_Leave(object sender, EventArgs e)
@@ -804,6 +826,84 @@ namespace Teste
             frm.ShowDialog();
             txtTitulo.Text = s.Titulo.ToString();
             txtTitulo_Leave(null, null);
+        }
+
+        private void mskDtExpedicao_Leave(object sender, EventArgs e)
+        {
+            Validacoes v = new Validacoes();
+            if (mskDtExpedicao.Text.Length == 10)
+            {
+                if (v.ValidaData(mskDtExpedicao.Text) == false)
+                {
+                    MessageBox.Show("Data inválida.", "Mensagem");
+                    mskDtExpedicao.Focus();
+                    return;
+                }
+            }
+            if (mskDtExpedicao.Text == "  /  /")
+            {
+                MessageBox.Show("Data de vencimento inválida.", "Mensagem");
+                mskDtExpedicao.Focus();
+                return;
+            }
+            if (mskDtExpedicao.Text.Length != 10)
+            {
+                MessageBox.Show("Data inválida.", "Mensagem");
+                mskDtExpedicao.Focus();
+                return;
+            }
+        }
+
+        private void mskDtNascimentoSocio_Leave(object sender, EventArgs e)
+        {
+            Validacoes v = new Validacoes();
+            if (mskDtNascimentoSocio.Text.Length == 10)
+            {
+                if (v.ValidaData(mskDtNascimentoSocio.Text) == false)
+                {
+                    MessageBox.Show("Data inválida.", "Mensagem");
+                    mskDtNascimentoSocio.Focus();
+                    return;
+                }
+            }
+            if (mskDtNascimentoSocio.Text == "  /  /")
+            {
+                MessageBox.Show("Data de vencimento inválida.", "Mensagem");
+                mskDtNascimentoSocio.Focus();
+                return;
+            }
+            if (mskDtNascimentoSocio.Text.Length != 10)
+            {
+                MessageBox.Show("Data inválida.", "Mensagem");
+                mskDtNascimentoSocio.Focus();
+                return;
+            }
+        }
+
+        private void mskDtNascimentoDependente_Leave(object sender, EventArgs e)
+        {
+            Validacoes v = new Validacoes();
+            if (mskDtNascimentoDependente.Text.Length == 10)
+            {
+                if (v.ValidaData(mskDtNascimentoDependente.Text) == false)
+                {
+                    MessageBox.Show("Data inválida.", "Mensagem");
+                    mskDtNascimentoDependente.Focus();
+                    return;
+                }
+            }
+            if (mskDtNascimentoDependente.Text == "  /  /")
+            {
+                MessageBox.Show("Data de vencimento inválida.", "Mensagem");
+                mskDtNascimentoDependente.Focus();
+                return;
+            }
+            if (mskDtNascimentoDependente.Text.Length != 10)
+            {
+                MessageBox.Show("Data inválida.", "Mensagem");
+                mskDtNascimentoDependente.Focus();
+                return;
+            }
         }
     }
 }

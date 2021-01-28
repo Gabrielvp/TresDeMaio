@@ -132,6 +132,7 @@
   <ItemGroup>
     <Compile Include="DAL\DependenteDAL.cs" />
     <Compile Include="DAL\EnderecoDAL.cs" />
+    <Compile Include="DAL\ReceitaDAL.cs" />
     <Compile Include="DAL\SocioDAL.cs" />
     <Compile Include="Forms\frmTDM_CadastroSocio.cs">
       <SubType>Form</SubType>
@@ -163,9 +164,11 @@
     <Compile Include="Forms\frmTDM_Receitas.Designer.cs">
       <DependentUpon>frmTDM_Receitas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funcoes\Validacoes.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Dependente.cs" />
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\Receita.cs" />
     <Compile Include="Models\Singleton.cs" />
     <Compile Include="Models\Socio.cs" />
     <Compile Include="Forms\frmTDM_Principal.cs">

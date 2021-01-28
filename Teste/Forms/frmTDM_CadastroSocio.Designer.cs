@@ -265,6 +265,7 @@ namespace Teste
             this.mskDtNascimentoSocio.Size = new System.Drawing.Size(94, 20);
             this.mskDtNascimentoSocio.TabIndex = 8;
             this.mskDtNascimentoSocio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskDtNascimentoSocio.Leave += new System.EventHandler(this.mskDtNascimentoSocio_Leave);
             // 
             // label29
             // 
@@ -561,6 +562,7 @@ namespace Teste
             this.mskDtExpedicao.Size = new System.Drawing.Size(94, 20);
             this.mskDtExpedicao.TabIndex = 6;
             this.mskDtExpedicao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskDtExpedicao.Leave += new System.EventHandler(this.mskDtExpedicao_Leave);
             // 
             // label6
             // 
@@ -906,6 +908,7 @@ namespace Teste
             this.mskDtNascimentoDependente.Size = new System.Drawing.Size(82, 20);
             this.mskDtNascimentoDependente.TabIndex = 3;
             this.mskDtNascimentoDependente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mskDtNascimentoDependente.Leave += new System.EventHandler(this.mskDtNascimentoDependente_Leave);
             // 
             // label31
             // 

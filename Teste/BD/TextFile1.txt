@@ -61,3 +61,16 @@ create table Usuarios(
     Senha varchar(50),
     PRIMARY KEY (Id)    
 );
+
+create table Receitas(
+	Id INT NOT NULL AUTO_INCREMENT,
+    Documento int not null,
+    Parcela int,
+    DataVencimento datetime not null,
+    DiaVencimento int,
+    Valor double,
+    Obs varchar(500),       
+    IdSocio Int not null,
+    PRIMARY KEY ( Id ),
+    FOREIGN KEY (IdSocio) REFERENCES Socio(Id)
+);
