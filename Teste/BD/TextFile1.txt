@@ -69,6 +69,7 @@ create table Receitas(
     DataVencimento datetime not null,
     DiaVencimento int,
     Valor double,
+    FlagPago boolean,
     Obs varchar(500),       
     IdSocio Int not null,
     PRIMARY KEY ( Id ),
