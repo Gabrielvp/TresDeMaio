@@ -637,7 +637,7 @@ namespace Teste
             else
             {
                 DialogResult dr = new DialogResult();
-                dr = MessageBox.Show($"Deseja excuir o dependente\n {txtNomeDependente.Text} ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                dr = MessageBox.Show($"Deseja excluir o dependente\n {txtNomeDependente.Text} ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     try
