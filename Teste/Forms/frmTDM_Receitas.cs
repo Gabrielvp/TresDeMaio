@@ -37,7 +37,7 @@ namespace Teste.Forms
             Socio s = sDAL.RetornaSocioByTitulo(titulo);
             mskCpf.Text = s.Cpf;
             lblNome.Text = s.Nome;
-            lblIdSocio.Text = s.Id.ToString(); ;
+            lblIdSocio.Text = s.Id.ToString();
             lblNome.Visible = true;
         }
 
@@ -116,18 +116,20 @@ namespace Teste.Forms
                     Valor = double.Parse(txtValor.Text),
                     FlagPago = false,
                     Obs = txtObs.Text,
+                    DataCadastro = DateTime.Now,
                     IdSocio = int.Parse(lblIdSocio.Text)
                 };
                 gravou = rDal.InsertReceita(r);
             }
             catch (SystemException ex)
             {
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2);
+                string exception = ex.Message.ToString();
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
                 frmErro.ShowDialog();
             }
             if (gravou)
             {
-                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
                 frm.ShowDialog();
                 LimpezaParcial();
                 //Limpar();
@@ -161,14 +163,15 @@ namespace Teste.Forms
                 };
                 gravou = rDal.InsertReceita(r);
             }
-            catch
+            catch(SystemException ex)
             {
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2);
+                string exception = ex.Message.ToString();
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
                 frmErro.ShowDialog();
             }
             if (gravou)
             {
-                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
                 frm.ShowDialog();
                 Limpar();
             }
@@ -230,7 +233,7 @@ namespace Teste.Forms
                 parcela = "1";
             }
 
-            NrDocumento = titulo + ano + mes + dia + parcela;
+            NrDocumento = titulo + ano + mes + parcela;
             return NrDocumento;
         }
 

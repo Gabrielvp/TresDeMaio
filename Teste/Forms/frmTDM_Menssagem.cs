@@ -6,18 +6,22 @@ namespace Teste
 {
     public partial class frmTDM_Menssagem : Form
     {
-        private readonly Timer timer = new Timer();       
-        public frmTDM_Menssagem(string mensagem, int tipo)
+        private readonly Timer timer = new Timer();
+        string exception;
+        public frmTDM_Menssagem(string mensagem, int tipo, string ex)
         {
             InitializeComponent();           
-            lblMensagem.Text = mensagem;            
+            lblMensagem.Text = mensagem;
+            exception = ex;
             if(tipo == 1)
             {                
                 lblMensagem.BackColor = Color.YellowGreen;
+                cmdDetalhes.Visible = false;
             }
             else if(tipo == 2)
             {             
                 lblMensagem.BackColor = Color.DarkOrange;
+                cmdDetalhes.Visible = true;                
             }
             
             timer.Interval = 2000;
@@ -29,6 +33,11 @@ namespace Teste
         {            
             timer.Stop();
             Close();
-        }      
+        }
+
+        private void cmdDetalhes_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(exception, "Exception");
+        }
     }
 }

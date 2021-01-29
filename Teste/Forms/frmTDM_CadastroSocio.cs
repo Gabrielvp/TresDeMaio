@@ -91,15 +91,16 @@ namespace Teste
                     }
                 }
             }
-            catch
+            catch(SystemException ex)
             {
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2);
+                string exception = ex.Message.ToString();
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
                 frmErro.Show();
             }
             if (gravou)
             {
                 tabControl1.SelectedTab = tabPage1;
-                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
                 frm.Show();
                 Limpar();
                 LimparDependente();
@@ -157,15 +158,16 @@ namespace Teste
                     }
                 }
             }
-            catch
+            catch(SystemException ex)
             {
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2);
+                string exception = ex.Message.ToString();
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
                 frmErro.Show();
             }
             if (gravou)
             {
                 tabControl1.SelectedTab = tabPage1;
-                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
                 frm.Show();
                 Limpar();
                 LimparDependente();
@@ -296,6 +298,7 @@ namespace Teste
             txtParentesco.Text = "";
             txtNumeroDependente.Text = "";
             mskFoneDependente.Text = "";
+            lblIdDependente.Text = "idDependente";
         }
 
         private int ReturnIdGeradoSocio()
@@ -513,8 +516,7 @@ namespace Teste
         }
 
         private void AdicionarDependente()
-        {
-            ListViewItem item;
+        {           
             DependenteDAL dDal = new DependenteDAL();
             bool gravou = false;
 
@@ -542,16 +544,8 @@ namespace Teste
                 gravou = dDal.InsertDependente(d);
                 if (gravou)
                 {
-                    item = new ListViewItem();
-                    item.Text = txtNomeDependente.Text;
-                    item.SubItems.Add(txtParentesco.Text);
-                    item.SubItems.Add(mskFoneDependente.Text);
-                    item.SubItems.Add(mskDtNascimentoDependente.Text);
-                    item.SubItems.Add(txtNumeroDependente.Text);
-                    item.SubItems.Add(txtObservacaoDependente.Text);
-                    lstDependentes.Items.Add(item);
-
-                    frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Adicionado com sucesso!", 1);
+                    RetornaDependentes(long.Parse(lblId.Text));
+                    frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Adicionado com sucesso!", 1, "");
                     frmSucesso.Show();
                     LimparDependente();
                 }
@@ -589,8 +583,8 @@ namespace Teste
                 {
                     RetornaDependentes(int.Parse(lblId.Text));
 
-                    frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Atualizado com sucesso!", 1);
-                    frmSucesso.Show();
+                    frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Atualizado com sucesso!", 1, "");
+                    frmSucesso.ShowDialog();
                     LimparDependente();
                 }
             }
@@ -658,9 +652,10 @@ namespace Teste
                             lstDependentes.Items.Clear();
                             RetornaDependentes(idSocio);
                             LimparDependente();
-                            frmTDM_Menssagem frm = new frmTDM_Menssagem("Dependente excluído.", 1);
+                            frmTDM_Menssagem frm = new frmTDM_Menssagem("Dependente excluído.", 1, "");
                             frm.Show();
                         }
+                        LimparDependente();
                     }
                     catch (SystemException ex)
                     {

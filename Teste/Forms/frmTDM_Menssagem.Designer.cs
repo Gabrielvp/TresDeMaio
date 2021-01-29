@@ -31,12 +31,14 @@ namespace Teste
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMensagem = new System.Windows.Forms.Label();
+            this.cmdDetalhes = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel1.Controls.Add(this.cmdDetalhes);
             this.panel1.Controls.Add(this.lblMensagem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -60,6 +62,17 @@ namespace Teste
             this.lblMensagem.Text = "Cadastrado com sucesso!";
             this.lblMensagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cmdDetalhes
+            // 
+            this.cmdDetalhes.Location = new System.Drawing.Point(559, 38);
+            this.cmdDetalhes.Name = "cmdDetalhes";
+            this.cmdDetalhes.Size = new System.Drawing.Size(75, 23);
+            this.cmdDetalhes.TabIndex = 1;
+            this.cmdDetalhes.Text = "Detalhes";
+            this.cmdDetalhes.UseVisualStyleBackColor = true;
+            this.cmdDetalhes.Visible = false;
+            this.cmdDetalhes.Click += new System.EventHandler(this.cmdDetalhes_Click);
+            // 
             // frmTDM_Menssagem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -79,5 +92,6 @@ namespace Teste
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblMensagem;
+        private System.Windows.Forms.Button cmdDetalhes;
     }
 }

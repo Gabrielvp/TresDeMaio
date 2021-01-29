@@ -52,10 +52,11 @@ namespace Teste.DAL
                 gravou = true;
                 mConn.Close();
             }
-            catch (SystemException ex)
+            catch(SystemException ex)
             {
+                string exception = ex.Message.ToString();
                 gravou = false;
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Erro! Revise os dados!", 2);
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados", 2, exception);
                 frmErro.Show();                
             }
             finally
@@ -65,7 +66,7 @@ namespace Teste.DAL
             mConn.Close();
             if (gravou)
             {
-                frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
                 frmSucesso.Show();                
             }
             return gravou;
@@ -103,8 +104,9 @@ namespace Teste.DAL
             }
             catch (SystemException ex)
             {
+                string exception = ex.Message.ToString();
                 gravou = false;
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Erro! Revise os dados!", 2);
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Erro! Revise os dados!", 2, exception);
                 frmErro.Show();
             }
             finally
@@ -114,7 +116,7 @@ namespace Teste.DAL
             mConn.Close();
             if (gravou)
             {
-                frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1);
+                frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
                 frmSucesso.Show();
             }
             return gravou;

@@ -165,6 +165,7 @@
       <DependentUpon>frmTDM_Receitas.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcoes\Validacoes.cs" />
+    <Compile Include="Models\Administrador.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Dependente.cs" />
     <Compile Include="Models\Endereco.cs" />

@@ -70,7 +70,8 @@ create table Receitas(
     DiaVencimento int,
     Valor double,
     FlagPago boolean,
-    Obs varchar(500),       
+    Obs varchar(500),  
+    DataCadastro datetime,
     IdSocio Int not null,
     PRIMARY KEY ( Id ),
     FOREIGN KEY (IdSocio) REFERENCES Socio(Id)

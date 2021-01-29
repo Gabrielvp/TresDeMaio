@@ -47,10 +47,11 @@ namespace Teste.DAL
                     comm.ExecuteNonQuery();
                     gravou = true;
                 }
-                catch (SystemException e)
+                catch (SystemException ex)
                 {
+                    string exception = ex.Message.ToString();
                     gravou = false;
-                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!" + e.Message, 2);
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados." , 2, exception);
                     frmErro.Show();
                 }
                 finally
@@ -105,10 +106,11 @@ namespace Teste.DAL
                     comm.ExecuteNonQuery();
                     gravou = true;
                 }
-                catch (SystemException e)
+                catch (SystemException ex)
                 {
+                    string exception = ex.Message.ToString();
                     gravou = false;
-                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!" + e.Message, 2);
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
                     frmErro.Show();
                 }
                 finally

@@ -50,6 +50,9 @@ namespace Teste
             this.lblRelRelacaoSocios = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblIp = new System.Windows.Forms.Label();
+            this.lblData = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -130,6 +133,9 @@ namespace Teste
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.panel2.Controls.Add(this.lblData);
+            this.panel2.Controls.Add(this.lblIp);
+            this.panel2.Controls.Add(this.lblUsuario);
             this.panel2.Controls.Add(this.cmdRelatorios);
             this.panel2.Controls.Add(this.cmdReceitas);
             this.panel2.Controls.Add(this.cmdConfiguracoes);
@@ -191,7 +197,7 @@ namespace Teste
             this.cmdConfiguracoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdConfiguracoes.ForeColor = System.Drawing.Color.White;
             this.cmdConfiguracoes.Image = global::Teste.Properties.Resources.icons8_configurações_48;
-            this.cmdConfiguracoes.Location = new System.Drawing.Point(3, 655);
+            this.cmdConfiguracoes.Location = new System.Drawing.Point(3, 612);
             this.cmdConfiguracoes.Name = "cmdConfiguracoes";
             this.cmdConfiguracoes.Size = new System.Drawing.Size(181, 63);
             this.cmdConfiguracoes.TabIndex = 1;
@@ -339,6 +345,39 @@ namespace Teste
             this.label5.TabIndex = 3;
             this.label5.Text = "__________________";
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(12, 685);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lblUsuario.TabIndex = 9;
+            this.lblUsuario.Text = "label2";
+            // 
+            // lblIp
+            // 
+            this.lblIp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblIp.AutoSize = true;
+            this.lblIp.ForeColor = System.Drawing.Color.White;
+            this.lblIp.Location = new System.Drawing.Point(12, 708);
+            this.lblIp.Name = "lblIp";
+            this.lblIp.Size = new System.Drawing.Size(35, 13);
+            this.lblIp.TabIndex = 10;
+            this.lblIp.Text = "label2";
+            // 
+            // lblData
+            // 
+            this.lblData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblData.AutoSize = true;
+            this.lblData.ForeColor = System.Drawing.Color.White;
+            this.lblData.Location = new System.Drawing.Point(112, 708);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(35, 13);
+            this.lblData.TabIndex = 11;
+            this.lblData.Text = "label2";
+            // 
             // frmTDM_Princiapal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +399,7 @@ namespace Teste
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlRelatorios.ResumeLayout(false);
             this.pnlRelatorios.PerformLayout();
@@ -389,6 +429,9 @@ namespace Teste
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblRelRecebido;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblIp;
+        private System.Windows.Forms.Label lblData;
     }
 }
 

@@ -13,6 +13,7 @@ namespace Teste.Models
         public double Valor { get; set; }
         public bool FlagPago { get; set; }
         public string Obs { get; set; }
+        public DateTime DataCadastro { get; set; }
         public long IdSocio { get; set; }
 
         public Receita()
@@ -28,10 +29,10 @@ namespace Teste.Models
             DiaVencimento = diaVencimento;
             Valor = valor;
             FlagPago = flagPago;
-            Obs = obs;
+            Obs = obs;            
         }
 
-        public Receita(int id, long documento, int parcela, DateTime vencimento, int diaVencimento, double valor, bool flagPago, string obs, long idSocio)
+        public Receita(int id, long documento, int parcela, DateTime vencimento, int diaVencimento, double valor, bool flagPago, string obs, DateTime dtCadastro, long idSocio)
         {
             Id = id;
             Documento = documento;
@@ -41,6 +42,7 @@ namespace Teste.Models
             Valor = valor;
             FlagPago = flagPago;
             Obs = obs;
+            DataCadastro = dtCadastro;
             IdSocio = idSocio;
         }      
     }

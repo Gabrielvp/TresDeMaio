@@ -29,11 +29,11 @@ namespace Teste.DAL
         {
             bool gravou = false;
             string query = " INSERT INTO Receitas( " +
-                           "    Documento, Parcela, DataVencimento, DiaVencimento, Valor, FlagPago, Obs, IdSocio " +
+                           "    Documento, Parcela, DataVencimento, DiaVencimento, Valor, FlagPago, Obs, DataCadastro, IdSocio " +
                            " ) " +
                            " VALUES " +
                            " ( " +
-                           "    @Documento, @Parcela, @DataVencimento, @DiaVencimento, @Valor, @FlagPago, @Obs, @IdSOcio " +
+                           "    @Documento, @Parcela, @DataVencimento, @DiaVencimento, @Valor, @FlagPago, @Obs, @DataCadastro, @IdSOcio " +
                            " ) ";
 
             MySqlCommand comm = mConn.CreateCommand();
@@ -48,6 +48,7 @@ namespace Teste.DAL
                 comm.Parameters.AddWithValue("@Valor", r.Valor);
                 comm.Parameters.AddWithValue("@FlagPago", r.FlagPago);
                 comm.Parameters.AddWithValue("@Obs", r.Obs);
+                comm.Parameters.AddWithValue("@DataCadastro", r.DataCadastro);
                 comm.Parameters.AddWithValue("@IdSocio", r.IdSocio);
                 comm.ExecuteNonQuery();
                 gravou = true;
@@ -55,8 +56,9 @@ namespace Teste.DAL
             }
             catch (SystemException ex)
             {
+                string exception = ex.Message.ToString();
                 gravou = false;
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Erro! Revise os dados!", 2);
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Erro! Revise os dados!", 2, exception);
                 frmErro.Show();
             }
             finally
@@ -96,8 +98,9 @@ namespace Teste.DAL
                 mConn.Close();
             }
             catch (SystemException ex)
-            {            
-                gravou = false;               
+            {
+                gravou = false;
+                throw ex;                
             }
             finally
             {
@@ -118,12 +121,12 @@ namespace Teste.DAL
                 while (rd.Read())
                 {
                     list.Add(new Receita(int.Parse(rd["Id"].ToString()),
-                        int.Parse(rd["Documento"].ToString()),
+                        long.Parse(rd["Documento"].ToString()),
                         int.Parse(rd["Parcela"].ToString()),
                         DateTime.Parse(rd["DataVencimento"].ToString()),
                         int.Parse(rd["DiaVencimento"].ToString()),
                         double.Parse(rd["Valor"].ToString()),
-                        bool.Parse(rd["FlagPago"].ToString()),
+                        bool.Parse(rd["FlagPago"].ToString()),                        
                         rd["Obs"].ToString()));
                 }
 

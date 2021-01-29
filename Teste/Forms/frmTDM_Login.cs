@@ -26,9 +26,9 @@ namespace Teste
                 mConn.Open();
                 mConn.Close();
             }
-            catch (SystemException ex)
+            catch(SystemException ex)
             {
-                MessageBox.Show("Não foi possível conectar ao banco de dados", "Mensagem");
+                MessageBox.Show("Não foi possível conectar ao banco de dados\n" + ex.Message, "Mensagem");
                 cmdConfigConexao.Visible = true;
             }
             finally
@@ -51,6 +51,8 @@ namespace Teste
             }
             else
             {
+                Administrador a = Singleton<Administrador>.Instance();
+                a.User = txtUsuario.Text;
                 DialogResult = DialogResult.OK;
             }
         }

@@ -2,11 +2,13 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Teste.Forms;
+using System.Net;
+using Teste.Models;
 
 namespace Teste
 {
     public partial class frmTDM_Princiapal : Form
-    {
+    {        
         public frmTDM_Princiapal()
         {
             //frmTDM_Login frmLogin = new frmTDM_Login();
@@ -20,6 +22,12 @@ namespace Teste
             Size S = R.Size;
             MaximumSize = S;
             TopMost = false;
+            string nome = Dns.GetHostName();
+            IPAddress[] ip = Dns.GetHostAddresses(nome);
+            lblIp.Text = ip[3].ToString();
+            Administrador a = Singleton<Administrador>.Instance();
+            lblUsuario.Text = a.User;
+            lblData.Text = DateTime.Now.ToShortDateString();
         }
 
         private void Form1_Load(object sender, EventArgs e)

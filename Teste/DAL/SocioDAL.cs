@@ -73,10 +73,10 @@ namespace Teste.DAL
                     mConn.Close();
 
                 }
-                catch (SystemException e)
+                catch (SystemException ex)
                 {
-                    //MessageBox.Show(e.Message.ToString());
-                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!", 2);
+                    string exception = ex.Message.ToString();                 
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!", 2, exception);
                     frmErro.Show();
                     gravou = false;
                 }
@@ -151,8 +151,8 @@ namespace Teste.DAL
                 }
                 catch (SystemException ex)
                 {
-                    //MessageBox.Show(e.Message.ToString());
-                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!", 2);
+                    string exception = ex.Message.ToString();
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!", 2, exception);
                     frmErro.Show();
                     gravou = false;
                 }

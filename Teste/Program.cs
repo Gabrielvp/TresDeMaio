@@ -27,7 +27,9 @@ namespace Teste
             }
             catch(SystemException ex)
             {
-                
+                string exception = ex.Message.ToString();
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Verifique", 2, exception);
+                frm.ShowDialog();
             }
            
         }
