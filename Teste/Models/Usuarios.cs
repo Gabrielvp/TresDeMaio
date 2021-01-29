@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Teste.Models
 {
-    class Administrador
+    class Usuarios
     {
         public int Id { get; set; }
         public string User { get; set; }

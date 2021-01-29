@@ -35,11 +35,7 @@ namespace Teste.Forms
             this.label22 = new System.Windows.Forms.Label();
             this.tbLancamentos = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtDiaVencimento = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.cmdLimpar = new System.Windows.Forms.Button();
-            this.txtParcela = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.cmdGravar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.lstMensaliddes = new System.Windows.Forms.ListView();
@@ -47,6 +43,10 @@ namespace Teste.Forms
             this.valor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.atraso = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.documento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.parcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.diaVencimento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label5 = new System.Windows.Forms.Label();
             this.txtObs = new System.Windows.Forms.TextBox();
             this.txtValor = new System.Windows.Forms.TextBox();
@@ -56,17 +56,20 @@ namespace Teste.Forms
             this.cmdPesquisaFatura = new System.Windows.Forms.Button();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.pnlParcelas = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtParcela = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDiaVencimento = new System.Windows.Forms.TextBox();
+            this.ckbGerarParcelas = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.cmdPesquisaSocio = new System.Windows.Forms.Button();
             this.lblIdSocio = new System.Windows.Forms.Label();
             this.mskCpf = new System.Windows.Forms.MaskedTextBox();
-            this.parcela = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.diaVencimento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbLancamentos.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.pnlParcelas.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNome
@@ -106,17 +109,13 @@ namespace Teste.Forms
             this.tbLancamentos.Location = new System.Drawing.Point(12, 78);
             this.tbLancamentos.Name = "tbLancamentos";
             this.tbLancamentos.SelectedIndex = 0;
-            this.tbLancamentos.Size = new System.Drawing.Size(754, 361);
+            this.tbLancamentos.Size = new System.Drawing.Size(754, 359);
             this.tbLancamentos.TabIndex = 37;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.txtDiaVencimento);
-            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.cmdLimpar);
-            this.tabPage1.Controls.Add(this.txtParcela);
-            this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.cmdGravar);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.lstMensaliddes);
@@ -129,34 +128,17 @@ namespace Teste.Forms
             this.tabPage1.Controls.Add(this.cmdPesquisaFatura);
             this.tabPage1.Controls.Add(this.txtDocumento);
             this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.pnlParcelas);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(746, 335);
+            this.tabPage1.Size = new System.Drawing.Size(746, 333);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lançamento";
             // 
-            // txtDiaVencimento
-            // 
-            this.txtDiaVencimento.Location = new System.Drawing.Point(118, 50);
-            this.txtDiaVencimento.Name = "txtDiaVencimento";
-            this.txtDiaVencimento.Size = new System.Drawing.Size(35, 20);
-            this.txtDiaVencimento.TabIndex = 1;
-            this.txtDiaVencimento.Text = "0";
-            this.txtDiaVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(115, 34);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(23, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Dia";
-            // 
             // cmdLimpar
             // 
-            this.cmdLimpar.Location = new System.Drawing.Point(247, 291);
+            this.cmdLimpar.Location = new System.Drawing.Point(252, 287);
             this.cmdLimpar.Name = "cmdLimpar";
             this.cmdLimpar.Size = new System.Drawing.Size(75, 23);
             this.cmdLimpar.TabIndex = 8;
@@ -164,28 +146,9 @@ namespace Teste.Forms
             this.cmdLimpar.UseVisualStyleBackColor = true;
             this.cmdLimpar.Click += new System.EventHandler(this.cmdLimpar_Click);
             // 
-            // txtParcela
-            // 
-            this.txtParcela.Location = new System.Drawing.Point(31, 100);
-            this.txtParcela.Name = "txtParcela";
-            this.txtParcela.Size = new System.Drawing.Size(45, 20);
-            this.txtParcela.TabIndex = 3;
-            this.txtParcela.Text = "1";
-            this.txtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtParcela.Leave += new System.EventHandler(this.txtParcela_Leave);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(28, 84);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Parcelas";
-            // 
             // cmdGravar
             // 
-            this.cmdGravar.Location = new System.Drawing.Point(163, 291);
+            this.cmdGravar.Location = new System.Drawing.Point(168, 287);
             this.cmdGravar.Name = "cmdGravar";
             this.cmdGravar.Size = new System.Drawing.Size(75, 23);
             this.cmdGravar.TabIndex = 7;
@@ -246,10 +209,30 @@ namespace Teste.Forms
             this.documento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.documento.Width = 105;
             // 
+            // parcela
+            // 
+            this.parcela.Text = "Parcela";
+            this.parcela.Width = 0;
+            // 
+            // diaVencimento
+            // 
+            this.diaVencimento.Text = "Dia Vencimento";
+            this.diaVencimento.Width = 0;
+            // 
+            // obs
+            // 
+            this.obs.Text = "obs";
+            this.obs.Width = 0;
+            // 
+            // Id
+            // 
+            this.Id.Text = "Id";
+            this.Id.Width = 0;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 148);
+            this.label5.Location = new System.Drawing.Point(25, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 47;
@@ -257,35 +240,35 @@ namespace Teste.Forms
             // 
             // txtObs
             // 
-            this.txtObs.Location = new System.Drawing.Point(23, 164);
+            this.txtObs.Location = new System.Drawing.Point(28, 163);
             this.txtObs.Multiline = true;
             this.txtObs.Name = "txtObs";
-            this.txtObs.Size = new System.Drawing.Size(303, 104);
+            this.txtObs.Size = new System.Drawing.Size(311, 104);
             this.txtObs.TabIndex = 6;
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(168, 49);
+            this.txtValor.Location = new System.Drawing.Point(28, 67);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(73, 20);
-            this.txtValor.TabIndex = 2;
+            this.txtValor.TabIndex = 0;
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
             // 
             // mskDataVencimento
             // 
-            this.mskDataVencimento.Location = new System.Drawing.Point(31, 50);
+            this.mskDataVencimento.Location = new System.Drawing.Point(116, 67);
             this.mskDataVencimento.Mask = "99/99/9999";
             this.mskDataVencimento.Name = "mskDataVencimento";
             this.mskDataVencimento.Size = new System.Drawing.Size(73, 20);
-            this.mskDataVencimento.TabIndex = 0;
+            this.mskDataVencimento.TabIndex = 1;
             this.mskDataVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskDataVencimento.Leave += new System.EventHandler(this.mskDataVencimento_Leave);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(164, 34);
+            this.label4.Location = new System.Drawing.Point(24, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 43;
@@ -294,7 +277,7 @@ namespace Teste.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 34);
+            this.label3.Location = new System.Drawing.Point(111, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 42;
@@ -302,7 +285,7 @@ namespace Teste.Forms
             // 
             // cmdPesquisaFatura
             // 
-            this.cmdPesquisaFatura.Location = new System.Drawing.Point(206, 98);
+            this.cmdPesquisaFatura.Location = new System.Drawing.Point(155, 109);
             this.cmdPesquisaFatura.Name = "cmdPesquisaFatura";
             this.cmdPesquisaFatura.Size = new System.Drawing.Size(32, 23);
             this.cmdPesquisaFatura.TabIndex = 5;
@@ -311,19 +294,84 @@ namespace Teste.Forms
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(94, 100);
+            this.txtDocumento.Location = new System.Drawing.Point(27, 111);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(108, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(122, 20);
             this.txtDocumento.TabIndex = 4;
+            this.txtDocumento.Enter += new System.EventHandler(this.txtDocumento_Enter);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(91, 85);
+            this.label2.Location = new System.Drawing.Point(24, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Documento";
+            // 
+            // pnlParcelas
+            // 
+            this.pnlParcelas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlParcelas.Controls.Add(this.label8);
+            this.pnlParcelas.Controls.Add(this.txtParcela);
+            this.pnlParcelas.Controls.Add(this.label7);
+            this.pnlParcelas.Controls.Add(this.txtDiaVencimento);
+            this.pnlParcelas.Controls.Add(this.ckbGerarParcelas);
+            this.pnlParcelas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pnlParcelas.Location = new System.Drawing.Point(195, 58);
+            this.pnlParcelas.Name = "pnlParcelas";
+            this.pnlParcelas.Size = new System.Drawing.Size(144, 82);
+            this.pnlParcelas.TabIndex = 50;
+            this.pnlParcelas.Tag = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(84, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(23, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Dia";
+            // 
+            // txtParcela
+            // 
+            this.txtParcela.Enabled = false;
+            this.txtParcela.Location = new System.Drawing.Point(16, 49);
+            this.txtParcela.Name = "txtParcela";
+            this.txtParcela.Size = new System.Drawing.Size(45, 20);
+            this.txtParcela.TabIndex = 3;
+            this.txtParcela.Text = "1";
+            this.txtParcela.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 33);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Parcelas";
+            // 
+            // txtDiaVencimento
+            // 
+            this.txtDiaVencimento.Enabled = false;
+            this.txtDiaVencimento.Location = new System.Drawing.Point(86, 49);
+            this.txtDiaVencimento.Name = "txtDiaVencimento";
+            this.txtDiaVencimento.Size = new System.Drawing.Size(35, 20);
+            this.txtDiaVencimento.TabIndex = 4;
+            this.txtDiaVencimento.Text = "0";
+            this.txtDiaVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // ckbGerarParcelas
+            // 
+            this.ckbGerarParcelas.AutoSize = true;
+            this.ckbGerarParcelas.Location = new System.Drawing.Point(12, 7);
+            this.ckbGerarParcelas.Name = "ckbGerarParcelas";
+            this.ckbGerarParcelas.Size = new System.Drawing.Size(95, 17);
+            this.ckbGerarParcelas.TabIndex = 2;
+            this.ckbGerarParcelas.Text = "Gerar parcelas";
+            this.ckbGerarParcelas.UseVisualStyleBackColor = true;
+            this.ckbGerarParcelas.CheckedChanged += new System.EventHandler(this.ckbGerarParcelas_CheckedChanged);
             // 
             // tabPage2
             // 
@@ -331,7 +379,7 @@ namespace Teste.Forms
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(746, 335);
+            this.tabPage2.Size = new System.Drawing.Size(746, 333);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Baixa";
             // 
@@ -374,31 +422,11 @@ namespace Teste.Forms
             this.mskCpf.TabIndex = 1;
             this.mskCpf.Leave += new System.EventHandler(this.mskCpf_Leave);
             // 
-            // parcela
-            // 
-            this.parcela.Text = "Parcela";
-            this.parcela.Width = 0;
-            // 
-            // diaVencimento
-            // 
-            this.diaVencimento.Text = "Dia Vencimento";
-            this.diaVencimento.Width = 0;
-            // 
-            // obs
-            // 
-            this.obs.Text = "obs";
-            this.obs.Width = 0;
-            // 
-            // Id
-            // 
-            this.Id.Text = "Id";
-            this.Id.Width = 0;
-            // 
             // frmTDM_Receitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 440);
+            this.ClientSize = new System.Drawing.Size(776, 445);
             this.Controls.Add(this.mskCpf);
             this.Controls.Add(this.lblIdSocio);
             this.Controls.Add(this.cmdPesquisaSocio);
@@ -418,6 +446,8 @@ namespace Teste.Forms
             this.tbLancamentos.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.pnlParcelas.ResumeLayout(false);
+            this.pnlParcelas.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,5 +490,7 @@ namespace Teste.Forms
         private System.Windows.Forms.ColumnHeader diaVencimento;
         private System.Windows.Forms.ColumnHeader obs;
         private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.Panel pnlParcelas;
+        private System.Windows.Forms.CheckBox ckbGerarParcelas;
     }
 }

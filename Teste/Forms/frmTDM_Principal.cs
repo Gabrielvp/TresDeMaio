@@ -25,7 +25,7 @@ namespace Teste
             string nome = Dns.GetHostName();
             IPAddress[] ip = Dns.GetHostAddresses(nome);
             lblIp.Text = ip[3].ToString();
-            Administrador a = Singleton<Administrador>.Instance();
+            Usuarios a = Singleton<Usuarios>.Instance();
             lblUsuario.Text = a.User;
             lblData.Text = DateTime.Now.ToShortDateString();
         }

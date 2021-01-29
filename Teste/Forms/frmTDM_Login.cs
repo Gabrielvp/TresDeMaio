@@ -51,7 +51,7 @@ namespace Teste
             }
             else
             {
-                Administrador a = Singleton<Administrador>.Instance();
+                Usuarios a = Singleton<Usuarios>.Instance();
                 a.User = txtUsuario.Text;
                 DialogResult = DialogResult.OK;
             }

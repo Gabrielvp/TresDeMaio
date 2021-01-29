@@ -115,7 +115,7 @@ namespace Teste.DAL
             List<Receita> list = new List<Receita>();
             try
             {
-                string sql = "SELECT * FROM Receitas WHERE IdSocio = " + id + " ORDER BY DataVencimento ASC ";
+                string sql = "SELECT * FROM Receitas WHERE IdSocio = " + id + " And FlagPago = 0 ORDER BY DataVencimento ASC ";
                 var cmd = new MySqlCommand(sql, mConn);
                 MySqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())

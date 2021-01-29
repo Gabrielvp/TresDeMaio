@@ -92,8 +92,38 @@ namespace Teste.Forms
         {
             if (!lblIdSocio.Text.Equals("idSocio"))
             {
-                InserirReceita();
-                PopulaLista();
+                if (ckbGerarParcelas.Checked)
+                {
+                    DateTime data = DateTime.Parse(mskDataVencimento.Text);
+                    if (txtDiaVencimento.Text.Trim() != "0")
+                    {
+                        string ajustaDiaData = txtDiaVencimento.Text + data.ToString().Substring(2, 8);
+                        data = DateTime.Parse(ajustaDiaData);
+                    }
+
+                    int n = int.Parse(txtParcela.Text);
+                    for (int i = 0; i < n; i++)
+                    {
+                        InserirReceitaParcelada(data, i + 1);
+                        if (txtDiaVencimento.Text.Trim() != "0")
+                        {
+                            data = data.AddMonths(1);
+                        }
+                        else
+                        {
+                            data = data.AddDays(30);
+                        }
+                        PopulaLista();
+                    }
+                    frmTDM_Menssagem frm = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
+                    frm.ShowDialog();
+                    LimpezaParcial();
+                }
+                else
+                {
+                    InserirReceita(DateTime.Parse(mskDataVencimento.Text));
+                    PopulaLista();
+                }
             }
             else
             {
@@ -101,7 +131,7 @@ namespace Teste.Forms
             }
         }
 
-        private void InserirReceita()
+        private void InserirReceita(DateTime data)
         {
             bool gravou = false;
             ReceitaDAL rDal = new ReceitaDAL();
@@ -111,7 +141,7 @@ namespace Teste.Forms
                 {
                     Documento = long.Parse(txtDocumento.Text),
                     Parcela = int.Parse(txtParcela.Text),
-                    DataVencimento = DateTime.Parse(mskDataVencimento.Text),
+                    DataVencimento = data,
                     DiaVencimento = int.Parse(txtDiaVencimento.Text),
                     Valor = double.Parse(txtValor.Text),
                     FlagPago = false,
@@ -136,6 +166,34 @@ namespace Teste.Forms
             }
         }
 
+        private void InserirReceitaParcelada(DateTime data, int parcela)
+        {
+            bool gravou = false;
+            ReceitaDAL rDal = new ReceitaDAL();
+            try
+            {
+                Receita r = new Receita
+                {
+                    Documento = long.Parse(GeraNumeroDocumentoParcelado(data, parcela)),
+                    Parcela = int.Parse(txtParcela.Text),
+                    DataVencimento = data,
+                    DiaVencimento = int.Parse(txtDiaVencimento.Text),
+                    Valor = double.Parse(txtValor.Text),
+                    FlagPago = false,
+                    Obs = txtObs.Text,
+                    DataCadastro = DateTime.Now,
+                    IdSocio = int.Parse(lblIdSocio.Text)
+                };
+                gravou = rDal.InsertReceita(r);
+            }
+            catch (SystemException ex)
+            {
+                string exception = ex.Message.ToString();
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
+                frmErro.ShowDialog();
+            }
+        }
+
         private void LimpezaParcial()
         {
             mskDataVencimento.Text = "";
@@ -143,6 +201,9 @@ namespace Teste.Forms
             txtValor.Text = "";
             txtParcela.Text = "1";
             txtDocumento.Text = "";
+            ckbGerarParcelas.Checked = false;
+            txtDiaVencimento.Enabled = false;
+            txtParcela.Enabled = false;
         }
 
         private void AtualizarReceita()
@@ -163,7 +224,7 @@ namespace Teste.Forms
                 };
                 gravou = rDal.InsertReceita(r);
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 string exception = ex.Message.ToString();
                 frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
@@ -179,7 +240,10 @@ namespace Teste.Forms
 
         private void txtValor_Leave(object sender, EventArgs e)
         {
-            txtValor.Text = double.Parse(txtValor.Text).ToString("F2");
+            if (txtValor.Text != "")
+            {
+                txtValor.Text = double.Parse(txtValor.Text).ToString("F2");
+            }
         }
 
         private void PopulaLista()
@@ -203,17 +267,17 @@ namespace Teste.Forms
                 item.SubItems.Add(r.Obs.ToString());
                 item.SubItems.Add(r.Id.ToString());
                 lstMensaliddes.Items.Add(item);
-            }
+            }           
         }
 
         private string GeraNumeroDocumento()
         {
-            string NrDocumento = "";
+            string NrDocumento;
             string titulo = txtTitulo.Text;
-            string ano = mskDataVencimento.Text.Substring(6, 4);
+            string ano = mskDataVencimento.Text.Substring(8, 2);
             string mes = mskDataVencimento.Text.Substring(3, 2);
-            string dia = "";
-            string parcela = "";
+            string dia;
+            string parcela;
 
             if (txtDiaVencimento.Text.Trim() != "" && txtDiaVencimento.Text != "0")
             {
@@ -224,7 +288,7 @@ namespace Teste.Forms
                 dia = mskDataVencimento.Text.Substring(0, 2);
             }
 
-            if (txtParcela.Text.Trim() != "" && txtParcela.Text != "1")
+            if (txtParcela.Text != "" && txtParcela.Text != "1")
             {
                 parcela = txtParcela.Text;
             }
@@ -232,14 +296,27 @@ namespace Teste.Forms
             {
                 parcela = "1";
             }
-
-            NrDocumento = titulo + ano + mes + parcela;
+            if (ckbGerarParcelas.Checked)
+            {
+                NrDocumento = titulo + ano + mes + dia;
+            }
+            else
+            {
+                NrDocumento = titulo + ano + mes + dia + parcela;
+            }
             return NrDocumento;
         }
 
-        private void txtParcela_Leave(object sender, EventArgs e)
+        private string GeraNumeroDocumentoParcelado(DateTime data, int parcela)
         {
-            txtDocumento.Text = GeraNumeroDocumento();
+            string NrDocumento;
+            string titulo = txtTitulo.Text;
+            string ano = data.ToString().Substring(8, 2);
+            string mes = data.ToString().Substring(3, 2);
+            string dia = data.ToString().Substring(0, 2);
+
+            NrDocumento = titulo + ano + mes + dia + parcela;
+            return NrDocumento;
         }
 
         private void mskDataVencimento_Leave(object sender, EventArgs e)
@@ -251,21 +328,54 @@ namespace Teste.Forms
                 {
                     MessageBox.Show("Data inválida.", "Mensagem");
                     mskDataVencimento.Focus();
-                    return;                    
+                    return;
                 }
             }
             if (mskDataVencimento.Text == "  /  /")
             {
                 MessageBox.Show("Data de vencimento inválida.", "Mensagem");
                 mskDataVencimento.Focus();
-                return;                
+                return;
             }
             if (mskDataVencimento.Text.Length != 10)
             {
                 MessageBox.Show("Data inválida.", "Mensagem");
                 mskDataVencimento.Focus();
-                return;                
-            }            
-        }       
+                return;
+            }
+        }
+
+        private void ckbGerarParcelas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbGerarParcelas.Checked)
+            {
+                txtDiaVencimento.Enabled = true;
+                txtParcela.Enabled = true;
+                if (txtDocumento.Text.Trim() != "")
+                {
+                    txtDocumento.Text = GeraNumeroDocumento();
+                }
+            }
+            else
+            {
+                txtDiaVencimento.Enabled = false;
+                txtParcela.Enabled = false;
+                txtDiaVencimento.Text = "0";
+                txtParcela.Text = "1";
+                if (mskDataVencimento.Text != "  /  /")
+                {
+                    txtDocumento.Text = GeraNumeroDocumento();
+                }
+            }
+        }
+
+        private void txtDocumento_Enter(object sender, EventArgs e)
+        {
+            if (mskDataVencimento.Text != "  /  /")
+            {
+                txtDocumento.Text = "";
+                txtDocumento.Text = GeraNumeroDocumento();
+            }
+        }
     }
 }
