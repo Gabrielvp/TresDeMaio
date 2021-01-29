@@ -67,6 +67,7 @@ namespace Teste.Forms
             this.cmdPesquisaSocio = new System.Windows.Forms.Button();
             this.lblIdSocio = new System.Windows.Forms.Label();
             this.mskCpf = new System.Windows.Forms.MaskedTextBox();
+            this.cmdExcluir = new System.Windows.Forms.Button();
             this.tbLancamentos.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlParcelas.SuspendLayout();
@@ -115,6 +116,7 @@ namespace Teste.Forms
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.cmdExcluir);
             this.tabPage1.Controls.Add(this.cmdLimpar);
             this.tabPage1.Controls.Add(this.cmdGravar);
             this.tabPage1.Controls.Add(this.label6);
@@ -422,6 +424,18 @@ namespace Teste.Forms
             this.mskCpf.TabIndex = 1;
             this.mskCpf.Leave += new System.EventHandler(this.mskCpf_Leave);
             // 
+            // cmdExcluir
+            // 
+            this.cmdExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.cmdExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdExcluir.Location = new System.Drawing.Point(653, 287);
+            this.cmdExcluir.Name = "cmdExcluir";
+            this.cmdExcluir.Size = new System.Drawing.Size(75, 23);
+            this.cmdExcluir.TabIndex = 51;
+            this.cmdExcluir.Text = "Excluir";
+            this.cmdExcluir.UseVisualStyleBackColor = false;
+            this.cmdExcluir.Click += new System.EventHandler(this.cmdExcluir_Click);
+            // 
             // frmTDM_Receitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +457,7 @@ namespace Teste.Forms
             this.Name = "frmTDM_Receitas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Receitas";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTDM_Receitas_KeyDown);
             this.tbLancamentos.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -492,5 +507,6 @@ namespace Teste.Forms
         private System.Windows.Forms.ColumnHeader Id;
         private System.Windows.Forms.Panel pnlParcelas;
         private System.Windows.Forms.CheckBox ckbGerarParcelas;
+        private System.Windows.Forms.Button cmdExcluir;
     }
 }

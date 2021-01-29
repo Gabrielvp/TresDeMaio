@@ -142,6 +142,39 @@ namespace Teste.DAL
             }
             mConn.Close();
             return list;
-        }       
+        }
+
+        public bool DeletaReceita(long id)
+        {
+            bool deletado = false;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            try
+            {
+                string sql = "DELETE FROM Receitas WHERE Id = " + id;
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                deletado = true;
+            }
+            catch (Exception ex)
+            {
+                deletado = false;
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return deletado;
+        }
     }
 }

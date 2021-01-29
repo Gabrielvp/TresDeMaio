@@ -85,6 +85,7 @@ namespace Teste
             this.txtAdicionaisObs = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cmdLimparDependentes = new System.Windows.Forms.Button();
             this.cmdExcluir = new System.Windows.Forms.Button();
             this.lblIdDependente = new System.Windows.Forms.Label();
             this.cmdAdicionar = new System.Windows.Forms.Button();
@@ -736,6 +737,7 @@ namespace Teste
             this.tabPage2.AccessibleDescription = "tpDependentes";
             this.tabPage2.AccessibleName = "tpDependentes";
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.cmdLimparDependentes);
             this.tabPage2.Controls.Add(this.cmdExcluir);
             this.tabPage2.Controls.Add(this.lblIdDependente);
             this.tabPage2.Controls.Add(this.cmdAdicionar);
@@ -761,10 +763,20 @@ namespace Teste
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Dependentes";
             // 
+            // cmdLimparDependentes
+            // 
+            this.cmdLimparDependentes.Location = new System.Drawing.Point(589, 108);
+            this.cmdLimparDependentes.Name = "cmdLimparDependentes";
+            this.cmdLimparDependentes.Size = new System.Drawing.Size(75, 23);
+            this.cmdLimparDependentes.TabIndex = 53;
+            this.cmdLimparDependentes.Text = "Limpar";
+            this.cmdLimparDependentes.UseVisualStyleBackColor = true;
+            this.cmdLimparDependentes.Click += new System.EventHandler(this.cmdLimparDependentes_Click);
+            // 
             // cmdExcluir
             // 
             this.cmdExcluir.BackColor = System.Drawing.Color.Salmon;
-            this.cmdExcluir.Location = new System.Drawing.Point(593, 108);
+            this.cmdExcluir.Location = new System.Drawing.Point(670, 108);
             this.cmdExcluir.Name = "cmdExcluir";
             this.cmdExcluir.Size = new System.Drawing.Size(75, 23);
             this.cmdExcluir.TabIndex = 8;
@@ -785,7 +797,7 @@ namespace Teste
             // 
             // cmdAdicionar
             // 
-            this.cmdAdicionar.Location = new System.Drawing.Point(513, 108);
+            this.cmdAdicionar.Location = new System.Drawing.Point(508, 108);
             this.cmdAdicionar.Name = "cmdAdicionar";
             this.cmdAdicionar.Size = new System.Drawing.Size(75, 23);
             this.cmdAdicionar.TabIndex = 7;
@@ -1235,5 +1247,6 @@ namespace Teste
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Button cmdRemoverImagem;
         private System.Windows.Forms.Button cmdPesquisaSocio;
+        private System.Windows.Forms.Button cmdLimparDependentes;
     }
 }

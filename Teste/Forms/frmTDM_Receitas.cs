@@ -377,5 +377,53 @@ namespace Teste.Forms
                 txtDocumento.Text = GeraNumeroDocumento();
             }
         }
+
+        private void cmdExcluir_Click(object sender, EventArgs e)
+        {
+            if (lstMensaliddes.Items.Count == 0)
+            {
+                MessageBox.Show("A lista está vazia.", "Mensagem");
+                return;
+            }
+
+            if(lstMensaliddes.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecione a mensalidade", "Mensagem");
+                return;
+            }
+            else
+            {
+                DialogResult dr = new DialogResult();
+                dr = MessageBox.Show($"Deseja excluir a mensalidade com vencimento em\n {lstMensaliddes.FocusedItem.SubItems[0].Text} ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    try
+                    {
+                        int id = int.Parse(lstMensaliddes.FocusedItem.SubItems[7].Text);                        
+                        bool deletado = false;
+                        ReceitaDAL rDal = new ReceitaDAL();
+                        deletado = rDal.DeletaReceita(id);
+                        if (deletado)
+                        {
+                            PopulaLista();
+                            frmTDM_Menssagem frm = new frmTDM_Menssagem("Mensalidade excluída.", 1, "");
+                            frm.ShowDialog();
+                        }                      
+                    }
+                    catch (SystemException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void frmTDM_Receitas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
+            }
+        }
     }
 }

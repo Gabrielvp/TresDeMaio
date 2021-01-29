@@ -900,5 +900,17 @@ namespace Teste
                 return;
             }
         }
+
+        private void cmdLimparDependentes_Click(object sender, EventArgs e)
+        {
+            mskCpfDependente.Text = "";
+            txtNomeDependente.Text = "";
+            txtObservacaoDependente.Text = "";
+            mskDtNascimentoDependente.Text = "";
+            txtParentesco.Text = "";
+            txtNumeroDependente.Text = "";
+            mskFoneDependente.Text = "";
+            lblIdDependente.Text = "idDependente";
+        }
     }
 }
