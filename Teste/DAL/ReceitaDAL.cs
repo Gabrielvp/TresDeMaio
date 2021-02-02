@@ -108,7 +108,7 @@ namespace Teste.DAL
             }
             mConn.Close();           
             return gravou;
-        }
+        }       
 
         public List<Receita> RetornaReceitaBySocio(int id)
         {
@@ -126,7 +126,7 @@ namespace Teste.DAL
                         DateTime.Parse(rd["DataVencimento"].ToString()),
                         int.Parse(rd["DiaVencimento"].ToString()),
                         double.Parse(rd["Valor"].ToString()),
-                        bool.Parse(rd["FlagPago"].ToString()),                        
+                        bool.Parse(rd["FlagPago"].ToString()),
                         rd["Obs"].ToString()));
                 }
 

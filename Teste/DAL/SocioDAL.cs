@@ -105,8 +105,7 @@ namespace Teste.DAL
                       "    UFOrgaoExpedidor = @UFOrgaoExpedidor," +
                       "    DataExpedicao = @DataExpedicao," +
                       "    DataNascimento = @DataNascimento," +
-                      "    DataAdesao = @DataAdesao," +
-                      "    DataCadastro = @DataCadastro," +
+                      "    DataAdesao = @DataAdesao," +                     
                       "    DataAtualizacao = @DataAtualizacao," +
                       "    FoneResidencial = @FoneResidencial," +
                       "    FoneCelular = @FoneCelular," +

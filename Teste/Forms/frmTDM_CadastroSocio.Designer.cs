@@ -32,6 +32,7 @@ namespace Teste
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTDM_CadastroSocio));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label38 = new System.Windows.Forms.Label();
             this.cmdPesquisaSocio = new System.Windows.Forms.Button();
             this.cmdRemoverImagem = new System.Windows.Forms.Button();
             this.lblUltPgto = new System.Windows.Forms.Label();
@@ -125,6 +126,7 @@ namespace Teste
             this.ofdImagem = new System.Windows.Forms.OpenFileDialog();
             this.lblId = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagemSocio)).BeginInit();
@@ -148,6 +150,7 @@ namespace Teste
             this.tabPage1.AccessibleDescription = "tpSocio";
             this.tabPage1.AccessibleName = "tpSocio";
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.label38);
             this.tabPage1.Controls.Add(this.cmdPesquisaSocio);
             this.tabPage1.Controls.Add(this.cmdRemoverImagem);
             this.tabPage1.Controls.Add(this.lblUltPgto);
@@ -203,6 +206,15 @@ namespace Teste
             this.tabPage1.Size = new System.Drawing.Size(824, 437);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sócio";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(20, 70);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(41, 13);
+            this.label38.TabIndex = 47;
+            this.label38.Text = "label38";
             // 
             // cmdPesquisaSocio
             // 
@@ -1003,7 +1015,7 @@ namespace Teste
             // 
             // cmdGravar
             // 
-            this.cmdGravar.Location = new System.Drawing.Point(601, 531);
+            this.cmdGravar.Location = new System.Drawing.Point(601, 542);
             this.cmdGravar.Name = "cmdGravar";
             this.cmdGravar.Size = new System.Drawing.Size(113, 29);
             this.cmdGravar.TabIndex = 22;
@@ -1013,7 +1025,7 @@ namespace Teste
             // 
             // cmdLimpar
             // 
-            this.cmdLimpar.Location = new System.Drawing.Point(721, 531);
+            this.cmdLimpar.Location = new System.Drawing.Point(721, 542);
             this.cmdLimpar.Name = "cmdLimpar";
             this.cmdLimpar.Size = new System.Drawing.Size(113, 29);
             this.cmdLimpar.TabIndex = 23;
@@ -1024,7 +1036,7 @@ namespace Teste
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(33, 531);
+            this.label23.Location = new System.Drawing.Point(33, 548);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(75, 13);
             this.label23.TabIndex = 21;
@@ -1033,7 +1045,7 @@ namespace Teste
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(136, 531);
+            this.label24.Location = new System.Drawing.Point(136, 548);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(88, 13);
             this.label24.TabIndex = 22;
@@ -1041,7 +1053,7 @@ namespace Teste
             // 
             // mskDtCadastroSocio
             // 
-            this.mskDtCadastroSocio.Location = new System.Drawing.Point(36, 547);
+            this.mskDtCadastroSocio.Location = new System.Drawing.Point(36, 564);
             this.mskDtCadastroSocio.Mask = "99/99/9999";
             this.mskDtCadastroSocio.Name = "mskDtCadastroSocio";
             this.mskDtCadastroSocio.ReadOnly = true;
@@ -1051,7 +1063,7 @@ namespace Teste
             // 
             // mskDtAtualizacaoSocio
             // 
-            this.mskDtAtualizacaoSocio.Location = new System.Drawing.Point(139, 547);
+            this.mskDtAtualizacaoSocio.Location = new System.Drawing.Point(139, 564);
             this.mskDtAtualizacaoSocio.Mask = "99/99/9999";
             this.mskDtAtualizacaoSocio.Name = "mskDtAtualizacaoSocio";
             this.mskDtAtualizacaoSocio.ReadOnly = true;
@@ -1064,7 +1076,7 @@ namespace Teste
             this.ckbSocioAtivo.AutoSize = true;
             this.ckbSocioAtivo.Checked = true;
             this.ckbSocioAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbSocioAtivo.Location = new System.Drawing.Point(486, 531);
+            this.ckbSocioAtivo.Location = new System.Drawing.Point(499, 541);
             this.ckbSocioAtivo.Name = "ckbSocioAtivo";
             this.ckbSocioAtivo.Size = new System.Drawing.Size(80, 17);
             this.ckbSocioAtivo.TabIndex = 20;
@@ -1111,11 +1123,21 @@ namespace Teste
             this.lblNome.Text = "label38";
             this.lblNome.Visible = false;
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(34, 528);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(27, 13);
+            this.lblUsuario.TabIndex = 34;
+            this.lblUsuario.Text = "user";
+            // 
             // frmTDM_CadastroSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 577);
+            this.ClientSize = new System.Drawing.Size(852, 588);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.mskDtAdesao);
@@ -1248,5 +1270,7 @@ namespace Teste
         private System.Windows.Forms.Button cmdRemoverImagem;
         private System.Windows.Forms.Button cmdPesquisaSocio;
         private System.Windows.Forms.Button cmdLimparDependentes;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }

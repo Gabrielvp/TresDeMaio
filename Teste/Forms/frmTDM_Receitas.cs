@@ -47,6 +47,7 @@ namespace Teste.Forms
             {
                 BuscaSocioByTitulo(txtTitulo.Text);
                 PopulaLista();
+                PopulaListaPagos();
             }
         }
 
@@ -69,6 +70,7 @@ namespace Teste.Forms
         private void cmdLimpar_Click(object sender, EventArgs e)
         {
             Limpar();
+            LimparBaixa();
         }
 
         private void Limpar()
@@ -85,6 +87,7 @@ namespace Teste.Forms
             txtValor.Text = "";
             txtObs.Text = "";
             lstMensaliddes.Items.Clear();
+            lstUltPagamento.Items.Clear();
             txtTitulo.Focus();
         }
 
@@ -244,6 +247,10 @@ namespace Teste.Forms
             {
                 txtValor.Text = double.Parse(txtValor.Text).ToString("F2");
             }
+            else
+            {
+                txtValor.Text = "0";
+            }
         }
 
         private void PopulaLista()
@@ -267,7 +274,29 @@ namespace Teste.Forms
                 item.SubItems.Add(r.Obs.ToString());
                 item.SubItems.Add(r.Id.ToString());
                 lstMensaliddes.Items.Add(item);
-            }           
+            }
+        }
+
+        private void PopulaListaPagos()
+        {
+            lstUltPagamento.Items.Clear();            
+            PagamentoDAL pDal = new PagamentoDAL();
+            List<Pagamento> list = pDal.RetornaReceitaPagaBySocio(int.Parse(lblIdSocio.Text));
+            foreach (Pagamento p in list)
+            {   
+                ListViewItem item;
+                item = new ListViewItem();
+                item.Text = p.DataPagamento.ToString().Substring(0, 10);
+                item.SubItems.Add(p.Valor.ToString("F2"));                
+                item.SubItems.Add(p.ValorPago.ToString("F2"));
+                item.SubItems.Add(p.Documento.ToString());
+                item.SubItems.Add(p.DataVencimento.ToString().Substring(0,10));
+                item.SubItems.Add(p.Desconto.ToString("F2"));
+                item.SubItems.Add(p.Juros.ToString("F2"));
+                item.SubItems.Add(p.ValorDescJuros.ToString("F2"));
+                item.SubItems.Add(p.ObsPagamento.ToString());
+                lstUltPagamento.Items.Add(item);
+            }
         }
 
         private string GeraNumeroDocumento()
@@ -386,7 +415,7 @@ namespace Teste.Forms
                 return;
             }
 
-            if(lstMensaliddes.SelectedItems.Count == 0)
+            if (lstMensaliddes.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Selecione a mensalidade", "Mensagem");
                 return;
@@ -399,7 +428,7 @@ namespace Teste.Forms
                 {
                     try
                     {
-                        int id = int.Parse(lstMensaliddes.FocusedItem.SubItems[7].Text);                        
+                        int id = int.Parse(lstMensaliddes.FocusedItem.SubItems[7].Text);
                         bool deletado = false;
                         ReceitaDAL rDal = new ReceitaDAL();
                         deletado = rDal.DeletaReceita(id);
@@ -408,7 +437,7 @@ namespace Teste.Forms
                             PopulaLista();
                             frmTDM_Menssagem frm = new frmTDM_Menssagem("Mensalidade excluída.", 1, "");
                             frm.ShowDialog();
-                        }                      
+                        }
                     }
                     catch (SystemException ex)
                     {
@@ -424,6 +453,171 @@ namespace Teste.Forms
             {
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
             }
+        }
+
+        private void lstMensaliddes_DoubleClick(object sender, EventArgs e)
+        {
+            tbLancamentos.SelectedTab = tabPage2;
+            txtDocumentoBaixa.Text = lstMensaliddes.FocusedItem.SubItems[3].Text;
+            mskVencimentoBaixa.Text = lstMensaliddes.FocusedItem.SubItems[0].Text;
+            txtValorBaixa.Text = lstMensaliddes.FocusedItem.SubItems[1].Text;
+            txtValorPagoBaixa.Text = txtValorBaixa.Text;
+            mskDataPagamentoBaixa.Text = DateTime.Now.ToString();
+            lblIdParcela.Text = lstMensaliddes.FocusedItem.SubItems[7].Text;
+        }
+
+        private void txtDescontoBaixa_Leave(object sender, EventArgs e)
+        {
+            if (txtDescontoBaixa.Text.Trim() == "")
+            {
+                txtDescontoBaixa.Text = 0.00.ToString();
+            }
+            if (txtDescontoBaixa.Text.Trim() != "")
+            {
+                if (txtJurosBaixa.Text.Trim() != "" && double.Parse(txtJurosBaixa.Text) > 0)
+                {
+                    MessageBox.Show("Para lançar valor de desconto não pode haver juros.", "Aviso");
+                    txtDescontoBaixa.Focus();
+                    return;
+                }
+                double valor;
+                valor = double.Parse(txtValorBaixa.Text);
+                valor = valor * double.Parse(txtDescontoBaixa.Text) / 100;
+                txtValorDescJurosBaixa.Text = valor.ToString("F2");
+                txtValorPagoBaixa.Text = (double.Parse(txtValorBaixa.Text) - valor).ToString();
+                txtValorPagoBaixa.Text = double.Parse(txtValorPagoBaixa.Text).ToString("F2");
+                txtDescontoBaixa.Text = double.Parse(txtDescontoBaixa.Text).ToString("F2");
+            }
+        }
+
+        private void txtJurosBaixa_Leave(object sender, EventArgs e)
+        {
+            if(txtJurosBaixa.Text == "")
+            {
+                txtJurosBaixa.Text = "0";
+            }
+
+            if (txtJurosBaixa.Text.Trim() != "" && txtJurosBaixa.Text != "0" )
+            {
+                if (txtDescontoBaixa.Text.Trim() != "" && double.Parse(txtDescontoBaixa.Text) > 0)
+                {
+                    MessageBox.Show("Para lançar valor de juros não pode haver desconto.", "Aviso");
+                    txtJurosBaixa.Focus();
+                    return;
+                }
+                double valor;
+                valor = double.Parse(txtValorBaixa.Text);
+                valor = valor * double.Parse(txtJurosBaixa.Text) / 100;
+                txtValorDescJurosBaixa.Text = valor.ToString("F2");
+                txtValorPagoBaixa.Text = (double.Parse(txtValorBaixa.Text) + valor).ToString();
+                txtValorPagoBaixa.Text = double.Parse(txtValorPagoBaixa.Text).ToString("F2");
+                txtJurosBaixa.Text = double.Parse(txtJurosBaixa.Text).ToString("F2");
+            }
+        }
+
+        private void txtValor_Enter(object sender, EventArgs e)
+        {
+            txtValor.Text = "";
+        }
+
+        private void txtDescontoBaixa_Enter(object sender, EventArgs e)
+        {
+            txtDescontoBaixa.Text = "";
+        }
+
+        private void txtJurosBaixa_Enter(object sender, EventArgs e)
+        {
+            txtJurosBaixa.Text = "";
+        }
+
+        private void txtValorPagoBaixa_Leave(object sender, EventArgs e)
+        {
+            double diferenca;
+            double percentual;
+            double valorAPAgar = double.Parse(txtValorBaixa.Text);
+            double valorPago = double.Parse(txtValorPagoBaixa.Text);
+            if (valorPago < valorAPAgar)
+            {
+                diferenca = valorAPAgar - valorPago;
+                percentual = diferenca * 100 / valorAPAgar;
+                txtDescontoBaixa.Text = percentual.ToString("F2");
+            }
+            else if(valorPago > valorAPAgar)
+            {
+                diferenca = valorPago - valorAPAgar;
+                percentual = diferenca * 100 / valorAPAgar;
+                txtJurosBaixa.Text = percentual.ToString("F2");
+            }
+            txtValorPagoBaixa.Text =  double.Parse(txtValorPagoBaixa.Text).ToString("F2");
+        }
+
+        private void LimparBaixa()
+        {
+            txtDocumentoBaixa.Text = "";
+            mskVencimentoBaixa.Text = "";
+            txtValorBaixa.Text = "0.00";
+            txtDescontoBaixa.Text = "0.00";
+            txtJurosBaixa.Text = "0.00";
+            txtValorDescJurosBaixa.Text = "0.00";
+            txtValorPagoBaixa.Text = "0.00";
+            mskDataPagamentoBaixa.Text = "";
+            txtObsPagamentoBaixa.Text = "";
+            lblIdParcela.Text = "identificador";
+        }
+
+        private void cmdBaixar_Click(object sender, EventArgs e)
+        {
+            bool gravou = false;            
+            PagamentoDAL pDAL = new PagamentoDAL();
+            try
+            {
+                Pagamento p = new Pagamento()
+                {
+                    Documento = long.Parse(txtDocumentoBaixa.Text),
+                    DataVencimento = DateTime.Parse(mskVencimentoBaixa.Text),
+                    Valor = double.Parse(txtValorBaixa.Text),
+                    Desconto = double.Parse(txtDescontoBaixa.Text),
+                    Juros = double.Parse(txtJurosBaixa.Text),
+                    ValorDescJuros = double.Parse(txtValorDescJurosBaixa.Text),
+                    ValorPago = double.Parse(txtValorPagoBaixa.Text),
+                    DataPagamento = DateTime.Parse(mskDataPagamentoBaixa.Text),
+                    ObsPagamento = txtObsPagamentoBaixa.Text,
+                    IdSocio = int.Parse(lblIdSocio.Text),
+                    IdReceita = int.Parse(lblIdParcela.Text)
+                };
+                gravou = pDAL.InsertPagamento(p);                
+            }
+            catch(SystemException ex)
+            {
+                string exception = ex.Message.ToString();
+                gravou = false;
+                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados", 2, exception);
+                frmErro.ShowDialog();
+            }
+            if (gravou)
+            {
+                try
+                {
+                    gravou = pDAL.UpdateReceita(long.Parse(lblIdParcela.Text));
+                    frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
+                    frmSucesso.ShowDialog();
+                    PopulaLista();
+                    PopulaListaPagos();
+                    LimparBaixa();
+                }
+                catch(SystemException ex)
+                {
+                    string exception = ex.Message.ToString();
+                    gravou = false;
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados", 2, exception);
+                    frmErro.ShowDialog();
+                }
+            }
+        }
+
+        private void cmdLimparBaixa_Click(object sender, EventArgs e)
+        {
+            LimparBaixa();
         }
     }
 }

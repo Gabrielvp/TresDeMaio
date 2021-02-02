@@ -16,14 +16,15 @@ namespace Teste
     {
         private MySqlConnection mConn;
         private string foto = null;
-        string strConexao = Connection.Conexao();
-        public frmTDM_CadastroSocio()
+        string strConexao = Connection.Conexao();       
+        public frmTDM_CadastroSocio(string usuario)
         {
             InitializeComponent();
             if (mskDtCadastroSocio.Text == "  /  /")
             {
                 mskDtCadastroSocio.Text = DateTime.Now.ToShortDateString();
             }
+            lblUsuario.Text = usuario;
             mskDtAtualizacaoSocio.Text = DateTime.Now.ToShortDateString();
             mskDtAdesao.Text = DateTime.Now.ToShortDateString();
             mConn = new MySqlConnection(strConexao);
@@ -130,9 +131,8 @@ namespace Teste
                     FoneResidencial = mskResidencial.Text,
                     FoneCelular = mskCelular.Text,
                     FoneComercial = mskComercial.Text,
-                    Email = txtEmail.Text,
-                    DataCadastro = DateTime.Parse(mskDtCadastroSocio.Text),
-                    DataAtualizacao = DateTime.Parse(mskDtAtualizacaoSocio.Text),
+                    Email = txtEmail.Text,                    
+                    DataAtualizacao = DateTime.Now,
                     Ativo = bool.Parse(ckbSocioAtivo.Checked.ToString()),
                     Obs = txtAdicionaisObs.Text,
                     PathImagem = foto

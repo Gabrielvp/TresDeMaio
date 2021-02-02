@@ -2,6 +2,7 @@
 using System;
 using System.Configuration;
 using System.Windows.Forms;
+using Teste.DAL;
 using Teste.Models;
 
 namespace Teste
@@ -51,8 +52,14 @@ namespace Teste
             }
             else
             {
+                Usuarios u = new Usuarios();
+                UsuarioDAL uDAL = new UsuarioDAL();
                 Usuarios a = Singleton<Usuarios>.Instance();
+
+                u = uDAL.RetornaIdByNome(txtUsuario.Text);
                 a.User = txtUsuario.Text;
+                a.Id = u.Id;
+
                 DialogResult = DialogResult.OK;
             }
         }

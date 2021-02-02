@@ -36,6 +36,9 @@ namespace Teste
             this.label1 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblData = new System.Windows.Forms.Label();
+            this.lblIp = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.cmdRelatorios = new System.Windows.Forms.Button();
             this.cmdReceitas = new System.Windows.Forms.Button();
             this.cmdConfiguracoes = new System.Windows.Forms.Button();
@@ -50,9 +53,7 @@ namespace Teste
             this.lblRelRelacaoSocios = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
-            this.lblIp = new System.Windows.Forms.Label();
-            this.lblData = new System.Windows.Forms.Label();
+            this.lblIdUser = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -133,6 +134,7 @@ namespace Teste
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.panel2.Controls.Add(this.lblIdUser);
             this.panel2.Controls.Add(this.lblData);
             this.panel2.Controls.Add(this.lblIp);
             this.panel2.Controls.Add(this.lblUsuario);
@@ -145,6 +147,39 @@ namespace Teste
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(187, 730);
             this.panel2.TabIndex = 7;
+            // 
+            // lblData
+            // 
+            this.lblData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblData.AutoSize = true;
+            this.lblData.ForeColor = System.Drawing.Color.White;
+            this.lblData.Location = new System.Drawing.Point(112, 708);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(35, 13);
+            this.lblData.TabIndex = 11;
+            this.lblData.Text = "label2";
+            // 
+            // lblIp
+            // 
+            this.lblIp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblIp.AutoSize = true;
+            this.lblIp.ForeColor = System.Drawing.Color.White;
+            this.lblIp.Location = new System.Drawing.Point(12, 708);
+            this.lblIp.Name = "lblIp";
+            this.lblIp.Size = new System.Drawing.Size(35, 13);
+            this.lblIp.TabIndex = 10;
+            this.lblIp.Text = "label2";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(12, 685);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lblUsuario.TabIndex = 9;
+            this.lblUsuario.Text = "label2";
             // 
             // cmdRelatorios
             // 
@@ -204,6 +239,7 @@ namespace Teste
             this.cmdConfiguracoes.Text = "Config";
             this.cmdConfiguracoes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdConfiguracoes.UseVisualStyleBackColor = true;
+            this.cmdConfiguracoes.Click += new System.EventHandler(this.cmdConfiguracoes_Click);
             // 
             // button2
             // 
@@ -345,38 +381,16 @@ namespace Teste
             this.label5.TabIndex = 3;
             this.label5.Text = "__________________";
             // 
-            // lblUsuario
+            // lblIdUser
             // 
-            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 685);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(35, 13);
-            this.lblUsuario.TabIndex = 9;
-            this.lblUsuario.Text = "label2";
-            // 
-            // lblIp
-            // 
-            this.lblIp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblIp.AutoSize = true;
-            this.lblIp.ForeColor = System.Drawing.Color.White;
-            this.lblIp.Location = new System.Drawing.Point(12, 708);
-            this.lblIp.Name = "lblIp";
-            this.lblIp.Size = new System.Drawing.Size(35, 13);
-            this.lblIp.TabIndex = 10;
-            this.lblIp.Text = "label2";
-            // 
-            // lblData
-            // 
-            this.lblData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblData.AutoSize = true;
-            this.lblData.ForeColor = System.Drawing.Color.White;
-            this.lblData.Location = new System.Drawing.Point(112, 708);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(35, 13);
-            this.lblData.TabIndex = 11;
-            this.lblData.Text = "label2";
+            this.lblIdUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIdUser.AutoSize = true;
+            this.lblIdUser.ForeColor = System.Drawing.Color.White;
+            this.lblIdUser.Location = new System.Drawing.Point(113, 685);
+            this.lblIdUser.Name = "lblIdUser";
+            this.lblIdUser.Size = new System.Drawing.Size(35, 13);
+            this.lblIdUser.TabIndex = 12;
+            this.lblIdUser.Text = "label2";
             // 
             // frmTDM_Princiapal
             // 
@@ -432,6 +446,7 @@ namespace Teste
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblIp;
         private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.Label lblIdUser;
     }
 }
 

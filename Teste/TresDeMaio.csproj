@@ -132,13 +132,21 @@
   <ItemGroup>
     <Compile Include="DAL\DependenteDAL.cs" />
     <Compile Include="DAL\EnderecoDAL.cs" />
+    <Compile Include="DAL\PagamentoDAL.cs" />
     <Compile Include="DAL\ReceitaDAL.cs" />
     <Compile Include="DAL\SocioDAL.cs" />
+    <Compile Include="DAL\UsuarioDAL.cs" />
     <Compile Include="Forms\frmTDM_CadastroSocio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmTDM_CadastroSocio.Designer.cs">
       <DependentUpon>frmTDM_CadastroSocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTDM_Configuracoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTDM_Configuracoes.Designer.cs">
+      <DependentUpon>frmTDM_Configuracoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmTDM_Login.cs">
       <SubType>Form</SubType>
@@ -165,6 +173,7 @@
       <DependentUpon>frmTDM_Receitas.cs</DependentUpon>
     </Compile>
     <Compile Include="Funcoes\Validacoes.cs" />
+    <Compile Include="Models\Pagamento.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Dependente.cs" />
@@ -182,6 +191,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\frmTDM_CadastroSocio.resx">
       <DependentUpon>frmTDM_CadastroSocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTDM_Configuracoes.resx">
+      <DependentUpon>frmTDM_Configuracoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTDM_Login.resx">
       <DependentUpon>frmTDM_Login.cs</DependentUpon>

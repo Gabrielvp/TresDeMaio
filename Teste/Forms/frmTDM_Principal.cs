@@ -27,6 +27,7 @@ namespace Teste
             lblIp.Text = ip[3].ToString();
             Usuarios a = Singleton<Usuarios>.Instance();
             lblUsuario.Text = a.User;
+            lblIdUser.Text = a.Id.ToString();
             lblData.Text = DateTime.Now.ToShortDateString();
         }
 
@@ -40,7 +41,7 @@ namespace Teste
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmTDM_CadastroSocio frm = new frmTDM_CadastroSocio();
+            frmTDM_CadastroSocio frm = new frmTDM_CadastroSocio(lblUsuario.Text);
             frm.Show();
         }
 
@@ -67,7 +68,7 @@ namespace Teste
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmTDM_CadastroSocio frm = new frmTDM_CadastroSocio();
+            frmTDM_CadastroSocio frm = new frmTDM_CadastroSocio(lblUsuario.Text);
             frm.ShowDialog();
         }
 
@@ -134,6 +135,12 @@ namespace Teste
         private void lblRelRecebido_MouseLeave(object sender, EventArgs e)
         {
             lblRelRecebido.BackColor = Color.Goldenrod;
+        }
+
+        private void cmdConfiguracoes_Click(object sender, EventArgs e)
+        {
+            frmTDM_Configuracoes frm = new frmTDM_Configuracoes();
+            frm.ShowDialog();
         }
     }
 }

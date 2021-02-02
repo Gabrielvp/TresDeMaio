@@ -20,6 +20,14 @@ namespace Teste.Models
         {
         }
 
+        public Receita(long documento, DateTime dataVencimento, double valor, long idSocio)
+        {
+            Documento = documento;
+            DataVencimento = dataVencimento;
+            Valor = valor;
+            IdSocio = idSocio;
+        }
+
         public Receita(int id, long documento, int parcela, DateTime dataVencimento, int diaVencimento, double valor, bool flagPago, string obs)
         {
             Id = id;
