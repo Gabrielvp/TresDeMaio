@@ -76,3 +76,21 @@ create table Receitas(
     PRIMARY KEY ( Id ),
     FOREIGN KEY (IdSocio) REFERENCES Socio(Id)
 );
+
+Create table Pagamentos(
+	Id int not null auto_increment,
+    Documento long not null,
+    DataVencimento datetime,
+    Valor double not null,
+    Desconto double,
+    Juros double,
+    ValorDescJuros double,
+    ValorPago double,
+    DataPagamento datetime,
+    ObsPagamento varchar(500),
+    IdSocio Int not null,    
+    IdReceita int not null,
+    PRIMARY KEY ( Id ),
+    FOREIGN KEY (IdSocio) REFERENCES Socio(Id),
+    FOREIGN KEY (IdReceita) REFERENCES Receitas(Id)
+);
