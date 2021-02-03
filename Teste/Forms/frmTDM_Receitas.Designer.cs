@@ -75,6 +75,11 @@ namespace Teste.Forms
             this.valorr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.valorPago = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.doc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.venc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.desconto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.juros = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.valorDescJuros = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.obsPag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mskDataPagamentoBaixa = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtValorDescJurosBaixa = new System.Windows.Forms.TextBox();
@@ -96,11 +101,8 @@ namespace Teste.Forms
             this.cmdPesquisaSocio = new System.Windows.Forms.Button();
             this.lblIdSocio = new System.Windows.Forms.Label();
             this.mskCpf = new System.Windows.Forms.MaskedTextBox();
-            this.venc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.desconto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.juros = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.valorDescJuros = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.obsPag = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblMensalidades = new System.Windows.Forms.Label();
+            this.lblPagamentos = new System.Windows.Forms.Label();
             this.tbLancamentos.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlParcelas.SuspendLayout();
@@ -150,6 +152,7 @@ namespace Teste.Forms
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.lblMensalidades);
             this.tabPage1.Controls.Add(this.cmdExcluir);
             this.tabPage1.Controls.Add(this.cmdLimpar);
             this.tabPage1.Controls.Add(this.cmdGravar);
@@ -427,6 +430,7 @@ namespace Teste.Forms
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.lblPagamentos);
             this.tabPage2.Controls.Add(this.cmdLimparBaixa);
             this.tabPage2.Controls.Add(this.cmdBaixar);
             this.tabPage2.Controls.Add(this.txtObsPagamentoBaixa);
@@ -460,7 +464,7 @@ namespace Teste.Forms
             // 
             // cmdLimparBaixa
             // 
-            this.cmdLimparBaixa.Location = new System.Drawing.Point(416, 292);
+            this.cmdLimparBaixa.Location = new System.Drawing.Point(416, 302);
             this.cmdLimparBaixa.Name = "cmdLimparBaixa";
             this.cmdLimparBaixa.Size = new System.Drawing.Size(75, 23);
             this.cmdLimparBaixa.TabIndex = 63;
@@ -470,7 +474,7 @@ namespace Teste.Forms
             // 
             // cmdBaixar
             // 
-            this.cmdBaixar.Location = new System.Drawing.Point(335, 292);
+            this.cmdBaixar.Location = new System.Drawing.Point(335, 302);
             this.cmdBaixar.Name = "cmdBaixar";
             this.cmdBaixar.Size = new System.Drawing.Size(75, 23);
             this.cmdBaixar.TabIndex = 62;
@@ -558,6 +562,27 @@ namespace Teste.Forms
             this.doc.Text = "Documento";
             this.doc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.doc.Width = 105;
+            // 
+            // venc
+            // 
+            this.venc.Text = "Vencimento";
+            this.venc.Width = 0;
+            // 
+            // desconto
+            // 
+            this.desconto.Text = "Desconto";
+            // 
+            // juros
+            // 
+            this.juros.Text = "Juros";
+            // 
+            // valorDescJuros
+            // 
+            this.valorDescJuros.Text = "Valor desc/juros";
+            // 
+            // obsPag
+            // 
+            this.obsPag.Text = "Obs";
             // 
             // mskDataPagamentoBaixa
             // 
@@ -754,26 +779,23 @@ namespace Teste.Forms
             this.mskCpf.TabIndex = 1;
             this.mskCpf.Leave += new System.EventHandler(this.mskCpf_Leave);
             // 
-            // venc
+            // lblMensalidades
             // 
-            this.venc.Text = "Vencimento";
-            this.venc.Width = 0;
+            this.lblMensalidades.AutoSize = true;
+            this.lblMensalidades.Location = new System.Drawing.Point(354, 273);
+            this.lblMensalidades.Name = "lblMensalidades";
+            this.lblMensalidades.Size = new System.Drawing.Size(13, 13);
+            this.lblMensalidades.TabIndex = 52;
+            this.lblMensalidades.Text = "0";
             // 
-            // desconto
+            // lblPagamentos
             // 
-            this.desconto.Text = "Desconto";
-            // 
-            // juros
-            // 
-            this.juros.Text = "Juros";
-            // 
-            // valorDescJuros
-            // 
-            this.valorDescJuros.Text = "Valor desc/juros";
-            // 
-            // obsPag
-            // 
-            this.obsPag.Text = "Obs";
+            this.lblPagamentos.AutoSize = true;
+            this.lblPagamentos.Location = new System.Drawing.Point(336, 278);
+            this.lblPagamentos.Name = "lblPagamentos";
+            this.lblPagamentos.Size = new System.Drawing.Size(13, 13);
+            this.lblPagamentos.TabIndex = 64;
+            this.lblPagamentos.Text = "0";
             // 
             // frmTDM_Receitas
             // 
@@ -882,5 +904,7 @@ namespace Teste.Forms
         private System.Windows.Forms.ColumnHeader juros;
         private System.Windows.Forms.ColumnHeader valorDescJuros;
         private System.Windows.Forms.ColumnHeader obsPag;
+        private System.Windows.Forms.Label lblMensalidades;
+        private System.Windows.Forms.Label lblPagamentos;
     }
 }

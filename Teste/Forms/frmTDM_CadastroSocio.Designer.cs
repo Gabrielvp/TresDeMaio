@@ -32,7 +32,6 @@ namespace Teste
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTDM_CadastroSocio));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label38 = new System.Windows.Forms.Label();
             this.cmdPesquisaSocio = new System.Windows.Forms.Button();
             this.cmdRemoverImagem = new System.Windows.Forms.Button();
             this.lblUltPgto = new System.Windows.Forms.Label();
@@ -150,7 +149,6 @@ namespace Teste
             this.tabPage1.AccessibleDescription = "tpSocio";
             this.tabPage1.AccessibleName = "tpSocio";
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.label38);
             this.tabPage1.Controls.Add(this.cmdPesquisaSocio);
             this.tabPage1.Controls.Add(this.cmdRemoverImagem);
             this.tabPage1.Controls.Add(this.lblUltPgto);
@@ -206,15 +204,6 @@ namespace Teste
             this.tabPage1.Size = new System.Drawing.Size(824, 437);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sócio";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(20, 70);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(41, 13);
-            this.label38.TabIndex = 47;
-            this.label38.Text = "label38";
             // 
             // cmdPesquisaSocio
             // 
@@ -1270,7 +1259,6 @@ namespace Teste
         private System.Windows.Forms.Button cmdRemoverImagem;
         private System.Windows.Forms.Button cmdPesquisaSocio;
         private System.Windows.Forms.Button cmdLimparDependentes;
-        private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label lblUsuario;
     }
 }

@@ -89,6 +89,8 @@ namespace Teste.Forms
             lstMensaliddes.Items.Clear();
             lstUltPagamento.Items.Clear();
             txtTitulo.Focus();
+            lblMensalidades.Text = "0";
+            lblPagamentos.Text = "0";
         }
 
         private void cmdGravar_Click(object sender, EventArgs e)
@@ -255,12 +257,14 @@ namespace Teste.Forms
 
         private void PopulaLista()
         {
+            int cont = 0;
             lstMensaliddes.Items.Clear();
             int atraso = 0;
             ReceitaDAL rDal = new ReceitaDAL();
             List<Receita> list = rDal.RetornaReceitaBySocio(int.Parse(lblIdSocio.Text));
             foreach (Receita r in list)
             {
+                cont += 1;
                 atraso = (DateTime.Now - r.DataVencimento).Days;
                 if (atraso == 0 && DateTime.Now.Day != r.DataVencimento.Day) atraso = 1;
                 ListViewItem item;
@@ -275,15 +279,18 @@ namespace Teste.Forms
                 item.SubItems.Add(r.Id.ToString());
                 lstMensaliddes.Items.Add(item);
             }
+            lblMensalidades.Text = cont.ToString();
         }
 
         private void PopulaListaPagos()
         {
+            int cont = 0;
             lstUltPagamento.Items.Clear();            
             PagamentoDAL pDal = new PagamentoDAL();
             List<Pagamento> list = pDal.RetornaReceitaPagaBySocio(int.Parse(lblIdSocio.Text));
             foreach (Pagamento p in list)
-            {   
+            {
+                cont += 1;
                 ListViewItem item;
                 item = new ListViewItem();
                 item.Text = p.DataPagamento.ToString().Substring(0, 10);
@@ -297,6 +304,7 @@ namespace Teste.Forms
                 item.SubItems.Add(p.ObsPagamento.ToString());
                 lstUltPagamento.Items.Add(item);
             }
+            lblPagamentos.Text = cont.ToString();
         }
 
         private string GeraNumeroDocumento()
