@@ -285,7 +285,7 @@ namespace Teste.Forms
         private void PopulaListaPagos()
         {
             int cont = 0;
-            lstUltPagamento.Items.Clear();            
+            lstUltPagamento.Items.Clear();
             PagamentoDAL pDal = new PagamentoDAL();
             List<Pagamento> list = pDal.RetornaReceitaPagaBySocio(int.Parse(lblIdSocio.Text));
             foreach (Pagamento p in list)
@@ -294,10 +294,10 @@ namespace Teste.Forms
                 ListViewItem item;
                 item = new ListViewItem();
                 item.Text = p.DataPagamento.ToString().Substring(0, 10);
-                item.SubItems.Add(p.Valor.ToString("F2"));                
+                item.SubItems.Add(p.Valor.ToString("F2"));
                 item.SubItems.Add(p.ValorPago.ToString("F2"));
                 item.SubItems.Add(p.Documento.ToString());
-                item.SubItems.Add(p.DataVencimento.ToString().Substring(0,10));
+                item.SubItems.Add(p.DataVencimento.ToString().Substring(0, 10));
                 item.SubItems.Add(p.Desconto.ToString("F2"));
                 item.SubItems.Add(p.Juros.ToString("F2"));
                 item.SubItems.Add(p.ValorDescJuros.ToString("F2"));
@@ -500,12 +500,12 @@ namespace Teste.Forms
 
         private void txtJurosBaixa_Leave(object sender, EventArgs e)
         {
-            if(txtJurosBaixa.Text == "")
+            if (txtJurosBaixa.Text == "")
             {
                 txtJurosBaixa.Text = "0";
             }
 
-            if (txtJurosBaixa.Text.Trim() != "" && txtJurosBaixa.Text != "0" )
+            if (txtJurosBaixa.Text.Trim() != "" && txtJurosBaixa.Text != "0")
             {
                 if (txtDescontoBaixa.Text.Trim() != "" && double.Parse(txtDescontoBaixa.Text) > 0)
                 {
@@ -550,13 +550,13 @@ namespace Teste.Forms
                 percentual = diferenca * 100 / valorAPAgar;
                 txtDescontoBaixa.Text = percentual.ToString("F2");
             }
-            else if(valorPago > valorAPAgar)
+            else if (valorPago > valorAPAgar)
             {
                 diferenca = valorPago - valorAPAgar;
                 percentual = diferenca * 100 / valorAPAgar;
                 txtJurosBaixa.Text = percentual.ToString("F2");
             }
-            txtValorPagoBaixa.Text =  double.Parse(txtValorPagoBaixa.Text).ToString("F2");
+            txtValorPagoBaixa.Text = double.Parse(txtValorPagoBaixa.Text).ToString("F2");
         }
 
         private void LimparBaixa()
@@ -575,7 +575,7 @@ namespace Teste.Forms
 
         private void cmdBaixar_Click(object sender, EventArgs e)
         {
-            bool gravou = false;            
+            bool gravou = false;
             PagamentoDAL pDAL = new PagamentoDAL();
             try
             {
@@ -593,9 +593,9 @@ namespace Teste.Forms
                     IdSocio = int.Parse(lblIdSocio.Text),
                     IdReceita = int.Parse(lblIdParcela.Text)
                 };
-                gravou = pDAL.InsertPagamento(p);                
+                gravou = pDAL.InsertPagamento(p);
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 string exception = ex.Message.ToString();
                 gravou = false;
@@ -613,7 +613,7 @@ namespace Teste.Forms
                     PopulaListaPagos();
                     LimparBaixa();
                 }
-                catch(SystemException ex)
+                catch (SystemException ex)
                 {
                     string exception = ex.Message.ToString();
                     gravou = false;

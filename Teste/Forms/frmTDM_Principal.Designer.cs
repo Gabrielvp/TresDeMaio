@@ -36,6 +36,7 @@ namespace Teste
             this.label1 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblIdUser = new System.Windows.Forms.Label();
             this.lblData = new System.Windows.Forms.Label();
             this.lblIp = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@ namespace Teste
             this.lblRelRelacaoSocios = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblIdUser = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -148,12 +148,23 @@ namespace Teste
             this.panel2.Size = new System.Drawing.Size(187, 730);
             this.panel2.TabIndex = 7;
             // 
+            // lblIdUser
+            // 
+            this.lblIdUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIdUser.AutoSize = true;
+            this.lblIdUser.ForeColor = System.Drawing.Color.White;
+            this.lblIdUser.Location = new System.Drawing.Point(113, 686);
+            this.lblIdUser.Name = "lblIdUser";
+            this.lblIdUser.Size = new System.Drawing.Size(35, 13);
+            this.lblIdUser.TabIndex = 12;
+            this.lblIdUser.Text = "label2";
+            // 
             // lblData
             // 
             this.lblData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblData.AutoSize = true;
             this.lblData.ForeColor = System.Drawing.Color.White;
-            this.lblData.Location = new System.Drawing.Point(112, 708);
+            this.lblData.Location = new System.Drawing.Point(112, 709);
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(35, 13);
             this.lblData.TabIndex = 11;
@@ -164,7 +175,7 @@ namespace Teste
             this.lblIp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblIp.AutoSize = true;
             this.lblIp.ForeColor = System.Drawing.Color.White;
-            this.lblIp.Location = new System.Drawing.Point(12, 708);
+            this.lblIp.Location = new System.Drawing.Point(12, 709);
             this.lblIp.Name = "lblIp";
             this.lblIp.Size = new System.Drawing.Size(35, 13);
             this.lblIp.TabIndex = 10;
@@ -175,7 +186,7 @@ namespace Teste
             this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 685);
+            this.lblUsuario.Location = new System.Drawing.Point(12, 686);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(35, 13);
             this.lblUsuario.TabIndex = 9;
@@ -356,6 +367,7 @@ namespace Teste
             this.lblRelRelacaoSocios.Size = new System.Drawing.Size(146, 16);
             this.lblRelRelacaoSocios.TabIndex = 0;
             this.lblRelRelacaoSocios.Text = " Relação Sócios   >";
+            this.lblRelRelacaoSocios.Click += new System.EventHandler(this.lblRelRelacaoSocios_Click);
             this.lblRelRelacaoSocios.MouseEnter += new System.EventHandler(this.lblRelRelacaoSocios_MouseEnter);
             this.lblRelRelacaoSocios.MouseLeave += new System.EventHandler(this.lblRelRelacaoSocios_MouseLeave);
             // 
@@ -380,17 +392,6 @@ namespace Teste
             this.label5.Size = new System.Drawing.Size(152, 16);
             this.label5.TabIndex = 3;
             this.label5.Text = "__________________";
-            // 
-            // lblIdUser
-            // 
-            this.lblIdUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblIdUser.AutoSize = true;
-            this.lblIdUser.ForeColor = System.Drawing.Color.White;
-            this.lblIdUser.Location = new System.Drawing.Point(113, 685);
-            this.lblIdUser.Name = "lblIdUser";
-            this.lblIdUser.Size = new System.Drawing.Size(35, 13);
-            this.lblIdUser.TabIndex = 12;
-            this.lblIdUser.Text = "label2";
             // 
             // frmTDM_Princiapal
             // 

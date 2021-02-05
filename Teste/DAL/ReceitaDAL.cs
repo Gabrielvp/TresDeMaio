@@ -78,7 +78,7 @@ namespace Teste.DAL
                            "    DataVencimento = @DataVencimento," +
                            "    DiaVencimento = @DiaVencimento," +
                            "    Valor = @Valor," +
-                           "    Obs = @Obs" +                           
+                           "    Obs = @Obs" +
                            " WHERE " +
                            "    id =" + r.Id;
 
@@ -92,7 +92,7 @@ namespace Teste.DAL
                 comm.Parameters.AddWithValue("@DataVencimento", r.DataVencimento);
                 comm.Parameters.AddWithValue("@DiaVencimento", r.DiaVencimento);
                 comm.Parameters.AddWithValue("@Valor", r.Valor);
-                comm.Parameters.AddWithValue("@Obs", r.Obs);                
+                comm.Parameters.AddWithValue("@Obs", r.Obs);
                 comm.ExecuteNonQuery();
                 gravou = true;
                 mConn.Close();
@@ -100,15 +100,15 @@ namespace Teste.DAL
             catch (SystemException ex)
             {
                 gravou = false;
-                throw ex;                
+                throw ex;
             }
             finally
             {
                 mConn.Close();
             }
-            mConn.Close();           
+            mConn.Close();
             return gravou;
-        }       
+        }
 
         public List<Receita> RetornaReceitaBySocio(int id)
         {

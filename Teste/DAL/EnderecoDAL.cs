@@ -26,14 +26,14 @@ namespace Teste.DAL
 
         public bool InsertEndereco(Endereco e)
         {
-            bool gravou = false;            
+            bool gravou = false;
             string query = "INSERT INTO Endereco(" +
                            "Cep, Rua, Numero, Bairro, Cidade, UF, Complemento, IdSocio" +
                            ")" +
                            "VALUES" +
                            "(" +
                            "@Cep, @Rua, @Numero, @Bairro, @Cidade, @UF, @Complemento, @IdSocio" +
-                           ")";           
+                           ")";
 
             MySqlCommand comm = mConn.CreateCommand();
             comm.CommandText = query;
@@ -52,12 +52,12 @@ namespace Teste.DAL
                 gravou = true;
                 mConn.Close();
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 string exception = ex.Message.ToString();
                 gravou = false;
                 frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados", 2, exception);
-                frmErro.Show();                
+                frmErro.Show();
             }
             finally
             {
@@ -67,7 +67,7 @@ namespace Teste.DAL
             if (gravou)
             {
                 frmTDM_Menssagem frmSucesso = new frmTDM_Menssagem("Cadastrado com sucesso!", 1, "");
-                frmSucesso.Show();                
+                frmSucesso.Show();
             }
             return gravou;
         }
@@ -82,7 +82,7 @@ namespace Teste.DAL
                            "    Bairro = @Bairro," +
                            "    Cidade = @Cidade," +
                            "    UF = @UF," +
-                           "    Complemento = @Complemento" +                                                      
+                           "    Complemento = @Complemento" +
                            " WHERE " +
                            "    idSocio =" + e.IdSocio;
 
@@ -96,8 +96,8 @@ namespace Teste.DAL
                 comm.Parameters.AddWithValue("@Numero", e.Numero);
                 comm.Parameters.AddWithValue("@Bairro", e.Bairro);
                 comm.Parameters.AddWithValue("@Cidade", e.Cidade);
-                comm.Parameters.AddWithValue("@UF", e.Uf);                
-                comm.Parameters.AddWithValue("@Complemento", e.Complemento);                
+                comm.Parameters.AddWithValue("@UF", e.Uf);
+                comm.Parameters.AddWithValue("@Complemento", e.Complemento);
                 comm.ExecuteNonQuery();
                 gravou = true;
                 mConn.Close();

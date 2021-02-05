@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.OleDb;
+using System.Windows.Forms;
 
 namespace Teste.Forms
 {
@@ -10,12 +10,12 @@ namespace Teste.Forms
         private OleDbConnection _olecon;
         private OleDbCommand _oleCmd;
         private static String _Arquivo = @"C:\dados\Socios.xlsx";
-        private String _StringConexao = String.Format("Provider=Microsoft.ACE.OLEDB.12.0; Data Source =" + _Arquivo + "; Extended Properties = 'Excel 8.0;HDR=YES'");        
+        private String _StringConexao = String.Format("Provider=Microsoft.ACE.OLEDB.12.0; Data Source =" + _Arquivo + "; Extended Properties = 'Excel 8.0;HDR=YES'");
         private String _Consulta;
 
         public frmTDM_Configuracoes()
         {
-            InitializeComponent();           
+            InitializeComponent();
             try
             {
                 _olecon = new OleDbConnection(_StringConexao);
@@ -33,7 +33,7 @@ namespace Teste.Forms
 
         private void cmdLer_Click(object sender, EventArgs e)
         {
-            ListViewItem item;            
+            ListViewItem item;
             try
             {
                 _oleCmd.CommandText = "SELECT Nome, Titulo, Situacao, Pagamento, Telefone, obs, obs2 FROM [Socios]";
@@ -62,7 +62,7 @@ namespace Teste.Forms
 
         private void PopulaLista()
         {
-            
+
         }
     }
 }

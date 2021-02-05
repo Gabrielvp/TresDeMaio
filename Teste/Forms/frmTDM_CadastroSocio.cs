@@ -16,7 +16,7 @@ namespace Teste
     {
         private MySqlConnection mConn;
         private string foto = null;
-        string strConexao = Connection.Conexao();       
+        string strConexao = Connection.Conexao();
         public frmTDM_CadastroSocio(string usuario)
         {
             InitializeComponent();
@@ -92,7 +92,7 @@ namespace Teste
                     }
                 }
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 string exception = ex.Message.ToString();
                 frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
@@ -131,7 +131,7 @@ namespace Teste
                     FoneResidencial = mskResidencial.Text,
                     FoneCelular = mskCelular.Text,
                     FoneComercial = mskComercial.Text,
-                    Email = txtEmail.Text,                    
+                    Email = txtEmail.Text,
                     DataAtualizacao = DateTime.Now,
                     Ativo = bool.Parse(ckbSocioAtivo.Checked.ToString()),
                     Obs = txtAdicionaisObs.Text,
@@ -158,7 +158,7 @@ namespace Teste
                     }
                 }
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 string exception = ex.Message.ToString();
                 frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
@@ -516,7 +516,7 @@ namespace Teste
         }
 
         private void AdicionarDependente()
-        {           
+        {
             DependenteDAL dDal = new DependenteDAL();
             bool gravou = false;
 
@@ -673,7 +673,7 @@ namespace Teste
             if (cep != "     -")
             {
                 BuscaCep();
-            }            
+            }
         }
 
         private void BuscaCep()
@@ -787,24 +787,24 @@ namespace Teste
         private void cmdRemoverImagem_Click(object sender, EventArgs e)
         {
             picImagemSocio.Image = Properties.Resources.imgCadSocio;
-            foto = null;   
+            foto = null;
         }
 
         private void mskCpf_Leave(object sender, EventArgs e)
         {
-            string cpf = mskCpf.Text.Replace(".","");
+            string cpf = mskCpf.Text.Replace(".", "");
             cpf = cpf.Replace(",", "");
             if (cpf != "         -")
             {
                 SocioDAL sDal = new SocioDAL();
                 Socio s = sDal.RetornaSocioByCpf(mskCpf.Text);
-                if(s.Titulo != 0)
+                if (s.Titulo != 0)
                 {
                     txtTitulo.Text = s.Titulo.ToString();
                     txtTitulo_Leave(null, null);
-                }                
+                }
             }
-        }        
+        }
 
         private void cmdPesquisaSocio_Click(object sender, EventArgs e)
         {
@@ -812,7 +812,7 @@ namespace Teste
             frmTDM_PesquisaSocio frm;
             if (txtNome.Text.Trim() != "")
             {
-                 frm = new frmTDM_PesquisaSocio(txtNome.Text.Trim());
+                frm = new frmTDM_PesquisaSocio(txtNome.Text.Trim());
             }
             else
             {

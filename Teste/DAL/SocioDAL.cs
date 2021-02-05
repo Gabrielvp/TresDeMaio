@@ -75,7 +75,7 @@ namespace Teste.DAL
                 }
                 catch (SystemException ex)
                 {
-                    string exception = ex.Message.ToString();                 
+                    string exception = ex.Message.ToString();
                     frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados!", 2, exception);
                     frmErro.Show();
                     gravou = false;
@@ -105,7 +105,7 @@ namespace Teste.DAL
                       "    UFOrgaoExpedidor = @UFOrgaoExpedidor," +
                       "    DataExpedicao = @DataExpedicao," +
                       "    DataNascimento = @DataNascimento," +
-                      "    DataAdesao = @DataAdesao," +                     
+                      "    DataAdesao = @DataAdesao," +
                       "    DataAtualizacao = @DataAtualizacao," +
                       "    FoneResidencial = @FoneResidencial," +
                       "    FoneCelular = @FoneCelular," +

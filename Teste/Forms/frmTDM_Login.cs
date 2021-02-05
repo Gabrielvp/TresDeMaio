@@ -27,7 +27,7 @@ namespace Teste
                 mConn.Open();
                 mConn.Close();
             }
-            catch(SystemException ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show("Não foi possível conectar ao banco de dados\n" + ex.Message, "Mensagem");
                 cmdConfigConexao.Visible = true;

@@ -3,7 +3,7 @@
 namespace Teste.Models
 {
     class Receita
-    {       
+    {
 
         public int Id { get; set; }
         public long Documento { get; set; }
@@ -37,7 +37,7 @@ namespace Teste.Models
             DiaVencimento = diaVencimento;
             Valor = valor;
             FlagPago = flagPago;
-            Obs = obs;            
+            Obs = obs;
         }
 
         public Receita(int id, long documento, int parcela, DateTime vencimento, int diaVencimento, double valor, bool flagPago, string obs, DateTime dtCadastro, long idSocio)
@@ -52,6 +52,6 @@ namespace Teste.Models
             Obs = obs;
             DataCadastro = dtCadastro;
             IdSocio = idSocio;
-        }      
+        }
     }
 }

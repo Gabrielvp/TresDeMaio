@@ -12,8 +12,8 @@ namespace Teste.Models
         static string Password = null;
 
         public static string Conexao()
-        {            
-            CarregaConfiguracoesBD();           
+        {
+            CarregaConfiguracoesBD();
             return $"Server={Server};User Id={User};Database={DataBase};password={Password}";
         }
 

@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 using Teste.Forms;
-using System.Net;
 using Teste.Models;
 
 namespace Teste
 {
     public partial class frmTDM_Princiapal : Form
-    {        
+    {
         public frmTDM_Princiapal()
         {
-            //frmTDM_Login frmLogin = new frmTDM_Login();
-            //frmLogin.ShowDialog();
-
             InitializeComponent();
 
             // para sistema não sobrepor a barra de tarefas do windows.
@@ -23,8 +20,8 @@ namespace Teste
             MaximumSize = S;
             TopMost = false;
             string nome = Dns.GetHostName();
-            IPAddress[] ip = Dns.GetHostAddresses(nome);
-            lblIp.Text = ip[3].ToString();
+            IPAddress[] ip = Dns.GetHostAddresses(nome);            
+            lblIp.Text = ip[1].ToString();
             Usuarios a = Singleton<Usuarios>.Instance();
             lblUsuario.Text = a.User;
             lblIdUser.Text = a.Id.ToString();
@@ -85,7 +82,7 @@ namespace Teste
 
         private void cmdRelatorios_Click(object sender, EventArgs e)
         {
-            if(pnlRelatorios.Visible == false)
+            if (pnlRelatorios.Visible == false)
             {
                 pnlRelatorios.Visible = true;
                 cmdRelatorios.BackColor = Color.Goldenrod;
@@ -93,7 +90,7 @@ namespace Teste
             else
             {
                 pnlRelatorios.Visible = false;
-                cmdRelatorios.BackColor =  Color.FromArgb(37, 46, 59);
+                cmdRelatorios.BackColor = Color.FromArgb(37, 46, 59);
             }
         }
 
@@ -140,6 +137,14 @@ namespace Teste
         private void cmdConfiguracoes_Click(object sender, EventArgs e)
         {
             frmTDM_Configuracoes frm = new frmTDM_Configuracoes();
+            frm.ShowDialog();
+        }
+
+        private void lblRelRelacaoSocios_Click(object sender, EventArgs e)
+        {
+            lblRelAReceber_MouseLeave(null, null);
+            cmdRelatorios_Click(null, null);
+            frmTDM_Report frm = new frmTDM_Report();
             frm.ShowDialog();
         }
     }

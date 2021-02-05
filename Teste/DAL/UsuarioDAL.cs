@@ -30,12 +30,12 @@ namespace Teste.DAL
             Usuarios u = new Usuarios();
             try
             {
-                string sql = "SELECT Id FROM Usuarios WHERE Usuario = '" + usuario +"'";
+                string sql = "SELECT Id FROM Usuarios WHERE Usuario = '" + usuario + "'";
                 var cmd = new MySqlCommand(sql, mConn);
                 MySqlDataReader rd = cmd.ExecuteReader();
                 if (rd.Read())
                 {
-                    u.Id = int.Parse(rd["Id"].ToString());                    
+                    u.Id = int.Parse(rd["Id"].ToString());
                 }
                 rd.Close();
             }

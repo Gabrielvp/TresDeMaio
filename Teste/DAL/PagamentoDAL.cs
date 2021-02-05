@@ -1,9 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Teste.Models;
 
@@ -70,7 +67,7 @@ namespace Teste.DAL
             {
                 mConn.Close();
             }
-            mConn.Close();            
+            mConn.Close();
             return gravou;
         }
 
@@ -88,7 +85,7 @@ namespace Teste.DAL
                 MessageBox.Show(e.Message.ToString());
             }
             string query = " UPDATE Receitas SET " +
-                           "    FlagPago = true" +                           
+                           "    FlagPago = true" +
                            " WHERE " +
                            "    Id =" + idReceita;
 
@@ -96,7 +93,7 @@ namespace Teste.DAL
             comm.CommandText = query;
 
             try
-            {                
+            {
                 comm.ExecuteNonQuery();
                 gravou = true;
                 mConn.Close();
@@ -106,13 +103,13 @@ namespace Teste.DAL
                 string exception = ex.Message.ToString();
                 gravou = false;
                 frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
-                frmErro.ShowDialog();                
+                frmErro.ShowDialog();
             }
             finally
             {
                 mConn.Close();
             }
-            mConn.Close();            
+            mConn.Close();
             return gravou;
         }
 
@@ -124,7 +121,7 @@ namespace Teste.DAL
                 string sql = " SELECT " +
                              "      p.DataPagamento, " +
                              "      r.Valor, " +
-                             "      p.IdSocio, "  +
+                             "      p.IdSocio, " +
                              "      p.ValorPago, " +
                              "      r.Documento, " +
                              "      r.DataVencimento, " +

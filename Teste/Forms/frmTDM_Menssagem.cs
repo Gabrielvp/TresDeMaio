@@ -10,27 +10,27 @@ namespace Teste
         string exception;
         public frmTDM_Menssagem(string mensagem, int tipo, string ex)
         {
-            InitializeComponent();           
+            InitializeComponent();
             lblMensagem.Text = mensagem;
             exception = ex;
-            if(tipo == 1)
-            {                
+            if (tipo == 1)
+            {
                 lblMensagem.BackColor = Color.YellowGreen;
                 cmdDetalhes.Visible = false;
             }
-            else if(tipo == 2)
-            {             
+            else if (tipo == 2)
+            {
                 lblMensagem.BackColor = Color.DarkOrange;
-                cmdDetalhes.Visible = true;                
+                cmdDetalhes.Visible = true;
             }
-            
+
             timer.Interval = 2000;
             timer.Start();
             timer.Tick += timer_Tick;
         }
 
         private void timer_Tick(object sender, EventArgs e)
-        {            
+        {
             timer.Stop();
             Close();
         }

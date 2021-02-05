@@ -51,13 +51,13 @@ namespace Teste.DAL
                 {
                     string exception = ex.Message.ToString();
                     gravou = false;
-                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados." , 2, exception);
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
                     frmErro.Show();
                 }
                 finally
                 {
                     mConn.Close();
-                }               
+                }
             }
             mConn.Close();
             return gravou;
@@ -91,7 +91,7 @@ namespace Teste.DAL
                                    "    Numero = @Numero," +
                                    "    Fone = @Fone," +
                                    "    DataInclusao = @DataInclusao " +
-                                   "WHERE ID =" + d.Id;                
+                                   "WHERE ID =" + d.Id;
 
                 try
                 {
@@ -102,7 +102,7 @@ namespace Teste.DAL
                     comm.Parameters.AddWithValue("@Parentesco", d.Parentesco);
                     comm.Parameters.AddWithValue("@Numero", d.Numero);
                     comm.Parameters.AddWithValue("@Fone", d.Fone);
-                    comm.Parameters.AddWithValue("@DataInclusao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ssss"));                   
+                    comm.Parameters.AddWithValue("@DataInclusao", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ssss"));
                     comm.ExecuteNonQuery();
                     gravou = true;
                 }
@@ -125,7 +125,7 @@ namespace Teste.DAL
         public Dependente RetornaDepentendeByID(long idDependente)
         {
             Dependente d = null;
-            mConn = new MySqlConnection(strConexao);            
+            mConn = new MySqlConnection(strConexao);
             try
             {
                 // abre conexão com banco
@@ -166,12 +166,12 @@ namespace Teste.DAL
                 mConn.Close();
             }
             mConn.Close();
-            return d;            
+            return d;
         }
 
         public bool DeletaDependente(long idDependente)
         {
-            bool deletado = false;            
+            bool deletado = false;
             mConn = new MySqlConnection(strConexao);
             try
             {
