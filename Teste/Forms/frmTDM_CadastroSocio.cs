@@ -45,58 +45,74 @@ namespace Teste
 
         private void InserirSocio()
         {
+            DateTime? dtExpedicao = null;
+            DateTime? dtNascimento = null;
+
+            if (mskDtExpedicao.Text != "  /  /") dtExpedicao = DateTime.Parse(mskDtExpedicao.Text);
+            if (mskDtNascimentoSocio.Text != "  /  /") dtNascimento = DateTime.Parse(mskDtNascimentoSocio.Text);
+            
+            DialogResult dr;
             bool gravou = false;
-            try
+            dr = MessageBox.Show("Sócio sem endereço ou com endereço incompleto.\n" +
+                                 "Deseja continuar o cadastro?", "Aviso", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
             {
-                SocioDAL sDal = new SocioDAL();
-                Socio S = new Socio
+                try
                 {
-                    Titulo = int.Parse(txtTitulo.Text),
-                    DataAdesao = DateTime.Parse(mskDtAdesao.Text),
-                    Cpf = mskCpf.Text,
-                    Nome = txtNome.Text,
-                    Rg = txtRg.Text,
-                    OrgaoExpedidor = txtOrgaoExpedidor.Text,
-                    UfOrgaoExpedidor = cmbUfOrgaoExpedidor.Text,
-                    DataExpedicao = DateTime.Parse(mskDtExpedicao.Text),
-                    Situacao = txtSituacao.Text,
-                    DataNascimento = DateTime.Parse(mskDtNascimentoSocio.Text),
-                    FoneResidencial = mskResidencial.Text,
-                    FoneCelular = mskCelular.Text,
-                    FoneComercial = mskComercial.Text,
-                    Email = txtEmail.Text,
-                    DataCadastro = DateTime.Parse(mskDtCadastroSocio.Text),
-                    DataAtualizacao = DateTime.Parse(mskDtAtualizacaoSocio.Text),
-                    Ativo = bool.Parse(ckbSocioAtivo.Checked.ToString()),
-                    Obs = txtAdicionaisObs.Text,
-                    PathImagem = foto
-                };
-                if (lblId.Text.Equals("idSocio"))
-                {
-                    gravou = sDal.InsertSocio(S);
-                    if (gravou)
+                    SocioDAL sDal = new SocioDAL();
+                    Socio S = new Socio
                     {
-                        Endereco E = new Endereco()
+                        Titulo = int.Parse(txtTitulo.Text),
+                        DataAdesao = DateTime.Parse(mskDtAdesao.Text),
+                        Cpf = mskCpf.Text,
+                        Nome = txtNome.Text,
+                        Rg = txtRg.Text,
+                        OrgaoExpedidor = txtOrgaoExpedidor.Text,
+                        UfOrgaoExpedidor = cmbUfOrgaoExpedidor.Text,
+                        DataExpedicao = dtExpedicao,
+                        Situacao = txtSituacao.Text,
+                        DataNascimento = dtNascimento,
+                        FoneResidencial = mskResidencial.Text,
+                        FoneCelular = mskCelular.Text,
+                        FoneComercial = mskComercial.Text,
+                        Email = txtEmail.Text,
+                        DataCadastro = DateTime.Parse(mskDtCadastroSocio.Text),
+                        DataAtualizacao = DateTime.Parse(mskDtAtualizacaoSocio.Text),
+                        Ativo = bool.Parse(ckbSocioAtivo.Checked.ToString()),
+                        Obs = txtAdicionaisObs.Text,
+                        PathImagem = foto
+                    };
+                    if (lblId.Text.Equals("idSocio"))
+                    {
+                        gravou = sDal.InsertSocio(S);
+                        if (gravou)
                         {
-                            Cep = mskCep.Text,
-                            Rua = txtRua.Text,
-                            Numero = int.Parse(txtNumero.Text),
-                            Bairro = txtBairro.Text,
-                            Cidade = txtCidade.Text,
-                            Uf = cmbUfEndereco.Text,
-                            Complemento = txtComplemento.Text,
-                            IdSocio = ReturnIdGeradoSocio()
-                        };
-                        EnderecoDAL eDal = new EnderecoDAL();
-                        eDal.InsertEndereco(E);
+                            if (ValidaEndereco())
+                            {
+                                Endereco E = new Endereco()
+                                {
+                                    Cep = mskCep.Text,
+                                    Rua = txtRua.Text,
+                                    Numero = int.Parse(txtNumero.Text),
+                                    Bairro = txtBairro.Text,
+                                    Cidade = txtCidade.Text,
+                                    Uf = cmbUfEndereco.Text,
+                                    Complemento = txtComplemento.Text,
+                                    IdSocio = ReturnIdGeradoSocio()
+                                };
+                                EnderecoDAL eDal = new EnderecoDAL();
+                                gravou = eDal.InsertEndereco(E);
+                            }
+                        }
                     }
                 }
-            }
-            catch (SystemException ex)
-            {
-                string exception = ex.Message.ToString();
-                frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
-                frmErro.Show();
+                catch (SystemException ex)
+                {
+                    string exception = ex.Message.ToString();
+                    frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
+                    frmErro.Show();
+                }
             }
             if (gravou)
             {
@@ -108,8 +124,27 @@ namespace Teste
             }
         }
 
+        private bool ValidaEndereco()
+        {
+            bool validou = false;
+            if (mskCep.Text != "  .  -" && txtRua.Text.Trim() != ""
+                && txtBairro.Text.Trim() != "" && txtCidade.Text.Trim() != ""
+                && cmbUfEndereco.Text.Trim() != "")
+            {
+                validou = true;
+            }
+            return validou;
+        }
+
+
         private void AtualizarSocio()
         {
+            long idEnd = 0;
+            DateTime? dtExpedicao = null;
+            DateTime? dtNascimento = null;
+
+            if (mskDtExpedicao.Text != "  /  /") dtExpedicao = DateTime.Parse(mskDtExpedicao.Text);
+            if (mskDtNascimentoSocio.Text != "  /  /") dtNascimento = DateTime.Parse(mskDtNascimentoSocio.Text);
 
             bool gravou = false;
             try
@@ -125,9 +160,9 @@ namespace Teste
                     Rg = txtRg.Text,
                     OrgaoExpedidor = txtOrgaoExpedidor.Text,
                     UfOrgaoExpedidor = cmbUfOrgaoExpedidor.Text,
-                    DataExpedicao = DateTime.Parse(mskDtExpedicao.Text),
+                    DataExpedicao = dtExpedicao,
                     Situacao = txtSituacao.Text,
-                    DataNascimento = DateTime.Parse(mskDtNascimentoSocio.Text),
+                    DataNascimento = dtNascimento,
                     FoneResidencial = mskResidencial.Text,
                     FoneCelular = mskCelular.Text,
                     FoneComercial = mskComercial.Text,
@@ -142,19 +177,38 @@ namespace Teste
                     gravou = sDal.UpdatedSocio(S);
                     if (gravou)
                     {
-                        Endereco E = new Endereco()
+                        try
                         {
-                            Cep = mskCep.Text,
-                            Rua = txtRua.Text,
-                            Numero = int.Parse(txtNumero.Text),
-                            Bairro = txtBairro.Text,
-                            Cidade = txtCidade.Text,
-                            Uf = cmbUfEndereco.Text,
-                            Complemento = txtComplemento.Text,
-                            IdSocio = int.Parse(lblId.Text)
-                        };
-                        EnderecoDAL eDal = new EnderecoDAL();
-                        eDal.UpdateEndereco(E);
+                            int? numero = null;
+                            if (txtNumero.Text.Trim() != "") numero = int.Parse(txtNumero.Text);
+                            Endereco E = new Endereco()
+                            {
+                                Cep = mskCep.Text,
+                                Rua = txtRua.Text,
+                                Numero = numero,
+                                Bairro = txtBairro.Text,
+                                Cidade = txtCidade.Text,
+                                Uf = cmbUfEndereco.Text,
+                                Complemento = txtComplemento.Text,
+                                IdSocio = int.Parse(lblId.Text)
+                            };
+                            EnderecoDAL eDal = new EnderecoDAL();
+                            idEnd = eDal.IdEnderecoBySocio(long.Parse(lblId.Text));
+                            if (idEnd > 0)
+                            {
+                                gravou = eDal.UpdateEndereco(E);
+                            }
+                            else
+                            {
+                                gravou = eDal.InsertEndereco(E);
+                            }
+                        }
+                        catch(SystemException ex)
+                        {
+                            string exception = ex.Message.ToString();
+                            frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
+                            frmErro.Show();
+                        }
                     }
                 }
             }

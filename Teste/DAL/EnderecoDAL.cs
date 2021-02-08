@@ -16,6 +16,7 @@ namespace Teste.DAL
             try
             {
                 // abre conexão com banco
+                mConn.Close();
                 mConn.Open();
             }
             catch (System.Exception e)
@@ -26,6 +27,18 @@ namespace Teste.DAL
 
         public bool InsertEndereco(Endereco e)
         {
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Close();
+                mConn.Open();
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
             bool gravou = false;
             string query = "INSERT INTO Endereco(" +
                            "Cep, Rua, Numero, Bairro, Cidade, UF, Complemento, IdSocio" +
@@ -120,6 +133,32 @@ namespace Teste.DAL
                 frmSucesso.Show();
             }
             return gravou;
+        }
+
+        public long IdEnderecoBySocio(long idSocio)
+        {
+            long idEnd = 0;
+            try
+            {
+                string sql = "SELECT Id FROM Endereco WHERE IdSocio = " + idSocio;
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {                    
+                    idEnd = long.Parse(rd["Id"].ToString());
+                }
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return idEnd;            
         }
     }
 }

@@ -5,17 +5,17 @@ namespace Teste.Models
     public class Socio
     {
         public int Id { get; set; }
-        public int Titulo { get; set; }
+        public int? Titulo { get; set; }
         public string Cpf { get; set; }
         public string Nome { get; set; }
         public string Rg { get; set; }
         public string OrgaoExpedidor { get; set; }
         public string UfOrgaoExpedidor { get; set; }
-        public DateTime DataExpedicao { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public DateTime DataAdesao { get; set; }
-        public DateTime DataCadastro { get; set; }
-        public DateTime DataAtualizacao { get; set; }
+        public DateTime? DataExpedicao { get; set; }
+        public DateTime? DataNascimento { get; set; }
+        public DateTime? DataAdesao { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataAtualizacao { get; set; }
         public string FoneResidencial { get; set; }
         public string FoneCelular { get; set; }
         public string FoneComercial { get; set; }
