@@ -32,16 +32,17 @@ namespace Teste.Forms
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.lstImportacao = new System.Windows.Forms.ListView();
-            this.cmdImportar = new System.Windows.Forms.Button();
-            this.cmdLer = new System.Windows.Forms.Button();
             this.nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.titulo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.situacao = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pagamento = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.telefone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
+            this.cmdImportar = new System.Windows.Forms.Button();
+            this.cmdLer = new System.Windows.Forms.Button();
+            this.lblCont = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +69,7 @@ namespace Teste.Forms
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblCont);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.lstImportacao);
             this.tabPage2.Controls.Add(this.cmdImportar);
@@ -80,6 +82,15 @@ namespace Teste.Forms
             this.tabPage2.Text = "Importações";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(342, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(393, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Para importação dos dados, a planilha deve estar no seguinte caminho: C:\\Dados";
+            // 
             // lstImportacao
             // 
             this.lstImportacao.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -89,6 +100,8 @@ namespace Teste.Forms
             this.pagamento,
             this.telefone,
             this.obs});
+            this.lstImportacao.FullRowSelect = true;
+            this.lstImportacao.GridLines = true;
             this.lstImportacao.HideSelection = false;
             this.lstImportacao.Location = new System.Drawing.Point(17, 55);
             this.lstImportacao.Name = "lstImportacao";
@@ -96,31 +109,6 @@ namespace Teste.Forms
             this.lstImportacao.TabIndex = 8;
             this.lstImportacao.UseCompatibleStateImageBehavior = false;
             this.lstImportacao.View = System.Windows.Forms.View.Details;
-            // 
-            // cmdImportar
-            // 
-            this.cmdImportar.BackColor = System.Drawing.Color.Green;
-            this.cmdImportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdImportar.ForeColor = System.Drawing.Color.White;
-            this.cmdImportar.Location = new System.Drawing.Point(104, 18);
-            this.cmdImportar.Name = "cmdImportar";
-            this.cmdImportar.Size = new System.Drawing.Size(75, 23);
-            this.cmdImportar.TabIndex = 7;
-            this.cmdImportar.Text = "Importar";
-            this.cmdImportar.UseVisualStyleBackColor = false;
-            // 
-            // cmdLer
-            // 
-            this.cmdLer.BackColor = System.Drawing.Color.Green;
-            this.cmdLer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdLer.ForeColor = System.Drawing.Color.White;
-            this.cmdLer.Location = new System.Drawing.Point(23, 18);
-            this.cmdLer.Name = "cmdLer";
-            this.cmdLer.Size = new System.Drawing.Size(75, 23);
-            this.cmdLer.TabIndex = 6;
-            this.cmdLer.Text = "Ler";
-            this.cmdLer.UseVisualStyleBackColor = false;
-            this.cmdLer.Click += new System.EventHandler(this.cmdLer_Click);
             // 
             // nome
             // 
@@ -152,14 +140,39 @@ namespace Teste.Forms
             this.obs.Text = "Obs";
             this.obs.Width = 150;
             // 
-            // label1
+            // cmdImportar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(347, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(393, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Para importação dos dados, a planilha deve estar no seguinte caminho: C:\\Dados";
+            this.cmdImportar.BackColor = System.Drawing.Color.Green;
+            this.cmdImportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdImportar.ForeColor = System.Drawing.Color.White;
+            this.cmdImportar.Location = new System.Drawing.Point(104, 18);
+            this.cmdImportar.Name = "cmdImportar";
+            this.cmdImportar.Size = new System.Drawing.Size(75, 23);
+            this.cmdImportar.TabIndex = 7;
+            this.cmdImportar.Text = "Importar";
+            this.cmdImportar.UseVisualStyleBackColor = false;
+            // 
+            // cmdLer
+            // 
+            this.cmdLer.BackColor = System.Drawing.Color.Green;
+            this.cmdLer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdLer.ForeColor = System.Drawing.Color.White;
+            this.cmdLer.Location = new System.Drawing.Point(23, 18);
+            this.cmdLer.Name = "cmdLer";
+            this.cmdLer.Size = new System.Drawing.Size(75, 23);
+            this.cmdLer.TabIndex = 6;
+            this.cmdLer.Text = "Ler";
+            this.cmdLer.UseVisualStyleBackColor = false;
+            this.cmdLer.Click += new System.EventHandler(this.cmdLer_Click);
+            // 
+            // lblCont
+            // 
+            this.lblCont.AutoSize = true;
+            this.lblCont.Location = new System.Drawing.Point(705, 18);
+            this.lblCont.Name = "lblCont";
+            this.lblCont.Size = new System.Drawing.Size(13, 13);
+            this.lblCont.TabIndex = 10;
+            this.lblCont.Text = "0";
             // 
             // frmTDM_Configuracoes
             // 
@@ -195,5 +208,6 @@ namespace Teste.Forms
         private System.Windows.Forms.Button cmdImportar;
         private System.Windows.Forms.Button cmdLer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCont;
     }
 }
