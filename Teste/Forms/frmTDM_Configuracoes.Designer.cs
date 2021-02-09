@@ -32,6 +32,7 @@ namespace Teste.Forms
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblCont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lstImportacao = new System.Windows.Forms.ListView();
             this.nome = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,7 +43,6 @@ namespace Teste.Forms
             this.obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmdImportar = new System.Windows.Forms.Button();
             this.cmdLer = new System.Windows.Forms.Button();
-            this.lblCont = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,15 @@ namespace Teste.Forms
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Importações";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lblCont
+            // 
+            this.lblCont.AutoSize = true;
+            this.lblCont.Location = new System.Drawing.Point(705, 18);
+            this.lblCont.Name = "lblCont";
+            this.lblCont.Size = new System.Drawing.Size(13, 13);
+            this.lblCont.TabIndex = 10;
+            this.lblCont.Text = "0";
             // 
             // label1
             // 
@@ -151,6 +160,7 @@ namespace Teste.Forms
             this.cmdImportar.TabIndex = 7;
             this.cmdImportar.Text = "Importar";
             this.cmdImportar.UseVisualStyleBackColor = false;
+            this.cmdImportar.Click += new System.EventHandler(this.cmdImportar_Click);
             // 
             // cmdLer
             // 
@@ -164,15 +174,6 @@ namespace Teste.Forms
             this.cmdLer.Text = "Ler";
             this.cmdLer.UseVisualStyleBackColor = false;
             this.cmdLer.Click += new System.EventHandler(this.cmdLer_Click);
-            // 
-            // lblCont
-            // 
-            this.lblCont.AutoSize = true;
-            this.lblCont.Location = new System.Drawing.Point(705, 18);
-            this.lblCont.Name = "lblCont";
-            this.lblCont.Size = new System.Drawing.Size(13, 13);
-            this.lblCont.TabIndex = 10;
-            this.lblCont.Text = "0";
             // 
             // frmTDM_Configuracoes
             // 
