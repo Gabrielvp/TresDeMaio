@@ -575,6 +575,11 @@ namespace Teste.Forms
 
         private void cmdBaixar_Click(object sender, EventArgs e)
         {
+            if(mskDataPagamentoBaixa.Text == "  /  /")
+            {
+                MessageBox.Show("Informe a data de pagamento.", "Mensagem");
+                return;
+            }
             bool gravou = false;
             PagamentoDAL pDAL = new PagamentoDAL();
             try
@@ -626,6 +631,56 @@ namespace Teste.Forms
         private void cmdLimparBaixa_Click(object sender, EventArgs e)
         {
             LimparBaixa();
+        }
+
+        private void cmdPesquisaFatura_Click(object sender, EventArgs e)
+        {
+            BuscaReceitaAberta(txtDocumento.Text, 1);
+        }
+
+        private void BuscaReceitaAberta(string documento, int tipo)
+        {
+            Receita r;
+            ReceitaDAL rDAL = new ReceitaDAL();
+            r = rDAL.RetornaReceitaByDocumento(long.Parse(lblIdSocio.Text), long.Parse(documento));
+            if (r == null)
+            {
+                MessageBox.Show("Parcela não existe ou está quitada.", "Mensagem");
+            }
+            else
+            {
+                CarregaReceita(r, tipo);
+            }            
+        }
+
+        private void CarregaReceita(Receita r, int tipo)
+        {
+            if (tipo == 1) {
+                txtValor.Text = r.Valor.ToString("F2");
+                mskDataVencimento.Text = r.DataVencimento.ToString();
+                txtObs.Text = r.Obs;
+                if (r.Parcela > 1)
+                {
+                    txtParcela.Text = r.Parcela.ToString();
+                    ckbGerarParcelas.Checked = true;
+                }
+                if (r.DiaVencimento > 0)
+                {
+                    txtDiaVencimento.Text = r.DiaVencimento.ToString();
+                }
+            }
+            else
+            {
+                txtValorBaixa.Text = r.Valor.ToString("F2");
+                txtValorPagoBaixa.Text = r.Valor.ToString("F2");
+                mskVencimentoBaixa.Text = r.DataVencimento.ToString();
+                lblIdParcela.Text = r.Id.ToString();
+            }
+        }
+
+        private void cmdPesquisaReceitaBaixa_Click(object sender, EventArgs e)
+        {
+            BuscaReceitaAberta(txtDocumentoBaixa.Text, 2);
         }
     }
 }

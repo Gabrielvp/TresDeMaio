@@ -146,6 +146,7 @@ namespace Teste
             cmdRelatorios_Click(null, null);
             frmTDM_Report frm = new frmTDM_Report();
             frm.ShowDialog();
+            frm.Dispose();
         }
     }
 }

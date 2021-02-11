@@ -144,6 +144,43 @@ namespace Teste.DAL
             return list;
         }
 
+        public Receita RetornaReceitaByDocumento(long socio, long documento)
+        {
+            Receita r = null;
+            try
+            {
+                string sql = "SELECT * FROM Receitas WHERE idSocio = " + socio + " And Documento = " + documento + " And FlagPago = 0 ";
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    r = new Receita
+                    {
+                        Id = int.Parse(rd["Id"].ToString()),
+                        Documento = long.Parse(rd["Documento"].ToString()),
+                        Parcela = int.Parse(rd["Parcela"].ToString()),
+                        DataVencimento = DateTime.Parse(rd["DataVencimento"].ToString()),
+                        DiaVencimento = int.Parse(rd["DiaVencimento"].ToString()),
+                        Valor = double.Parse(rd["Valor"].ToString()),
+                        FlagPago = bool.Parse(rd["FlagPago"].ToString()),
+                        Obs = rd["Obs"].ToString()
+                    };
+                }
+
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return r;
+        }
+
         public bool DeletaReceita(long id)
         {
             bool deletado = false;

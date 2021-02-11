@@ -35,6 +35,7 @@ namespace Teste.Forms
             this.label22 = new System.Windows.Forms.Label();
             this.tbLancamentos = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblMensalidades = new System.Windows.Forms.Label();
             this.cmdExcluir = new System.Windows.Forms.Button();
             this.cmdLimpar = new System.Windows.Forms.Button();
             this.cmdGravar = new System.Windows.Forms.Button();
@@ -64,6 +65,7 @@ namespace Teste.Forms
             this.txtDiaVencimento = new System.Windows.Forms.TextBox();
             this.ckbGerarParcelas = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblPagamentos = new System.Windows.Forms.Label();
             this.cmdLimparBaixa = new System.Windows.Forms.Button();
             this.cmdBaixar = new System.Windows.Forms.Button();
             this.txtObsPagamentoBaixa = new System.Windows.Forms.TextBox();
@@ -94,15 +96,13 @@ namespace Teste.Forms
             this.label11 = new System.Windows.Forms.Label();
             this.mskVencimentoBaixa = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmdPesquisaReceitaBaixa = new System.Windows.Forms.Button();
             this.txtDocumentoBaixa = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmdPesquisaSocio = new System.Windows.Forms.Button();
             this.lblIdSocio = new System.Windows.Forms.Label();
             this.mskCpf = new System.Windows.Forms.MaskedTextBox();
-            this.lblMensalidades = new System.Windows.Forms.Label();
-            this.lblPagamentos = new System.Windows.Forms.Label();
             this.tbLancamentos.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlParcelas.SuspendLayout();
@@ -174,6 +174,15 @@ namespace Teste.Forms
             this.tabPage1.Size = new System.Drawing.Size(746, 333);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lançamento";
+            // 
+            // lblMensalidades
+            // 
+            this.lblMensalidades.AutoSize = true;
+            this.lblMensalidades.Location = new System.Drawing.Point(354, 273);
+            this.lblMensalidades.Name = "lblMensalidades";
+            this.lblMensalidades.Size = new System.Drawing.Size(13, 13);
+            this.lblMensalidades.TabIndex = 52;
+            this.lblMensalidades.Text = "0";
             // 
             // cmdExcluir
             // 
@@ -345,6 +354,7 @@ namespace Teste.Forms
             this.cmdPesquisaFatura.TabIndex = 5;
             this.cmdPesquisaFatura.Text = "P...";
             this.cmdPesquisaFatura.UseVisualStyleBackColor = true;
+            this.cmdPesquisaFatura.Click += new System.EventHandler(this.cmdPesquisaFatura_Click);
             // 
             // txtDocumento
             // 
@@ -452,7 +462,7 @@ namespace Teste.Forms
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.mskVencimentoBaixa);
             this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.cmdPesquisaReceitaBaixa);
             this.tabPage2.Controls.Add(this.txtDocumentoBaixa);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -461,6 +471,15 @@ namespace Teste.Forms
             this.tabPage2.Size = new System.Drawing.Size(746, 333);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Baixa";
+            // 
+            // lblPagamentos
+            // 
+            this.lblPagamentos.AutoSize = true;
+            this.lblPagamentos.Location = new System.Drawing.Point(336, 278);
+            this.lblPagamentos.Name = "lblPagamentos";
+            this.lblPagamentos.Size = new System.Drawing.Size(13, 13);
+            this.lblPagamentos.TabIndex = 64;
+            this.lblPagamentos.Text = "0";
             // 
             // cmdLimparBaixa
             // 
@@ -715,14 +734,15 @@ namespace Teste.Forms
             this.label10.TabIndex = 44;
             this.label10.Text = "Vencimento";
             // 
-            // button1
+            // cmdPesquisaReceitaBaixa
             // 
-            this.button1.Location = new System.Drawing.Point(160, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "P...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cmdPesquisaReceitaBaixa.Location = new System.Drawing.Point(160, 30);
+            this.cmdPesquisaReceitaBaixa.Name = "cmdPesquisaReceitaBaixa";
+            this.cmdPesquisaReceitaBaixa.Size = new System.Drawing.Size(32, 23);
+            this.cmdPesquisaReceitaBaixa.TabIndex = 1;
+            this.cmdPesquisaReceitaBaixa.Text = "P...";
+            this.cmdPesquisaReceitaBaixa.UseVisualStyleBackColor = true;
+            this.cmdPesquisaReceitaBaixa.Click += new System.EventHandler(this.cmdPesquisaReceitaBaixa_Click);
             // 
             // txtDocumentoBaixa
             // 
@@ -778,24 +798,6 @@ namespace Teste.Forms
             this.mskCpf.Size = new System.Drawing.Size(92, 20);
             this.mskCpf.TabIndex = 1;
             this.mskCpf.Leave += new System.EventHandler(this.mskCpf_Leave);
-            // 
-            // lblMensalidades
-            // 
-            this.lblMensalidades.AutoSize = true;
-            this.lblMensalidades.Location = new System.Drawing.Point(354, 273);
-            this.lblMensalidades.Name = "lblMensalidades";
-            this.lblMensalidades.Size = new System.Drawing.Size(13, 13);
-            this.lblMensalidades.TabIndex = 52;
-            this.lblMensalidades.Text = "0";
-            // 
-            // lblPagamentos
-            // 
-            this.lblPagamentos.AutoSize = true;
-            this.lblPagamentos.Location = new System.Drawing.Point(336, 278);
-            this.lblPagamentos.Name = "lblPagamentos";
-            this.lblPagamentos.Size = new System.Drawing.Size(13, 13);
-            this.lblPagamentos.TabIndex = 64;
-            this.lblPagamentos.Text = "0";
             // 
             // frmTDM_Receitas
             // 
@@ -871,7 +873,7 @@ namespace Teste.Forms
         private System.Windows.Forms.Panel pnlParcelas;
         private System.Windows.Forms.CheckBox ckbGerarParcelas;
         private System.Windows.Forms.Button cmdExcluir;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdPesquisaReceitaBaixa;
         private System.Windows.Forms.TextBox txtDocumentoBaixa;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtJurosBaixa;
