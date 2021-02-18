@@ -152,6 +152,7 @@
     <Compile Include="DAL\EnderecoDAL.cs" />
     <Compile Include="DAL\PagamentoDAL.cs" />
     <Compile Include="DAL\ReceitaDAL.cs" />
+    <Compile Include="DAL\SedeDAL.cs" />
     <Compile Include="DAL\SocioDAL.cs" />
     <Compile Include="DAL\UsuarioDAL.cs" />
     <Compile Include="Forms\frmTDM_CadastroSocio.cs">
@@ -198,6 +199,7 @@
     </Compile>
     <Compile Include="Funcoes\Validacoes.cs" />
     <Compile Include="Models\Pagamento.cs" />
+    <Compile Include="Models\Sede.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Dependente.cs" />

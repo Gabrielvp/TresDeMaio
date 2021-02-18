@@ -245,6 +245,16 @@ namespace Teste.Forms
 
         private void txtValor_Leave(object sender, EventArgs e)
         {
+            double valor = 0;
+            bool result = double.TryParse(txtValor.Text, out valor);
+            if(result == false)
+            {
+                MessageBox.Show("Campo valor deve ser numérico", "Aviso");
+                txtValor.Text = "0,00";
+                txtValor.Focus();
+                return;
+            }
+            
             if (txtValor.Text != "")
             {
                 txtValor.Text = double.Parse(txtValor.Text).ToString("F2");

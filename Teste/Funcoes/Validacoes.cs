@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
+using Teste.Models;
 
 namespace Teste.Funcoes
 {
@@ -134,6 +137,158 @@ namespace Teste.Funcoes
                     break;
             }
             return validou;
+        }
+
+        public static bool VerificaAcessoCadastroSocios(int idUsuario)
+        {
+            string strConexao = Connection.Conexao();
+            MySqlConnection mConn;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            bool autorizado = false;
+            try
+            {
+                string sql = "SELECT PSocios FROM Usuarios WHERE Id = " + idUsuario + " And PSocios = 1 ";
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    autorizado = true;
+                }
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return autorizado;
+        }
+
+        public static bool VerificaAcessoReceitas(int idUsuario)
+        {
+            string strConexao = Connection.Conexao();
+            MySqlConnection mConn;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            bool autorizado = false;
+            try
+            {
+                string sql = "SELECT PReceitas FROM Usuarios WHERE Id = " + idUsuario + " And PReceitas = 1 ";
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    autorizado = true;
+                }
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return autorizado;
+        }
+
+       public static bool VerificaAcessoRelatorios(int idUsuario)
+        {
+            string strConexao = Connection.Conexao();
+            MySqlConnection mConn;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            bool autorizado = false;
+            try
+            {
+                string sql = "SELECT PRelatorios FROM Usuarios WHERE Id = " + idUsuario + " And PRelatorios = 1 ";
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    autorizado = true;
+                }
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return autorizado;
+        }
+
+        public static bool VerificaIsAdministrator(int idUsuario)
+        {
+            string strConexao = Connection.Conexao();
+            MySqlConnection mConn;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+            bool autorizado = false;
+            try
+            {
+                string sql = "SELECT IsAdministrator FROM Usuarios WHERE Id = " + idUsuario + " And IsAdministrator = 1 ";
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    autorizado = true;
+                }
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return autorizado;
         }
     }
 }

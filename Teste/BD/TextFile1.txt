@@ -57,8 +57,16 @@ create table Dependente(
 
 create table Usuarios(
 	Id Int not null auto_increment,
+    Matricula varchar(100),
     Usuario varchar(200) not null,
     Senha varchar(50),
+    PSocios bool,
+    PReceitas bool,
+    PRelatorios bool,
+    FIncluirSocios bool,
+    FCadastroReceitas bool,
+    FBaixaReceitas bool,
+    IsAdministrator bool,
     PRIMARY KEY (Id)    
 );
 
@@ -93,4 +101,20 @@ Create table Pagamentos(
     PRIMARY KEY ( Id ),
     FOREIGN KEY (IdSocio) REFERENCES Socio(Id),
     FOREIGN KEY (IdReceita) REFERENCES Receitas(Id)
+);
+
+create table Sede(
+	Id Int not null auto_increment,
+    NomeFantasia varchar(300),
+    RazaoSocial varchar(300),
+    Cnpj varchar(20),
+    InscricaoEstadual varchar(50),
+    Endereco varchar(200),
+    Numero varchar(20),
+    Bairro varchar(200),
+    Cidade varchar(200),
+    UF varchar(2),
+    Telefone varchar(20),
+    Email varchar(200),
+    PRIMARY KEY (Id)    
 );

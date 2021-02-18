@@ -4,11 +4,12 @@ using System.Net;
 using System.Windows.Forms;
 using Teste.Forms;
 using Teste.Models;
+using Teste.Funcoes;
 
 namespace Teste
 {
     public partial class frmTDM_Princiapal : Form
-    {
+    {        
         public frmTDM_Princiapal()
         {
             InitializeComponent();
@@ -26,6 +27,14 @@ namespace Teste
             lblUsuario.Text = a.User;
             lblIdUser.Text = a.Id.ToString();
             lblData.Text = DateTime.Now.ToShortDateString();
+
+            if (!a.User.Equals("administrador"))
+            {
+                button2.Visible = Validacoes.VerificaAcessoCadastroSocios(int.Parse(a.Id.ToString()));
+                cmdReceitas.Visible = Validacoes.VerificaAcessoReceitas(int.Parse(a.Id.ToString()));
+                cmdRelatorios.Visible = Validacoes.VerificaAcessoRelatorios(int.Parse(a.Id.ToString()));
+                cmdConfiguracoes.Visible = Validacoes.VerificaIsAdministrator(int.Parse(a.Id.ToString()));
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

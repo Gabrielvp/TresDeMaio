@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using Teste.DAL;
 using Teste.Models;
 
 namespace Teste.Forms
@@ -17,6 +18,7 @@ namespace Teste.Forms
         public frmTDM_Configuracoes()
         {
             InitializeComponent();
+            CarregaSede();
             try
             {
                 _olecon = new OleDbConnection(_StringConexao);
@@ -29,6 +31,27 @@ namespace Teste.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CarregaSede()
+        {            
+            SedeDAL sDAL = new SedeDAL();
+            Sede s = sDAL.RetornaSede();
+            if (s != null)
+            {
+                lblIdSede.Text = s.Id.ToString();
+                txtNmFantasia.Text = s.NomeFantasia;
+                txtRazaoSocial.Text = s.RazaoSocial;
+                mskCnpj.Text = s.Cnpj;
+                txtInscEstadual.Text = s.InscricaoEstadual;
+                txtEndereco.Text = s.Endereco;
+                txtNumero.Text = s.Numero;
+                txtBairro.Text = s.Bairro;
+                txtCidade.Text = s.Cidade;
+                cmbUfEndereco.Text = s.Uf;
+                mskTelefone.Text = s.Telefone;
+                txtEmail.Text = s.Email;
             }
         }
 
@@ -188,6 +211,138 @@ namespace Teste.Forms
             }
             mConn.Close();
             return gravou;
+        }
+
+        private void cmdGravarSede_Click(object sender, EventArgs e)
+        {
+            Sede();
+        }
+
+        private void Sede()
+        {
+            try
+            {
+                SedeDAL sDAL = new SedeDAL();
+                Sede s = new Sede
+                {
+                    NomeFantasia = txtNmFantasia.Text,
+                    RazaoSocial = txtRazaoSocial.Text,
+                    Cnpj = mskCnpj.Text,
+                    InscricaoEstadual = txtInscEstadual.Text,
+                    Endereco = txtEndereco.Text,
+                    Numero = txtNumero.Text,
+                    Bairro = txtBairro.Text,
+                    Cidade = txtCidade.Text,
+                    Uf = cmbUfEndereco.Text,
+                    Telefone = mskTelefone.Text,
+                    Email = txtEmail.Text
+                };
+                if (lblIdSede.Text.Equals("idSede"))
+                {
+                    sDAL.InsertSede(s);
+                }
+                else
+                {
+                    s.Id = int.Parse(lblIdSede.Text);
+                    sDAL.UpdateSede(s);
+                }
+                CarregaSede();
+            }
+            catch(SystemException ex)
+            {
+                string exception;
+                exception = ex.Message;
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Revise os dados", 2, exception);
+                frm.ShowDialog();
+            }
+        }
+
+        private void cmdGravar_Click(object sender, EventArgs e)
+        {
+            Usuario();
+            Limpar();
+        }
+
+        private void Usuario()
+        {
+            try
+            {
+                UsuarioDAL uDAL = new UsuarioDAL();
+                Usuarios u = new Usuarios
+                {
+                    Matricula = txtMatricula.Text,
+                    User = txtUsuario.Text,
+                    Senha = txtSenha.Text,
+                    PSocios = ckbPSocios.Checked,
+                    PReceitas = ckbPReceitas.Checked,
+                    PRelatorios = ckbPRelatorios.Checked,
+                    FIncluirSocios = ckbFSocios.Checked,
+                    FCadastroReceitas = ckbFCadastroReceitas.Checked,
+                    FBaixaReceitas = ckbFBaixaReceitas.Checked,
+                    IsAdministrator = ckbAdministrador.Checked
+                };
+                if (lblIdUsuario.Text.Equals("idUsuario"))
+                {
+                    uDAL.InsertUsuario(u);
+                }
+                else
+                {
+                    u.Id = int.Parse(lblIdUsuario.Text);
+                    uDAL.UpdateUsuario(u);
+                }
+                
+            }catch(SystemException ex)
+            {
+                string exception;
+                exception = ex.Message;
+                frmTDM_Menssagem frm = new frmTDM_Menssagem("Revise os dados", 2, exception);
+                frm.ShowDialog();
+            }
+        }
+
+        private void txtMatricula_Leave(object sender, EventArgs e)
+        {
+            if (txtMatricula.Text.Trim() != "")
+            {
+                Usuarios u = new Usuarios();
+                UsuarioDAL uDAL = new UsuarioDAL();
+                u = uDAL.RetornaUsuarioByMatricula(txtMatricula.Text);
+
+                if (u != null)
+                {
+                    lblIdUsuario.Text = u.Id.ToString();
+                    txtMatricula.Text = u.Matricula;
+                    txtUsuario.Text = u.User;
+                    txtSenha.Text = u.Senha;
+                    ckbAdministrador.Checked = u.IsAdministrator;
+                    ckbPSocios.Checked = u.PSocios;
+                    ckbPReceitas.Checked = u.PReceitas;
+                    ckbPRelatorios.Checked = u.PRelatorios;
+                    ckbFSocios.Checked = u.FIncluirSocios;
+                    ckbFCadastroReceitas.Checked = u.FCadastroReceitas;
+                    ckbFBaixaReceitas.Checked = u.FBaixaReceitas;
+                }
+            }
+        }
+
+        private void cmdLimpar_Click(object sender, EventArgs e)
+        {
+            Limpar();
+        }
+
+        private void Limpar()
+        {
+            txtMatricula.Text = "";
+            txtUsuario.Text = "";
+            txtSenha.Text = "";
+            ckbAdministrador.Checked = false;
+            ckbPSocios.Checked = true;
+            ckbPReceitas.Checked = true;
+            ckbPRelatorios.Checked = true;
+            ckbFSocios.Checked = true;
+            ckbFCadastroReceitas.Checked = true;
+            ckbFBaixaReceitas.Checked = true;
+            lblIdUsuario.Text = "isUsuario";
         }
     }
 }
