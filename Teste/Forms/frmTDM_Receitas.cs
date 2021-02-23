@@ -247,14 +247,14 @@ namespace Teste.Forms
         {
             double valor = 0;
             bool result = double.TryParse(txtValor.Text, out valor);
-            if(result == false)
+            if (result == false)
             {
                 MessageBox.Show("Campo valor deve ser numérico", "Aviso");
                 txtValor.Text = "0,00";
                 txtValor.Focus();
                 return;
             }
-            
+
             if (txtValor.Text != "")
             {
                 txtValor.Text = double.Parse(txtValor.Text).ToString("F2");
@@ -585,7 +585,12 @@ namespace Teste.Forms
 
         private void cmdBaixar_Click(object sender, EventArgs e)
         {
-            if(mskDataPagamentoBaixa.Text == "  /  /")
+            if (lblIdParcela.Text.Equals("identificador"))
+            {
+                MessageBox.Show("Selecione a mensalidade", "Mensagem");
+                return;
+            }
+            if (mskDataPagamentoBaixa.Text == "  /  /")
             {
                 MessageBox.Show("Informe a data de pagamento.", "Mensagem");
                 return;
@@ -660,12 +665,13 @@ namespace Teste.Forms
             else
             {
                 CarregaReceita(r, tipo);
-            }            
+            }
         }
 
         private void CarregaReceita(Receita r, int tipo)
         {
-            if (tipo == 1) {
+            if (tipo == 1)
+            {
                 txtValor.Text = r.Valor.ToString("F2");
                 mskDataVencimento.Text = r.DataVencimento.ToString();
                 txtObs.Text = r.Obs;
@@ -690,7 +696,17 @@ namespace Teste.Forms
 
         private void cmdPesquisaReceitaBaixa_Click(object sender, EventArgs e)
         {
-            BuscaReceitaAberta(txtDocumentoBaixa.Text, 2);
+            if (lblIdSocio.Text.Equals("idSocio"))
+            {
+                MessageBox.Show("Selecione o sócio.", "Mensagem");
+                return;
+            }
+            else
+            {
+                frmTDM_PesquisaFatura frm = new frmTDM_PesquisaFatura(lblIdSocio.Text);
+                frm.ShowDialog();
+            }
+            //BuscaReceitaAberta(txtDocumentoBaixa.Text, 2);
         }
     }
 }

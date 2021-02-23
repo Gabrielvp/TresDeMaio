@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using Teste.Models;
+using Teste.systemException;
 
 namespace Teste.Funcoes
 {
@@ -165,7 +166,7 @@ namespace Teste.Funcoes
                 }
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -203,7 +204,7 @@ namespace Teste.Funcoes
                 }
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -241,7 +242,7 @@ namespace Teste.Funcoes
                 }
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -279,7 +280,7 @@ namespace Teste.Funcoes
                 }
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -289,6 +290,24 @@ namespace Teste.Funcoes
             }
             mConn.Close();
             return autorizado;
+        }
+
+        public static void ValidaDatas(string dtInicio, string dtFim)
+        {
+            if (dtInicio == "  /  /")
+            {
+                throw new DomainException("Informe a data inicial");
+            }
+
+            if (dtFim == "  /  /")
+            {
+                throw new DomainException("Informe a data final");
+            }
+
+            if (DateTime.Parse(dtInicio) > DateTime.Parse(dtFim))
+            {
+                throw new DomainException("Data final não pode ser menor que a data inicial");
+            }
         }
     }
 }

@@ -88,7 +88,7 @@ namespace Teste
                     encontrado = true;
                 }
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }

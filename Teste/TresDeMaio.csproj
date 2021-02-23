@@ -155,6 +155,7 @@
     <Compile Include="DAL\SedeDAL.cs" />
     <Compile Include="DAL\SocioDAL.cs" />
     <Compile Include="DAL\UsuarioDAL.cs" />
+    <Compile Include="Exception\DomainException.cs" />
     <Compile Include="Forms\frmTDM_CadastroSocio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +179,12 @@
     </Compile>
     <Compile Include="Forms\frmTDM_Menssagem.Designer.cs">
       <DependentUpon>frmTDM_Menssagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTDM_PesquisaFatura .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTDM_PesquisaFatura .Designer.cs">
+      <DependentUpon>frmTDM_PesquisaFatura .cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmTDM_PesquisaSocio.cs">
       <SubType>Form</SubType>
@@ -232,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTDM_Menssagem.resx">
       <DependentUpon>frmTDM_Menssagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTDM_PesquisaFatura .resx">
+      <DependentUpon>frmTDM_PesquisaFatura .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTDM_PesquisaSocio.resx">
       <DependentUpon>frmTDM_PesquisaSocio.cs</DependentUpon>

@@ -153,7 +153,7 @@ namespace Teste.DAL
 
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }

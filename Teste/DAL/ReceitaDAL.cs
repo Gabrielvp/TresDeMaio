@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Teste.systemException;
 using Teste.Models;
 
 namespace Teste.DAL
@@ -110,7 +111,7 @@ namespace Teste.DAL
             return gravou;
         }
 
-        public List<Receita> RetornaReceitaBySocio(int id)
+        public List<Receita> RetornaReceitaBySocio(long id)
         {
             List<Receita> list = new List<Receita>();
             try
@@ -132,9 +133,53 @@ namespace Teste.DAL
 
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+            return list;
+        }
+
+        public List<Receita> RetornaReceitaByPeriodo(long id, string inicio, string fim)
+        {            
+            List<Receita> list = new List<Receita>();
+            try
+            {
+                string sql = " SELECT * FROM Receitas WHERE " +
+                             "  IdSocio = " + id + " " +
+                             "  And FlagPago = 0 " +
+                             "  And (DataVencimento >= cast('" + inicio + "' as date)" +
+                             "  and DataVencimento <= cast('" + fim + "' as date))" +
+                             "  ORDER BY DataVencimento ASC ";
+
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    list.Add(new Receita(int.Parse(rd["Id"].ToString()),
+                        long.Parse(rd["Documento"].ToString()),
+                        int.Parse(rd["Parcela"].ToString()),
+                        DateTime.Parse(rd["DataVencimento"].ToString()),
+                        int.Parse(rd["DiaVencimento"].ToString()),
+                        double.Parse(rd["Valor"].ToString()),
+                        bool.Parse(rd["FlagPago"].ToString()),
+                        rd["Obs"].ToString()));
+                }
+
+                rd.Close();
+            }
+            catch (SystemException ex)
+            {
+                throw ex;
+            }
+            catch(DomainException de)
+            {
+                MessageBox.Show(de.Message);
             }
             finally
             {
@@ -169,7 +214,7 @@ namespace Teste.DAL
 
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -201,7 +246,7 @@ namespace Teste.DAL
                 MySqlDataReader rd = cmd.ExecuteReader();
                 deletado = true;
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 deletado = false;
                 throw ex;

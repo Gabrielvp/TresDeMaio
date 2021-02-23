@@ -142,14 +142,25 @@ namespace Teste.DAL
                 MySqlDataReader rd = cmd.ExecuteReader();
                 if (rd.Read())
                 {
+                    int? intNumero = null;
+                    DateTime? dtNasc = null;
+                    if (rd["Numero"].ToString() != "")
+                    {
+                        intNumero = int.Parse(rd["Numero"].ToString());
+                    }
+                    if (rd["DataNascimento"].ToString() != "")
+                    {
+                        dtNasc = DateTime.Parse(rd["DataNascimento"].ToString());
+                    }
+
                     d = new Dependente
                     {
                         Id = int.Parse(rd["Id"].ToString()),
                         Cpf = rd["Cpf"].ToString(),
                         Nome = rd["Nome"].ToString(),
-                        DataNascimento = DateTime.Parse(rd["DataNascimento"].ToString()),
+                        DataNascimento = dtNasc,
                         Parentesco = rd["Parentesco"].ToString(),
-                        Numero = int.Parse(rd["Numero"].ToString()),
+                        Numero = intNumero,
                         Obs = rd["Obs"].ToString(),
                         Fone = rd["Fone"].ToString(),
                         DataInclusao = DateTime.Parse(rd["DataInclusao"].ToString()),
@@ -157,7 +168,7 @@ namespace Teste.DAL
                     };
                 }
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -189,7 +200,7 @@ namespace Teste.DAL
                 MySqlDataReader rd = cmd.ExecuteReader();
                 deletado = true;
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 deletado = false;
                 throw ex;

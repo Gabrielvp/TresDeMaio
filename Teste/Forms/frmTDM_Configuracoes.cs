@@ -28,7 +28,7 @@ namespace Teste.Forms
                 _oleCmd.Connection = _olecon;
                 _oleCmd.CommandType = CommandType.Text;
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -123,7 +123,7 @@ namespace Teste.Forms
                 reader.Close();
                 lblCont.Text = cont.ToString();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -147,7 +147,7 @@ namespace Teste.Forms
                 }
                 catch (SystemException ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

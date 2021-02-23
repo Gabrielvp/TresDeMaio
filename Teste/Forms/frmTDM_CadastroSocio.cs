@@ -33,14 +33,40 @@ namespace Teste
 
         private void cmdGravar_Click(object sender, EventArgs e)
         {
-            if (lblId.Text.Equals("idSocio"))
+            if (Valida())
             {
-                InserirSocio();
+                if (lblId.Text.Equals("idSocio"))
+                {
+                    InserirSocio();
+                }
+                else
+                {
+                    AtualizarSocio();
+                }
             }
-            else
-            {
-                AtualizarSocio();
+        }
+
+        private bool Valida()
+        {
+            bool validou = true;
+            if (txtTitulo.Text.Trim() == "")
+            {               
+                MessageBox.Show("Informe o título", "Aviso");
+                return false;
             }
+
+            if (mskDtAdesao.Text == "  /  /")
+            {             
+                MessageBox.Show("Informe a data de adesão", "Aviso");
+                return false;
+            }
+
+            if (txtNome.Text.Trim() == "")
+            {                
+                MessageBox.Show("Informe o nome", "Aviso");
+                return false;
+            }
+            return validou;
         }
 
         private void InserirSocio()
@@ -50,7 +76,7 @@ namespace Teste
 
             if (mskDtExpedicao.Text != "  /  /") dtExpedicao = DateTime.Parse(mskDtExpedicao.Text);
             if (mskDtNascimentoSocio.Text != "  /  /") dtNascimento = DateTime.Parse(mskDtNascimentoSocio.Text);
-            
+
             DialogResult dr;
             bool gravou = false;
             dr = MessageBox.Show("Sócio sem endereço ou com endereço incompleto.\n" +
@@ -203,7 +229,7 @@ namespace Teste
                                 gravou = eDal.InsertEndereco(E);
                             }
                         }
-                        catch(SystemException ex)
+                        catch (SystemException ex)
                         {
                             string exception = ex.Message.ToString();
                             frmTDM_Menssagem frmErro = new frmTDM_Menssagem("Revise os dados.", 2, exception);
@@ -335,7 +361,7 @@ namespace Teste
                     picImagemSocio.Image = new Bitmap(ofdImagem.OpenFile());
                     foto = ofdImagem.FileName;
                 }
-                catch (Exception ex)
+                catch (SystemException ex)
                 {
                     MessageBox.Show("Não foi possível carregar a foto:" + ex.Message);
                 }
@@ -378,7 +404,7 @@ namespace Teste
                     id = rd.GetInt32(0);
                 }
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -446,7 +472,7 @@ namespace Teste
                 }
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -488,7 +514,7 @@ namespace Teste
                 }
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -532,7 +558,7 @@ namespace Teste
                 }
                 rd.Close();
             }
-            catch (Exception ex)
+            catch (SystemException ex)
             {
                 throw ex;
             }
@@ -573,12 +599,20 @@ namespace Teste
         {
             DependenteDAL dDal = new DependenteDAL();
             bool gravou = false;
+            DateTime? dtNascDep = null;
+            int? intNumero = null;
+            if (mskDtNascimentoDependente.Text != "  /  /") {
+                dtNascDep = DateTime.Parse(mskDtNascimentoDependente.Text);
+            }
+            if (txtNumeroDependente.Text.Trim() != "") {
+                intNumero = int.Parse(txtNumeroDependente.Text);
+            }
 
             if (lblId.Text.Equals("idSocio"))
             {
                 MessageBox.Show("Nenhum sócio selecionado.\n" +
-                    "Cadastro em andamento, primeiro finalizar o cadastro do sócio\n" +
-                    "para fazer inclusão dos dependentes.", "Mensagem");
+                                "Se o cadastro estiver em andamento, primeiro finalizar o cadastro do sócio\n" +
+                                "para fazer inclusão dos dependentes.", "Mensagem");
                 // retorna para tab sócios                
             }
             else
@@ -588,9 +622,9 @@ namespace Teste
                     Cpf = mskCpfDependente.Text,
                     Nome = txtNomeDependente.Text,
                     Obs = txtObservacaoDependente.Text,
-                    DataNascimento = DateTime.Parse(mskDtNascimentoDependente.Text),
+                    DataNascimento = dtNascDep,
                     Parentesco = txtParentesco.Text,
-                    Numero = int.Parse(txtNumeroDependente.Text),
+                    Numero = intNumero,
                     Fone = mskFoneDependente.Text,
                     IdSocio = int.Parse(lblId.Text)
                 };
