@@ -703,10 +703,13 @@ namespace Teste.Forms
             }
             else
             {
+                Receita r = Singleton<Receita>.Instance();                
                 frmTDM_PesquisaFatura frm = new frmTDM_PesquisaFatura(lblIdSocio.Text);
                 frm.ShowDialog();
+                txtDocumentoBaixa.Text = r.Documento.ToString();
+                BuscaReceitaAberta(r.Documento.ToString(), 2);
             }
-            //BuscaReceitaAberta(txtDocumentoBaixa.Text, 2);
+            
         }
     }
 }

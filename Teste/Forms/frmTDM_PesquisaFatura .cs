@@ -48,7 +48,7 @@ namespace Teste.Forms
             item.SubItems.Add(receita.Valor.ToString("F2"));
             item.SubItems.Add(receita.DataVencimento.ToString().Substring(0, 10));
             item.SubItems.Add(atraso.ToString());
-            item.SubItems.Add(receita.Id.ToString("F2"));
+            item.SubItems.Add(receita.Id.ToString());
             lstFaturas.Items.Add(item);
         }
 
@@ -59,6 +59,14 @@ namespace Teste.Forms
             string dtFim = mskDtFim.Text;
             try
             {
+                if(mskDtInicio.Text == "  /  /" )
+                {
+                    return;
+                }
+                if(mskDtFim.Text == "  /  /")
+                {
+                    return;
+                }
                 if (v.ValidaData(dtInicio.ToString()) == false)
                 {
                     MessageBox.Show("Data inicial inválida.", "Mensagem");
@@ -69,16 +77,16 @@ namespace Teste.Forms
                     MessageBox.Show("Data final inválida.", "Mensagem");
                     return;
                 }
-                Validacoes.ValidaDatas(dtInicio, dtFim);
+                Validacoes.ValidaDatas(dtInicio, dtFim);                
             }
             catch (DomainException dex)
             {
-                MessageBox.Show(dex.Message, "Verifique");
+                MessageBox.Show(dex.Message, "Mensagem");
                 return;
             }
 
-            dtInicio = dtInicio.ToString().Substring(6, 4) + "-" + dtInicio.ToString().Substring(3, 2) + "-" + dtInicio.ToString().Substring(0, 2);
-            dtFim = dtFim.ToString().Substring(6, 4) + "-" + dtFim.ToString().Substring(3, 2) + "-" + dtFim.ToString().Substring(0, 2);
+            dtInicio = Formatacoes.FormataDataSql(dtInicio);
+            dtFim = Formatacoes.FormataDataSql(dtFim);
 
             lstFaturas.Items.Clear();
             ReceitaDAL rDAL = new ReceitaDAL();
@@ -87,6 +95,13 @@ namespace Teste.Forms
             {
                 PopulaLista(receita);
             }
+        }
+
+        private void lstFaturas_DoubleClick(object sender, EventArgs e)
+        {
+            Receita r = Singleton<Receita>.Instance();
+            r.Documento = long.Parse(lstFaturas.FocusedItem.Text);
+            Close();
         }
     }
 }

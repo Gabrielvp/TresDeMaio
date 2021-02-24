@@ -204,6 +204,7 @@
     <Compile Include="Forms\frmTDM_Report.Designer.cs">
       <DependentUpon>frmTDM_Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funcoes\Formatacoes.cs" />
     <Compile Include="Funcoes\Validacoes.cs" />
     <Compile Include="Models\Pagamento.cs" />
     <Compile Include="Models\Sede.cs" />

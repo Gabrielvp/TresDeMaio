@@ -62,6 +62,7 @@ namespace Teste.Forms
             this.lstFaturas.TabIndex = 0;
             this.lstFaturas.UseCompatibleStateImageBehavior = false;
             this.lstFaturas.View = System.Windows.Forms.View.Details;
+            this.lstFaturas.DoubleClick += new System.EventHandler(this.lstFaturas_DoubleClick);
             // 
             // Titulo
             // 

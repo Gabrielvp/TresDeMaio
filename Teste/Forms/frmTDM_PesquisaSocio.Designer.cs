@@ -51,7 +51,7 @@ namespace Teste.Forms
             this.lstSocios.Size = new System.Drawing.Size(269, 238);
             this.lstSocios.TabIndex = 0;
             this.lstSocios.UseCompatibleStateImageBehavior = false;
-            this.lstSocios.View = System.Windows.Forms.View.Details;
+            this.lstSocios.View = System.Windows.Forms.View.Details;            
             this.lstSocios.DoubleClick += new System.EventHandler(this.lstSocios_DoubleClick);
             // 
             // Titulo
