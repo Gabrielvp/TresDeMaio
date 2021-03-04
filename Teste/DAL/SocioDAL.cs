@@ -93,6 +93,16 @@ namespace Teste.DAL
         {
             bool gravou = false;
             string sql;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
             // verifica se a conexão está aberta
             if (mConn.State == ConnectionState.Open)
             {

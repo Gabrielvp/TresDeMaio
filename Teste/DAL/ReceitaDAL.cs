@@ -143,7 +143,7 @@ namespace Teste.DAL
             }
             mConn.Close();
             return list;
-        }
+        }       
 
         public List<Receita> RetornaReceitaByPeriodo(long id, string inicio, string fim)
         {            

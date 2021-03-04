@@ -126,6 +126,7 @@ namespace Teste
             this.lblId = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblIdEndereco = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImagemSocio)).BeginInit();
@@ -149,6 +150,7 @@ namespace Teste
             this.tabPage1.AccessibleDescription = "tpSocio";
             this.tabPage1.AccessibleName = "tpSocio";
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.lblIdEndereco);
             this.tabPage1.Controls.Add(this.cmdPesquisaSocio);
             this.tabPage1.Controls.Add(this.cmdRemoverImagem);
             this.tabPage1.Controls.Add(this.lblUltPgto);
@@ -1121,6 +1123,16 @@ namespace Teste
             this.lblUsuario.TabIndex = 34;
             this.lblUsuario.Text = "user";
             // 
+            // lblIdEndereco
+            // 
+            this.lblIdEndereco.AutoSize = true;
+            this.lblIdEndereco.Location = new System.Drawing.Point(735, 275);
+            this.lblIdEndereco.Name = "lblIdEndereco";
+            this.lblIdEndereco.Size = new System.Drawing.Size(61, 13);
+            this.lblIdEndereco.TabIndex = 47;
+            this.lblIdEndereco.Text = "idEndereco";
+            this.lblIdEndereco.Visible = false;
+            // 
             // frmTDM_CadastroSocio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1260,5 +1272,6 @@ namespace Teste
         private System.Windows.Forms.Button cmdPesquisaSocio;
         private System.Windows.Forms.Button cmdLimparDependentes;
         private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblIdEndereco;
     }
 }

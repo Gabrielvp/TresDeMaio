@@ -343,6 +343,6 @@ namespace Teste.Forms
             ckbFCadastroReceitas.Checked = true;
             ckbFBaixaReceitas.Checked = true;
             lblIdUsuario.Text = "isUsuario";
-        }
+        }       
     }
 }

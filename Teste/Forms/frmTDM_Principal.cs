@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Teste.Forms;
 using Teste.Models;
 using Teste.Funcoes;
+using Teste.Forms.Reports;
 
 namespace Teste
 {
@@ -153,9 +154,18 @@ namespace Teste
         {
             lblRelAReceber_MouseLeave(null, null);
             cmdRelatorios_Click(null, null);
-            frmTDM_Report frm = new frmTDM_Report();
+            //frmTDM_Report frm = new frmTDM_Report();
+            frmTDM_RelSocios frm = new frmTDM_RelSocios();
             frm.ShowDialog();
             frm.Dispose();
+        }
+
+        private void lblRelAReceber_Click(object sender, EventArgs e)
+        {
+            lblRelAReceber_MouseLeave(null, null);
+            cmdRelatorios_Click(null, null);
+            frmTDM_RelAReceber frm = new frmTDM_RelAReceber();
+            frm.Show();
         }
     }
 }

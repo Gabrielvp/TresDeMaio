@@ -29,8 +29,10 @@ namespace Teste.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTDM_Configuracoes));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblIdSede = new System.Windows.Forms.Label();
             this.cmdGravarSede = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -58,6 +60,8 @@ namespace Teste.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblIdUsuario = new System.Windows.Forms.Label();
+            this.ckbAdministrador = new System.Windows.Forms.CheckBox();
             this.cmdLimpar = new System.Windows.Forms.Button();
             this.cmdGravar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -91,9 +95,7 @@ namespace Teste.Forms
             this.obs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmdImportar = new System.Windows.Forms.Button();
             this.cmdLer = new System.Windows.Forms.Button();
-            this.lblIdSede = new System.Windows.Forms.Label();
-            this.ckbAdministrador = new System.Windows.Forms.CheckBox();
-            this.lblIdUsuario = new System.Windows.Forms.Label();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -148,6 +150,16 @@ namespace Teste.Forms
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Sede";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblIdSede
+            // 
+            this.lblIdSede.AutoSize = true;
+            this.lblIdSede.Location = new System.Drawing.Point(720, 12);
+            this.lblIdSede.Name = "lblIdSede";
+            this.lblIdSede.Size = new System.Drawing.Size(40, 13);
+            this.lblIdSede.TabIndex = 36;
+            this.lblIdSede.Text = "idSede";
+            this.lblIdSede.Visible = false;
             // 
             // cmdGravarSede
             // 
@@ -427,6 +439,26 @@ namespace Teste.Forms
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Usuários";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblIdUsuario
+            // 
+            this.lblIdUsuario.AutoSize = true;
+            this.lblIdUsuario.Location = new System.Drawing.Point(713, 16);
+            this.lblIdUsuario.Name = "lblIdUsuario";
+            this.lblIdUsuario.Size = new System.Drawing.Size(51, 13);
+            this.lblIdUsuario.TabIndex = 44;
+            this.lblIdUsuario.Text = "idUsuario";
+            this.lblIdUsuario.Visible = false;
+            // 
+            // ckbAdministrador
+            // 
+            this.ckbAdministrador.AutoSize = true;
+            this.ckbAdministrador.Location = new System.Drawing.Point(98, 218);
+            this.ckbAdministrador.Name = "ckbAdministrador";
+            this.ckbAdministrador.Size = new System.Drawing.Size(89, 17);
+            this.ckbAdministrador.TabIndex = 43;
+            this.ckbAdministrador.Text = "Administrador";
+            this.ckbAdministrador.UseVisualStyleBackColor = true;
             // 
             // cmdLimpar
             // 
@@ -748,35 +780,15 @@ namespace Teste.Forms
             this.cmdLer.UseVisualStyleBackColor = false;
             this.cmdLer.Click += new System.EventHandler(this.cmdLer_Click);
             // 
-            // lblIdSede
+            // printPreviewDialog1
             // 
-            this.lblIdSede.AutoSize = true;
-            this.lblIdSede.Location = new System.Drawing.Point(720, 12);
-            this.lblIdSede.Name = "lblIdSede";
-            this.lblIdSede.Size = new System.Drawing.Size(40, 13);
-            this.lblIdSede.TabIndex = 36;
-            this.lblIdSede.Text = "idSede";
-            this.lblIdSede.Visible = false;
-            // 
-            // ckbAdministrador
-            // 
-            this.ckbAdministrador.AutoSize = true;
-            this.ckbAdministrador.Location = new System.Drawing.Point(98, 218);
-            this.ckbAdministrador.Name = "ckbAdministrador";
-            this.ckbAdministrador.Size = new System.Drawing.Size(89, 17);
-            this.ckbAdministrador.TabIndex = 43;
-            this.ckbAdministrador.Text = "Administrador";
-            this.ckbAdministrador.UseVisualStyleBackColor = true;
-            // 
-            // lblIdUsuario
-            // 
-            this.lblIdUsuario.AutoSize = true;
-            this.lblIdUsuario.Location = new System.Drawing.Point(713, 16);
-            this.lblIdUsuario.Name = "lblIdUsuario";
-            this.lblIdUsuario.Size = new System.Drawing.Size(51, 13);
-            this.lblIdUsuario.TabIndex = 44;
-            this.lblIdUsuario.Text = "idUsuario";
-            this.lblIdUsuario.Visible = false;
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // frmTDM_Configuracoes
             // 
@@ -872,5 +884,6 @@ namespace Teste.Forms
         private System.Windows.Forms.Label lblIdSede;
         private System.Windows.Forms.CheckBox ckbAdministrador;
         private System.Windows.Forms.Label lblIdUsuario;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

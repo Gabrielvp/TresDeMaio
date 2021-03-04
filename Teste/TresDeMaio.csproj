@@ -204,6 +204,18 @@
     <Compile Include="Forms\frmTDM_Report.Designer.cs">
       <DependentUpon>frmTDM_Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelAReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelAReceber.Designer.cs">
+      <DependentUpon>frmTDM_RelAReceber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelSocios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelSocios.Designer.cs">
+      <DependentUpon>frmTDM_RelSocios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Funcoes\Formatacoes.cs" />
     <Compile Include="Funcoes\Validacoes.cs" />
     <Compile Include="Models\Pagamento.cs" />
@@ -255,6 +267,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTDM_Report.resx">
       <DependentUpon>frmTDM_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmTDM_RelAReceber.resx">
+      <DependentUpon>frmTDM_RelAReceber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmTDM_RelSocios.resx">
+      <DependentUpon>frmTDM_RelSocios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

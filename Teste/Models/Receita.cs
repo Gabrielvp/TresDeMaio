@@ -4,7 +4,6 @@ namespace Teste.Models
 {
     class Receita
     {
-
         public int Id { get; set; }
         public long Documento { get; set; }
         public int Parcela { get; set; }

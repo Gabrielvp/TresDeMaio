@@ -164,8 +164,7 @@ namespace Teste
 
 
         private void AtualizarSocio()
-        {
-            long idEnd = 0;
+        {            
             DateTime? dtExpedicao = null;
             DateTime? dtNascimento = null;
 
@@ -219,8 +218,8 @@ namespace Teste
                                 IdSocio = int.Parse(lblId.Text)
                             };
                             EnderecoDAL eDal = new EnderecoDAL();
-                            idEnd = eDal.IdEnderecoBySocio(long.Parse(lblId.Text));
-                            if (idEnd > 0)
+                            //idEnd = eDal.IdEnderecoBySocio(long.Parse(lblId.Text));
+                            if (!lblIdEndereco.Text.Equals("idEndereco"))
                             {
                                 gravou = eDal.UpdateEndereco(E);
                             }
@@ -341,6 +340,8 @@ namespace Teste
 
             lblId.Text = "idSocio";
             picImagemSocio.Image = Properties.Resources.imgCadSocio;
+
+            lblIdEndereco.Text = "idEndereco";
         }
 
         private void cmdLimpar_Click(object sender, EventArgs e)
@@ -511,6 +512,7 @@ namespace Teste
                     txtCidade.Text = rd["Cidade"].ToString();
                     cmbUfEndereco.Text = rd["Uf"].ToString();
                     txtComplemento.Text = rd["Complemento"].ToString();
+                    lblIdEndereco.Text = rd["Id"].ToString();
                 }
                 rd.Close();
             }
@@ -880,16 +882,19 @@ namespace Teste
 
         private void mskCpf_Leave(object sender, EventArgs e)
         {
-            string cpf = mskCpf.Text.Replace(".", "");
-            cpf = cpf.Replace(",", "");
-            if (cpf != "         -")
+            if (lblId.Text.ToString().Equals("idSocio"))
             {
-                SocioDAL sDal = new SocioDAL();
-                Socio s = sDal.RetornaSocioByCpf(mskCpf.Text);
-                if (s.Titulo != 0)
+                string cpf = mskCpf.Text.Replace(".", "");
+                cpf = cpf.Replace(",", "");
+                if (cpf != "         -")
                 {
-                    txtTitulo.Text = s.Titulo.ToString();
-                    txtTitulo_Leave(null, null);
+                    SocioDAL sDal = new SocioDAL();
+                    Socio s = sDal.RetornaSocioByCpf(mskCpf.Text);
+                    if (s.Titulo != 0)
+                    {
+                        txtTitulo.Text = s.Titulo.ToString();
+                        txtTitulo_Leave(null, null);
+                    }
                 }
             }
         }

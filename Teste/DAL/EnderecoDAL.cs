@@ -138,6 +138,17 @@ namespace Teste.DAL
         public long IdEnderecoBySocio(long idSocio)
         {
             long idEnd = 0;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Close();
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
             try
             {
                 string sql = "SELECT Id FROM Endereco WHERE IdSocio = " + idSocio;
