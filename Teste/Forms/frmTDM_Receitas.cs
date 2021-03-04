@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Windows.Forms;
 using Teste.DAL;
 using Teste.Funcoes;
@@ -9,6 +11,8 @@ namespace Teste.Forms
 {
     public partial class frmTDM_Receitas : Form
     {
+        string path = null;
+        StreamWriter sw = null;
         public string Result { get; set; }
         public frmTDM_Receitas()
         {
@@ -631,7 +635,22 @@ namespace Teste.Forms
                     frmSucesso.ShowDialog();
                     PopulaLista();
                     PopulaListaPagos();
-                    LimparBaixa();
+
+                    DialogResult dr = new DialogResult();
+                    dr = MessageBox.Show("Deseja imprimir comprovante de pagamento?", "Mensagem", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        InitializeReport();
+                        AbreHTML();
+                        Cabecalho();
+                        FechaHTML();
+                        Process.Start(path);
+                        LimparBaixa();
+                    }
+                    else
+                    {
+                        LimparBaixa();
+                    }
                 }
                 catch (SystemException ex)
                 {
@@ -641,6 +660,20 @@ namespace Teste.Forms
                     frmErro.ShowDialog();
                 }
             }
+        }
+        private void FechaHTML()
+        {
+            string fechamento;
+            fechamento = "</FONT>";
+            fechamento += "</TABLE>";
+            fechamento += "</Body>";
+            fechamento += "</HTML>";
+
+            using (sw = File.AppendText(path))
+            {
+                sw.WriteLine(fechamento);
+            }
+            if (sw != null) sw.Close();
         }
 
         private void cmdLimparBaixa_Click(object sender, EventArgs e)
@@ -709,6 +742,103 @@ namespace Teste.Forms
                 txtDocumentoBaixa.Text = r.Documento.ToString();
                 BuscaReceitaAberta(r.Documento.ToString(), 2);
             }
+        }
+
+        private void InitializeReport()
+        {
+            path = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"\Recibo.html";
+        }
+
+        private void AbreHTML()
+        {
+            try
+            {
+                using (sw = new StreamWriter(path))
+                {
+                    sw.WriteLine("<HTML>");
+                    sw.WriteLine("<BODY>");
+                    sw.WriteLine("<FONT FACE='VERDANA' SIZE='1'>");
+                    sw.WriteLine("<TABLE CELLSPACING=1 CELLPADDING=1 STYLE='WIDTH=750'>");
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso");
+            }
+        }
+
+        private void Cabecalho()
+        {
+            string cabecalho;
+            string body;
+            cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
+            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Comprovante de pagamento</FONT></TD></TR>";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD COLSPAN=2><hr /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+
+            cabecalho += "<tr>";
+            cabecalho += "<td  ALIGN=CENTER WIDTH=750><FONT FACE='VERDANA' SIZE='4'><B>Comprovante de Pagamento</B></FONT></TD>";
+            cabecalho += "</tr>";
+
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+
+            try
+            {
+                using (sw = File.AppendText(path))
+                {
+                    sw.WriteLine(cabecalho);
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso");
+            }
+                        
+            body = "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Recebemos de: <B>" + lblNome.Text + "</B> título N° <B>" + txtTitulo.Text + 
+                "</B> a importância de R$<B>"+txtValorPagoBaixa.Text + "</B> Reais</FONT></TD></TR>";
+            body += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Referente ao documento:  <B>" + txtDocumentoBaixa.Text + "</B> com vencimento em: <B>" + mskVencimentoBaixa.Text + "</B></FONT></TD></TR>";
+
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+            body += "<TR><TD><br /></TD ></TR> ";
+
+            body += "<TR><TD ALIGN=CENTER WIDTH=750><FONT FACE = 'VERDANA' SIZE='2'><B>_______________________________________________</B></FONT></TD></TR>";
+            body += "<TR><TD ALIGN=CENTER WIDTH=750><FONT FACE = 'VERDANA' SIZE='2'><B>S.R 3 de Maio - " + DateTime.Now + "</B></FONT></TD></TR>";
+            try
+            {
+                using (sw = File.AppendText(path))
+                {
+                    sw.WriteLine(body);
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
