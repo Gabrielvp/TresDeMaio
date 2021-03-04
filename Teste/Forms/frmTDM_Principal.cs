@@ -167,5 +167,21 @@ namespace Teste
             frmTDM_RelAReceber frm = new frmTDM_RelAReceber();
             frm.Show();
         }
+
+        private void lblRelAtrasados_Click(object sender, EventArgs e)
+        {
+            lblRelAtrasados_MouseLeave(null, null);
+            cmdRelatorios_Click(null, null);
+            frmTDM_RelEmAtraso frm = new frmTDM_RelEmAtraso();
+            frm.ShowDialog();
+        }
+
+        private void lblRelRecebido_Click(object sender, EventArgs e)
+        {
+            lblRelRecebido_MouseLeave(null, null);
+            cmdRelatorios_Click(null, null);
+            frmTDM_RelRecebidos frm = new frmTDM_RelRecebidos();
+            frm.ShowDialog();
+        }
     }
 }

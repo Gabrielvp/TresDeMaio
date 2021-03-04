@@ -19,7 +19,7 @@ namespace Teste.Forms.Reports
 
         private void InitializeReport()
         {
-            path = @"C:\Report\RelSocios.html";
+            path = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"\RelSocios.html";
         }
 
         private void AbreHTML()
@@ -46,10 +46,8 @@ namespace Teste.Forms.Reports
             string cabecalho;
             //cabecalho = "<TR><TD ROWSPAN=11><width=20% IMG SRC='C:\\VS\\Teste\\Teste\\Teste\\Images\\logo3DeMaio.png'>&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>";
             cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
-            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação Sócios</FONT></TD></TR>";
-            cabecalho += "</TABLE>";
-            cabecalho += "<TR><TD><hr /></TD ></TR> ";
-            cabecalho += "<TABLE CELLSPACING = 1 CELLPADDING = 1 STYLE='WIDTH=750'>";
+            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação Sócios</FONT></TD></TR>";           
+            cabecalho += "<TR><TD COLSPAN=2><hr /></TD ></TR> ";            
             cabecalho += "<TR><TD><br /></TD ></TR> ";
 
             cabecalho += "<tr>";
@@ -65,10 +63,8 @@ namespace Teste.Forms.Reports
                 cabecalho += "<tr>";
                 cabecalho += "<td  ALIGN=LEFT WIDTH=100><FONT FACE='VERDANA' SIZE='2'>" + socio.Titulo + "</FONT></TD>";
                 cabecalho += "<td  ALIGN=LEFT WIDTH=650><FONT FACE='VERDANA' SIZE='2'>" + socio.Nome + "</B></FONT></TD>";
-                cabecalho += "</tr>";
-                cabecalho += "</TABLE>";
-                cabecalho += "<TR><TD><hr /></TD ></TR> ";
-                cabecalho += "<TABLE CELLSPACING = 1 CELLPADDING = 1 STYLE='WIDTH=750'>";
+                cabecalho += "</tr>";               
+                cabecalho += "<TR><TD COLSPAN=2><hr /></TD ></TR> ";                
             }
 
             cabecalho += "<tr>";

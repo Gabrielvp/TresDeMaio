@@ -1,7 +1,7 @@
 ﻿
 namespace Teste.Forms.Reports
 {
-    partial class frmTDM_RelAReceber
+    partial class frmTDM_RelEmAtraso
     {
         /// <summary>
         /// Required designer variable.
@@ -29,36 +29,67 @@ namespace Teste.Forms.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cmdPesquisaSocio = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTitulo = new System.Windows.Forms.TextBox();
+            this.cmdLimpar = new System.Windows.Forms.Button();
+            this.cmdPesquisar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.mskFim = new System.Windows.Forms.MaskedTextBox();
             this.mskInicio = new System.Windows.Forms.MaskedTextBox();
-            this.cmdPesquisar = new System.Windows.Forms.Button();
-            this.cmdLimpar = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtTitulo = new System.Windows.Forms.TextBox();
-            this.cmdPesquisaSocio = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtNome
+            // cmdPesquisaSocio
             // 
-            this.txtNome.Location = new System.Drawing.Point(12, 89);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(252, 20);
-            this.txtNome.TabIndex = 1;
+            this.cmdPesquisaSocio.Location = new System.Drawing.Point(271, 83);
+            this.cmdPesquisaSocio.Name = "cmdPesquisaSocio";
+            this.cmdPesquisaSocio.Size = new System.Drawing.Size(32, 23);
+            this.cmdPesquisaSocio.TabIndex = 10;
+            this.cmdPesquisaSocio.Text = "P...";
+            this.cmdPesquisaSocio.UseVisualStyleBackColor = true;
+            this.cmdPesquisaSocio.Click += new System.EventHandler(this.cmdPesquisaSocio_Click);
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nome";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Título";
+            // 
+            // txtTitulo
+            // 
+            this.txtTitulo.Location = new System.Drawing.Point(12, 30);
+            this.txtTitulo.Name = "txtTitulo";
+            this.txtTitulo.Size = new System.Drawing.Size(167, 20);
+            this.txtTitulo.TabIndex = 7;
+            this.txtTitulo.Leave += new System.EventHandler(this.txtTitulo_Leave);
+            // 
+            // cmdLimpar
+            // 
+            this.cmdLimpar.Location = new System.Drawing.Point(231, 218);
+            this.cmdLimpar.Name = "cmdLimpar";
+            this.cmdLimpar.Size = new System.Drawing.Size(75, 23);
+            this.cmdLimpar.TabIndex = 14;
+            this.cmdLimpar.Text = "Limpar";
+            this.cmdLimpar.UseVisualStyleBackColor = true;
+            this.cmdLimpar.Click += new System.EventHandler(this.cmdLimpar_Click);
+            // 
+            // cmdPesquisar
+            // 
+            this.cmdPesquisar.Location = new System.Drawing.Point(141, 218);
+            this.cmdPesquisar.Name = "cmdPesquisar";
+            this.cmdPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.cmdPesquisar.TabIndex = 12;
+            this.cmdPesquisar.Text = "Pesquisar";
+            this.cmdPesquisar.UseVisualStyleBackColor = true;
+            this.cmdPesquisar.Click += new System.EventHandler(this.cmdPesquisar_Click);
             // 
             // groupBox1
             // 
@@ -66,10 +97,10 @@ namespace Teste.Forms.Reports
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.mskFim);
             this.groupBox1.Controls.Add(this.mskInicio);
-            this.groupBox1.Location = new System.Drawing.Point(12, 131);
+            this.groupBox1.Location = new System.Drawing.Point(12, 125);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(294, 78);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Período";
             // 
@@ -107,58 +138,27 @@ namespace Teste.Forms.Reports
             this.mskInicio.Size = new System.Drawing.Size(73, 20);
             this.mskInicio.TabIndex = 3;
             // 
-            // cmdPesquisar
+            // label1
             // 
-            this.cmdPesquisar.Location = new System.Drawing.Point(141, 224);
-            this.cmdPesquisar.Name = "cmdPesquisar";
-            this.cmdPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.cmdPesquisar.TabIndex = 5;
-            this.cmdPesquisar.Text = "Pesquisar";
-            this.cmdPesquisar.UseVisualStyleBackColor = true;
-            this.cmdPesquisar.Click += new System.EventHandler(this.cmdPesquisar_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Nome";
             // 
-            // cmdLimpar
+            // txtNome
             // 
-            this.cmdLimpar.Location = new System.Drawing.Point(231, 224);
-            this.cmdLimpar.Name = "cmdLimpar";
-            this.cmdLimpar.Size = new System.Drawing.Size(75, 23);
-            this.cmdLimpar.TabIndex = 6;
-            this.cmdLimpar.Text = "Limpar";
-            this.cmdLimpar.UseVisualStyleBackColor = true;
-            this.cmdLimpar.Click += new System.EventHandler(this.cmdLimpar_Click);
+            this.txtNome.Location = new System.Drawing.Point(12, 83);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(252, 20);
+            this.txtNome.TabIndex = 9;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Título";
-            // 
-            // txtTitulo
-            // 
-            this.txtTitulo.Location = new System.Drawing.Point(12, 36);
-            this.txtTitulo.Name = "txtTitulo";
-            this.txtTitulo.Size = new System.Drawing.Size(167, 20);
-            this.txtTitulo.TabIndex = 0;
-            this.txtTitulo.Leave += new System.EventHandler(this.txtTitulo_Leave);
-            // 
-            // cmdPesquisaSocio
-            // 
-            this.cmdPesquisaSocio.Location = new System.Drawing.Point(271, 89);
-            this.cmdPesquisaSocio.Name = "cmdPesquisaSocio";
-            this.cmdPesquisaSocio.Size = new System.Drawing.Size(32, 23);
-            this.cmdPesquisaSocio.TabIndex = 2;
-            this.cmdPesquisaSocio.Text = "P...";
-            this.cmdPesquisaSocio.UseVisualStyleBackColor = true;
-            this.cmdPesquisaSocio.Click += new System.EventHandler(this.cmdPesquisaSocio_Click);
-            // 
-            // frmTDM_RelAReceber
+            // frmTDM_RelEmAtraso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 274);
+            this.ClientSize = new System.Drawing.Size(320, 263);
             this.Controls.Add(this.cmdPesquisaSocio);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTitulo);
@@ -170,10 +170,10 @@ namespace Teste.Forms.Reports
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmTDM_RelAReceber";
+            this.Name = "frmTDM_RelEmAtraso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mensalidades à receber";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTDM_RelAReceber_KeyDown);
+            this.Text = "Em atraso";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTDM_RelEmAtraso_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -183,17 +183,17 @@ namespace Teste.Forms.Reports
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button cmdPesquisaSocio;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtTitulo;
+        private System.Windows.Forms.Button cmdLimpar;
+        private System.Windows.Forms.Button cmdPesquisar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox mskFim;
         private System.Windows.Forms.MaskedTextBox mskInicio;
-        private System.Windows.Forms.Button cmdPesquisar;
-        private System.Windows.Forms.Button cmdLimpar;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTitulo;
-        private System.Windows.Forms.Button cmdPesquisaSocio;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNome;
     }
 }

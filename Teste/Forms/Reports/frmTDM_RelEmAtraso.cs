@@ -7,21 +7,38 @@ using Teste.Models;
 
 namespace Teste.Forms.Reports
 {
-    public partial class frmTDM_RelAReceber : Form
+    public partial class frmTDM_RelEmAtraso : Form
     {
         string path = null;
         StreamWriter sw = null;
-        public frmTDM_RelAReceber()
+        public frmTDM_RelEmAtraso()
         {
             InitializeComponent();
         }
 
-        private void cmdLimpar_Click(object sender, EventArgs e)
+        private void cmdPesquisaSocio_Click(object sender, EventArgs e)
         {
-            txtTitulo.Text = "";
-            txtNome.Text = "";
-            mskInicio.Text = "";
-            mskFim.Text = "";
+            Socio s = Singleton<Socio>.Instance();
+            frmTDM_PesquisaSocio frm;
+            if (txtNome.Text.Trim() != "")
+            {
+                frm = new frmTDM_PesquisaSocio(txtNome.Text.Trim());
+            }
+            else
+            {
+                frm = new frmTDM_PesquisaSocio();
+            }
+            frm.ShowDialog();
+            txtTitulo.Text = s.Titulo.ToString();
+            txtTitulo_Leave(null, null);
+        }
+
+        private void txtTitulo_Leave(object sender, EventArgs e)
+        {
+            if (txtTitulo.Text.Trim() != "")
+            {
+                RetornaSocioByTitulo();
+            }
         }
 
         private void cmdPesquisar_Click(object sender, EventArgs e)
@@ -41,27 +58,9 @@ namespace Teste.Forms.Reports
             }
         }
 
-        private bool Valida()
-        {
-            bool validou = false;
-            if(txtTitulo.Text.Trim() != "")
-            {
-                validou = true;
-            }
-            if(txtNome.Text.Trim() != "")
-            {
-                validou = true;
-            }
-            if((mskInicio.Text != "  /  /") && (mskFim.Text != "  /  /"))
-            {
-                validou = true;
-            }
-            return validou;
-        }
-
         private void InitializeReport()
         {
-            path = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"\RelAReceber.html";
+            path = System.AppDomain.CurrentDomain.BaseDirectory.ToString() + @"\RelEmAberto.html";
         }
 
         private void AbreHTML()
@@ -86,7 +85,7 @@ namespace Teste.Forms.Reports
         {
             string cabecalho;
             cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
-            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação de mensalidades abertas</FONT></TD></TR>";
+            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação de mensalidades em atraso</FONT></TD></TR>";
             if (txtTitulo.Text.Trim() != "")
             {
                 cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Título: " + txtTitulo.Text + "</FONT></TD></TR>";
@@ -127,6 +126,42 @@ namespace Teste.Forms.Reports
             }
             if (sw != null) sw.Close();
         }
+        private void RetornaSocioByTitulo()
+        {
+            string strConexao = Connection.Conexao();
+            MySqlConnection mConn;
+            mConn = new MySqlConnection(strConexao);
+            try
+            {
+                // abre conexão com banco
+                mConn.Open();
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            try
+            {
+                string sql = "SELECT Nome FROM Socio WHERE Titulo=" + int.Parse(txtTitulo.Text);
+                var cmd = new MySqlCommand(sql, mConn);
+                MySqlDataReader rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    txtNome.Text = rd["Nome"].ToString();
+                }
+                rd.Close();
+            }
+            catch (SystemException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                mConn.Close();
+            }
+            mConn.Close();
+        }
 
         public void ProcessaRelatorio()
         {
@@ -156,7 +191,7 @@ namespace Teste.Forms.Reports
             {
                 string sql = " SELECT S.Titulo, S.Nome, R.Documento, R.DataVencimento, R.Valor " +
                              " FROM Receitas R INNER JOIN Socio S ON R.IdSocio = S.ID " +
-                             " WHERE FlagPago = 0 ";
+                             " WHERE FlagPago = 0 and R.DataVencimento < cast('" + Funcoes.Formatacoes.FormataDataSql(DateTime.Now.ToString().Substring(0, 10)) + "' as date) ";
 
                 if (txtTitulo.Text.Trim() != "")
                 {
@@ -177,7 +212,7 @@ namespace Teste.Forms.Reports
                 var cmd = new MySqlCommand(sql, mConn);
                 MySqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
-                {                    
+                {
                     if ((titulo == 0) || (titulo != long.Parse(rd["Titulo"].ToString())))
                     {
                         body = "</TABLE>";
@@ -230,7 +265,7 @@ namespace Teste.Forms.Reports
                         atraso = (DateTime.Now - dt).Days;
                         cont += 1;
                         valor = double.Parse(rd["Valor"].ToString());
-                        total += valor;                        
+                        total += valor;
 
                         body = "<tr>";
                         body += "<td  ALIGN=LEFT WIDTH=200><FONT FACE='VERDANA' SIZE='2'>" + rd["Documento"].ToString() + "</FONT></TD>";
@@ -248,9 +283,9 @@ namespace Teste.Forms.Reports
                         catch (IOException ex)
                         {
                             MessageBox.Show(ex.Message, "Aviso");
-                        }                       
+                        }
                     }
-                    titulo = long.Parse(rd["Titulo"].ToString());                   
+                    titulo = long.Parse(rd["Titulo"].ToString());
                 }
                 body = "</TABLE>";
                 body += "<TABLE CELLSPACING = 1 CELLPADDING = 1 STYLE = 'WIDTH=750'>";
@@ -276,7 +311,7 @@ namespace Teste.Forms.Reports
                         MessageBox.Show(ex.Message, "Aviso");
                     }
                 }
-                rd.Close();               
+                rd.Close();
 
                 body = "<TR><TD COLSPAN=4><hr /></TD ></TR> ";
                 body += "<tr>";
@@ -310,74 +345,38 @@ namespace Teste.Forms.Reports
             mConn.Close();
         }
 
-        private void txtTitulo_Leave(object sender, EventArgs e)
+        private bool Valida()
         {
+            bool validou = false;
             if (txtTitulo.Text.Trim() != "")
             {
-                RetornaSocioByTitulo();
+                validou = true;
             }
-        }
-
-        private void RetornaSocioByTitulo()
-        {
-            string strConexao = Connection.Conexao();
-            MySqlConnection mConn;
-            mConn = new MySqlConnection(strConexao);            
-            try
-            {
-                // abre conexão com banco
-                mConn.Open();
-            }
-            catch (System.Exception e)
-            {
-                MessageBox.Show(e.Message.ToString());
-            }
-
-            try
-            {
-                string sql = "SELECT Nome FROM Socio WHERE Titulo=" + int.Parse(txtTitulo.Text);
-                var cmd = new MySqlCommand(sql, mConn);
-                MySqlDataReader rd = cmd.ExecuteReader();
-                if (rd.Read())
-                {
-                    txtNome.Text = rd["Nome"].ToString();
-                }
-                rd.Close();
-            }
-            catch (SystemException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                mConn.Close();
-            }
-            mConn.Close();            
-        }
-
-        private void cmdPesquisaSocio_Click(object sender, EventArgs e)
-        {
-            Socio s = Singleton<Socio>.Instance();
-            frmTDM_PesquisaSocio frm;
             if (txtNome.Text.Trim() != "")
             {
-                frm = new frmTDM_PesquisaSocio(txtNome.Text.Trim());
+                validou = true;
             }
-            else
+            if ((mskInicio.Text != "  /  /") && (mskFim.Text != "  /  /"))
             {
-                frm = new frmTDM_PesquisaSocio();
+                validou = true;
             }
-            frm.ShowDialog();
-            txtTitulo.Text = s.Titulo.ToString();
-            txtTitulo_Leave(null, null);
+            return validou;
         }
 
-        private void frmTDM_RelAReceber_KeyDown(object sender, KeyEventArgs e)
+        private void frmTDM_RelEmAtraso_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 this.SelectNextControl(this.ActiveControl, !e.Shift, true, true, true);
             }
+        }
+
+        private void cmdLimpar_Click(object sender, EventArgs e)
+        {
+            txtTitulo.Text = "";
+            txtNome.Text = "";
+            mskInicio.Text = "";
+            mskFim.Text = "";
         }
     }
 }

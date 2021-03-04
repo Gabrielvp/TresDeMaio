@@ -38,7 +38,7 @@ namespace Teste.Forms.Reports
             // 
             this.txtNome.Location = new System.Drawing.Point(25, 50);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(382, 20);
+            this.txtNome.Size = new System.Drawing.Size(281, 20);
             this.txtNome.TabIndex = 0;
             // 
             // label1
@@ -52,7 +52,7 @@ namespace Teste.Forms.Reports
             // 
             // cmdPesquisar
             // 
-            this.cmdPesquisar.Location = new System.Drawing.Point(315, 96);
+            this.cmdPesquisar.Location = new System.Drawing.Point(231, 90);
             this.cmdPesquisar.Name = "cmdPesquisar";
             this.cmdPesquisar.Size = new System.Drawing.Size(75, 23);
             this.cmdPesquisar.TabIndex = 2;
@@ -64,7 +64,7 @@ namespace Teste.Forms.Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 202);
+            this.ClientSize = new System.Drawing.Size(329, 140);
             this.Controls.Add(this.cmdPesquisar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);

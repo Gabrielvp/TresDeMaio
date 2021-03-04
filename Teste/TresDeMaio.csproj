@@ -210,6 +210,18 @@
     <Compile Include="Forms\Reports\frmTDM_RelAReceber.Designer.cs">
       <DependentUpon>frmTDM_RelAReceber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelEmAtraso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelEmAtraso.Designer.cs">
+      <DependentUpon>frmTDM_RelEmAtraso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelRecebidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmTDM_RelRecebidos.Designer.cs">
+      <DependentUpon>frmTDM_RelRecebidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reports\frmTDM_RelSocios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\frmTDM_RelAReceber.resx">
       <DependentUpon>frmTDM_RelAReceber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmTDM_RelEmAtraso.resx">
+      <DependentUpon>frmTDM_RelEmAtraso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmTDM_RelRecebidos.resx">
+      <DependentUpon>frmTDM_RelRecebidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\frmTDM_RelSocios.resx">
       <DependentUpon>frmTDM_RelSocios.cs</DependentUpon>

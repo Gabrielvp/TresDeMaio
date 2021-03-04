@@ -115,10 +115,8 @@ namespace Teste.Forms
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource tresdemaiodbDataSetBindingSource;
-        private tresdemaio_dbDataSet tresdemaio_dbDataSet;
-        private System.Windows.Forms.BindingSource socioBindingSource;
-        private tresdemaio_dbDataSetTableAdapters.socioTableAdapter socioTableAdapter;
+        private System.Windows.Forms.BindingSource tresdemaiodbDataSetBindingSource;        
+        private System.Windows.Forms.BindingSource socioBindingSource;        
         private tresdemaio_dbDataSet tresdemaio_dbDataSet1;
         private System.Windows.Forms.BindingSource socioPorNomeBindingSource;
         private tresdemaio_dbDataSetTableAdapters.SocioPorNomeTableAdapter socioPorNomeTableAdapter;

@@ -32,6 +32,7 @@ namespace Teste
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTDM_Princiapal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMinimizar = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,6 +40,10 @@ namespace Teste
             this.lblData = new System.Windows.Forms.Label();
             this.lblIp = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.cmdRelatorios = new System.Windows.Forms.Button();
+            this.cmdReceitas = new System.Windows.Forms.Button();
+            this.cmdConfiguracoes = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlRelatorios = new System.Windows.Forms.Panel();
             this.lblRelRecebido = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -48,16 +53,11 @@ namespace Teste
             this.lblRelRelacaoSocios = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmdRelatorios = new System.Windows.Forms.Button();
-            this.cmdReceitas = new System.Windows.Forms.Button();
-            this.cmdConfiguracoes = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnlRelatorios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +91,16 @@ namespace Teste
             this.btnMinimizar.Text = "-";
             this.btnMinimizar.UseVisualStyleBackColor = true;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Teste.Properties.Resources.logo3DeMaio;
+            this.pictureBox2.Location = new System.Drawing.Point(19, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(63, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -182,117 +192,6 @@ namespace Teste
             this.lblUsuario.TabIndex = 9;
             this.lblUsuario.Text = "label2";
             // 
-            // pnlRelatorios
-            // 
-            this.pnlRelatorios.BackColor = System.Drawing.Color.Goldenrod;
-            this.pnlRelatorios.Controls.Add(this.lblRelRecebido);
-            this.pnlRelatorios.Controls.Add(this.label9);
-            this.pnlRelatorios.Controls.Add(this.lblRelAtrasados);
-            this.pnlRelatorios.Controls.Add(this.label7);
-            this.pnlRelatorios.Controls.Add(this.lblRelAReceber);
-            this.pnlRelatorios.Controls.Add(this.lblRelRelacaoSocios);
-            this.pnlRelatorios.Controls.Add(this.label3);
-            this.pnlRelatorios.Controls.Add(this.label5);
-            this.pnlRelatorios.Location = new System.Drawing.Point(187, 424);
-            this.pnlRelatorios.Name = "pnlRelatorios";
-            this.pnlRelatorios.Size = new System.Drawing.Size(149, 240);
-            this.pnlRelatorios.TabIndex = 8;
-            this.pnlRelatorios.Visible = false;
-            // 
-            // lblRelRecebido
-            // 
-            this.lblRelRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelRecebido.ForeColor = System.Drawing.Color.White;
-            this.lblRelRecebido.Location = new System.Drawing.Point(2, 122);
-            this.lblRelRecebido.Name = "lblRelRecebido";
-            this.lblRelRecebido.Size = new System.Drawing.Size(144, 16);
-            this.lblRelRecebido.TabIndex = 6;
-            this.lblRelRecebido.Text = "Recebido               >";
-            this.lblRelRecebido.MouseEnter += new System.EventHandler(this.lblRelRecebido_MouseEnter);
-            this.lblRelRecebido.MouseLeave += new System.EventHandler(this.lblRelRecebido_MouseLeave);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(-2, 133);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(152, 16);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "__________________";
-            // 
-            // lblRelAtrasados
-            // 
-            this.lblRelAtrasados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelAtrasados.ForeColor = System.Drawing.Color.White;
-            this.lblRelAtrasados.Location = new System.Drawing.Point(2, 88);
-            this.lblRelAtrasados.Name = "lblRelAtrasados";
-            this.lblRelAtrasados.Size = new System.Drawing.Size(144, 16);
-            this.lblRelAtrasados.TabIndex = 4;
-            this.lblRelAtrasados.Text = "Atrasados              >";
-            this.lblRelAtrasados.MouseEnter += new System.EventHandler(this.lblRelAtrasados_MouseEnter);
-            this.lblRelAtrasados.MouseLeave += new System.EventHandler(this.lblRelAtrasados_MouseLeave);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(-2, 99);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(152, 16);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "__________________";
-            // 
-            // lblRelAReceber
-            // 
-            this.lblRelAReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelAReceber.ForeColor = System.Drawing.Color.White;
-            this.lblRelAReceber.Location = new System.Drawing.Point(2, 52);
-            this.lblRelAReceber.Name = "lblRelAReceber";
-            this.lblRelAReceber.Size = new System.Drawing.Size(144, 16);
-            this.lblRelAReceber.TabIndex = 2;
-            this.lblRelAReceber.Text = " A Receber            >";
-            this.lblRelAReceber.Click += new System.EventHandler(this.lblRelAReceber_Click);
-            this.lblRelAReceber.MouseEnter += new System.EventHandler(this.lblRelAReceber_MouseEnter);
-            this.lblRelAReceber.MouseLeave += new System.EventHandler(this.lblRelAReceber_MouseLeave);
-            // 
-            // lblRelRelacaoSocios
-            // 
-            this.lblRelRelacaoSocios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelRelacaoSocios.ForeColor = System.Drawing.Color.White;
-            this.lblRelRelacaoSocios.Location = new System.Drawing.Point(1, 14);
-            this.lblRelRelacaoSocios.Name = "lblRelRelacaoSocios";
-            this.lblRelRelacaoSocios.Size = new System.Drawing.Size(146, 16);
-            this.lblRelRelacaoSocios.TabIndex = 0;
-            this.lblRelRelacaoSocios.Text = " Relação Sócios   >";
-            this.lblRelRelacaoSocios.Click += new System.EventHandler(this.lblRelRelacaoSocios_Click);
-            this.lblRelRelacaoSocios.MouseEnter += new System.EventHandler(this.lblRelRelacaoSocios_MouseEnter);
-            this.lblRelRelacaoSocios.MouseLeave += new System.EventHandler(this.lblRelRelacaoSocios_MouseLeave);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(-2, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "__________________";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(-2, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "__________________";
-            // 
             // cmdRelatorios
             // 
             this.cmdRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -373,15 +272,122 @@ namespace Teste
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // pictureBox2
+            // pnlRelatorios
             // 
-            this.pictureBox2.Image = global::Teste.Properties.Resources.logo3DeMaio;
-            this.pictureBox2.Location = new System.Drawing.Point(19, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(63, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.pnlRelatorios.BackColor = System.Drawing.Color.Goldenrod;
+            this.pnlRelatorios.Controls.Add(this.lblRelRecebido);
+            this.pnlRelatorios.Controls.Add(this.label9);
+            this.pnlRelatorios.Controls.Add(this.lblRelAtrasados);
+            this.pnlRelatorios.Controls.Add(this.label7);
+            this.pnlRelatorios.Controls.Add(this.lblRelAReceber);
+            this.pnlRelatorios.Controls.Add(this.lblRelRelacaoSocios);
+            this.pnlRelatorios.Controls.Add(this.label3);
+            this.pnlRelatorios.Controls.Add(this.label5);
+            this.pnlRelatorios.Location = new System.Drawing.Point(187, 424);
+            this.pnlRelatorios.Name = "pnlRelatorios";
+            this.pnlRelatorios.Size = new System.Drawing.Size(149, 240);
+            this.pnlRelatorios.TabIndex = 8;
+            this.pnlRelatorios.Visible = false;
+            // 
+            // lblRelRecebido
+            // 
+            this.lblRelRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelRecebido.ForeColor = System.Drawing.Color.White;
+            this.lblRelRecebido.Location = new System.Drawing.Point(2, 117);
+            this.lblRelRecebido.Name = "lblRelRecebido";
+            this.lblRelRecebido.Size = new System.Drawing.Size(144, 27);
+            this.lblRelRecebido.TabIndex = 6;
+            this.lblRelRecebido.Text = "Recebido               >";
+            this.lblRelRecebido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRelRecebido.Click += new System.EventHandler(this.lblRelRecebido_Click);
+            this.lblRelRecebido.MouseEnter += new System.EventHandler(this.lblRelRecebido_MouseEnter);
+            this.lblRelRecebido.MouseLeave += new System.EventHandler(this.lblRelRecebido_MouseLeave);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(-2, 133);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(152, 16);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "__________________";
+            // 
+            // lblRelAtrasados
+            // 
+            this.lblRelAtrasados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelAtrasados.ForeColor = System.Drawing.Color.White;
+            this.lblRelAtrasados.Location = new System.Drawing.Point(2, 81);
+            this.lblRelAtrasados.Name = "lblRelAtrasados";
+            this.lblRelAtrasados.Size = new System.Drawing.Size(144, 28);
+            this.lblRelAtrasados.TabIndex = 4;
+            this.lblRelAtrasados.Text = "Atrasados              >";
+            this.lblRelAtrasados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRelAtrasados.Click += new System.EventHandler(this.lblRelAtrasados_Click);
+            this.lblRelAtrasados.MouseEnter += new System.EventHandler(this.lblRelAtrasados_MouseEnter);
+            this.lblRelAtrasados.MouseLeave += new System.EventHandler(this.lblRelAtrasados_MouseLeave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(-2, 99);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 16);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "__________________";
+            // 
+            // lblRelAReceber
+            // 
+            this.lblRelAReceber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelAReceber.ForeColor = System.Drawing.Color.White;
+            this.lblRelAReceber.Location = new System.Drawing.Point(2, 44);
+            this.lblRelAReceber.Name = "lblRelAReceber";
+            this.lblRelAReceber.Size = new System.Drawing.Size(144, 29);
+            this.lblRelAReceber.TabIndex = 2;
+            this.lblRelAReceber.Text = " A Receber            >";
+            this.lblRelAReceber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRelAReceber.Click += new System.EventHandler(this.lblRelAReceber_Click);
+            this.lblRelAReceber.MouseEnter += new System.EventHandler(this.lblRelAReceber_MouseEnter);
+            this.lblRelAReceber.MouseLeave += new System.EventHandler(this.lblRelAReceber_MouseLeave);
+            // 
+            // lblRelRelacaoSocios
+            // 
+            this.lblRelRelacaoSocios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRelRelacaoSocios.ForeColor = System.Drawing.Color.White;
+            this.lblRelRelacaoSocios.Location = new System.Drawing.Point(1, 5);
+            this.lblRelRelacaoSocios.Name = "lblRelRelacaoSocios";
+            this.lblRelRelacaoSocios.Size = new System.Drawing.Size(146, 30);
+            this.lblRelRelacaoSocios.TabIndex = 0;
+            this.lblRelRelacaoSocios.Text = " Relação Sócios   >";
+            this.lblRelRelacaoSocios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRelRelacaoSocios.Click += new System.EventHandler(this.lblRelRelacaoSocios_Click);
+            this.lblRelRelacaoSocios.MouseEnter += new System.EventHandler(this.lblRelRelacaoSocios_MouseEnter);
+            this.lblRelRelacaoSocios.MouseLeave += new System.EventHandler(this.lblRelRelacaoSocios_MouseLeave);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(-2, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "__________________";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(-2, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(152, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "__________________";
             // 
             // pictureBox1
             // 
@@ -413,11 +419,11 @@ namespace Teste
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnlRelatorios.ResumeLayout(false);
             this.pnlRelatorios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
