@@ -575,11 +575,11 @@ namespace Teste
         private void cmdAdicionar_Click(object sender, EventArgs e)
         {
             string cpf = mskCpfDependente.Text.Replace(",", ".");
-            if (cpf.Equals("   .   .   -"))
-            {
-                MessageBox.Show("Informe o CPF.", "Mensagem");
-                return;
-            }
+            //if (cpf.Equals("   .   .   -"))
+            //{
+            //    MessageBox.Show("Informe o CPF.", "Mensagem");
+            //    return;
+            //}
             try
             {
                 if (lblIdDependente.Text.Equals("idDependente"))

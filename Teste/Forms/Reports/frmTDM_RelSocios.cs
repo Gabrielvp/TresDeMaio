@@ -43,14 +43,23 @@ namespace Teste.Forms.Reports
         private void Cabecalho()
         {
             int cont = 0;
-            string cabecalho;
-            //cabecalho = "<TR><TD ROWSPAN=11><width=20% IMG SRC='C:\\VS\\Teste\\Teste\\Teste\\Images\\logo3DeMaio.png'>&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR>";
-            cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
-            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação Sócios</FONT></TD></TR>";           
-            cabecalho += "<TR><TD COLSPAN=2><hr /></TD ></TR> ";            
-            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            string cabecalho;          
+            //cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
+            //cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação Sócios</FONT></TD></TR>";         
+            cabecalho = "<div>";
+            cabecalho += "<img width=100 height=103 ALIGN=LEFT src='" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "\\Images\\logo3DeMaio.png'/>";
+            cabecalho += "<tr><TD ALIGN=LEFT width=400><FONT FACE='VERDANA' SIZE='4'><b>&nbsp;&nbsp;&nbsp;&nbsp;S.R. 3 De Maio</b></TD><br /><TD ALIGN=RIGHT width=250><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></tr>";
+            cabecalho += "<tr><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relação de mensalidades abertas</FONT></TD></tr>";
+            cabecalho += "</DIV>";
 
-            cabecalho += "<tr>";
+            cabecalho += "<TR><TD><br /></TD></TR> ";
+            cabecalho += "<TR><TD><br /></TD></TR> ";
+            cabecalho += "<TR><TD><br /></TD></TR> ";
+
+            cabecalho += "</TABLE>";
+            cabecalho += "<TABLE CELLSPACING=1 CELLPADDING=1 STYLE='WIDTH=750'>";
+
+            cabecalho += "<tr>";            
             cabecalho += "<td  ALIGN=LEFT WIDTH=100><FONT FACE='VERDANA' SIZE='2'><B>Título</B></FONT></TD>";
             cabecalho += "<td  ALIGN=LEFT WIDTH=650><FONT FACE='VERDANA' SIZE='2'><B>Nome</B></FONT></TD>";
             cabecalho += "</tr>";

@@ -59,21 +59,34 @@ namespace Teste.Forms.Reports
         private void Cabecalho()
         {
             string cabecalho;
-            cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
-            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação de recebimentos</FONT></TD></TR>";
+            //cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
+            //cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação de recebimentos</FONT></TD></TR>";
+            cabecalho = "<div>";
+            cabecalho += "<img width=100 height=103 ALIGN=LEFT src='" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "\\Images\\logo3DeMaio.png'/>";
+            cabecalho += "<tr><TD ALIGN=LEFT width=400><FONT FACE='VERDANA' SIZE='4'><b>&nbsp;&nbsp;&nbsp;&nbsp;S.R. 3 De Maio</b></TD><br /><TD ALIGN=RIGHT width=250><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></tr>";
+            cabecalho += "<tr><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relação de recebimentos</FONT></TD></tr>";
+            cabecalho += "</DIV>";
             if (txtTitulo.Text.Trim() != "")
             {
-                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Título: " + txtTitulo.Text + "</FONT></TD></TR>";
+                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Título: " + txtTitulo.Text + "</FONT></TD></TR>";
             }
             if (txtNome.Text.Trim() != "")
             {
-                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Sócio: " + txtNome.Text + "</FONT></TD></TR>";
+                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sócio: " + txtNome.Text + "</FONT></TD></TR>";
             }
             if ((mskInicio.Text != "  /  /") && mskFim.Text != "  /  /")
             {
-                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Período de: " + mskInicio.Text + " à " + mskFim.Text + "</FONT></TD></TR>";
+                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Período de: " + mskInicio.Text + " à " + mskFim.Text + "</FONT></TD></TR>";
             }
-            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            if ((txtTitulo.Text.Trim() != "") && (txtNome.Text.Trim() != ""))
+            {
+                cabecalho += "<TR><TD COLSPAN=2><br /></TD ></TR> ";
+            }
+            if ((txtTitulo.Text.Trim() == "") && (txtNome.Text.Trim() == ""))
+            {
+                cabecalho += "<TR><TD COLSPAN=2><br /></TD ></TR> ";
+                cabecalho += "<TR><TD COLSPAN=2><br /></TD ></TR> ";
+            }
             try
             {
                 using (sw = File.AppendText(path))

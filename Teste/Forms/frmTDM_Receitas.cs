@@ -771,13 +771,31 @@ namespace Teste.Forms
         {
             string cabecalho;
             string body;
-            cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
-            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Comprovante de pagamento</FONT></TD></TR>";
+            //cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
+            //cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Comprovante de pagamento</FONT></TD></TR>";
+            cabecalho = "<div>";
+            cabecalho += "<img width=100 height=103 ALIGN=LEFT src='" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "\\Images\\logo3DeMaio.png'/>";
+            cabecalho += "<tr><TD ALIGN=LEFT width=400><FONT FACE='VERDANA' SIZE='4'><b>&nbsp;&nbsp;&nbsp;&nbsp;S.R. 3 De Maio</b></TD><br /><TD ALIGN=RIGHT width=250><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></tr>";
+            cabecalho += "<tr><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comprovante de pagamento</FONT></TD></tr>";
+            cabecalho += "</DIV>";
+
+            cabecalho += "</TABLE>";
+
             cabecalho += "<TR><TD><br /></TD ></TR> ";
-            cabecalho += "<TR><TD COLSPAN=2><hr /></TD ></TR> ";
             cabecalho += "<TR><TD><br /></TD ></TR> ";
             cabecalho += "<TR><TD><br /></TD ></TR> ";
             cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+
+            cabecalho += "<TABLE CELLSPACING=1 CELLPADDING=1 STYLE='WIDTH=750'>";           
+
+            cabecalho += "<TR><TD width=750><hr /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            cabecalho += "<TR><TD><br /></TD ></TR> ";
+
+            cabecalho += "</TABLE>";
+            cabecalho += "<TABLE CELLSPACING=1 CELLPADDING=1 STYLE='WIDTH=750'>";
 
             cabecalho += "<tr>";
             cabecalho += "<td  ALIGN=CENTER WIDTH=750><FONT FACE='VERDANA' SIZE='4'><B>Comprovante de Pagamento</B></FONT></TD>";
@@ -806,9 +824,9 @@ namespace Teste.Forms
                 MessageBox.Show(ex.Message, "Aviso");
             }
                         
-            body = "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Recebemos de: <B>" + lblNome.Text + "</B> título N° <B>" + txtTitulo.Text + 
+            body = "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recebemos de: <B>" + lblNome.Text + "</B> título N° <B>" + txtTitulo.Text + 
                 "</B> a importância de R$<B>"+txtValorPagoBaixa.Text + "</B> Reais</FONT></TD></TR>";
-            body += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Referente ao documento:  <B>" + txtDocumentoBaixa.Text + "</B> com vencimento em: <B>" + mskVencimentoBaixa.Text + "</B></FONT></TD></TR>";
+            body += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Referente ao documento:  <B>" + txtDocumentoBaixa.Text + "</B> com vencimento em: <B>" + mskVencimentoBaixa.Text + "</B></FONT></TD></TR>";
 
             body += "<TR><TD><br /></TD ></TR> ";
             body += "<TR><TD><br /></TD ></TR> ";

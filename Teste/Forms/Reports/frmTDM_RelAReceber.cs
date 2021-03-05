@@ -44,15 +44,15 @@ namespace Teste.Forms.Reports
         private bool Valida()
         {
             bool validou = false;
-            if(txtTitulo.Text.Trim() != "")
+            if (txtTitulo.Text.Trim() != "")
             {
                 validou = true;
             }
-            if(txtNome.Text.Trim() != "")
+            if (txtNome.Text.Trim() != "")
             {
                 validou = true;
             }
-            if((mskInicio.Text != "  /  /") && (mskFim.Text != "  /  /"))
+            if ((mskInicio.Text != "  /  /") && (mskFim.Text != "  /  /"))
             {
                 validou = true;
             }
@@ -85,21 +85,35 @@ namespace Teste.Forms.Reports
         private void Cabecalho()
         {
             string cabecalho;
-            cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
-            cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação de mensalidades abertas</FONT></TD></TR>";
+            //cabecalho = "<TR><TD><FONT FACE='VERDANA' SIZE='4'><b>S.R. 3 De Maio</b></TD><TD ALIGN=RIGHT><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></TR>";
+            //cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Relação de mensalidades abertas</FONT></TD></TR>";
+            cabecalho = "<div>";
+            cabecalho += "<img width=100 height=103 ALIGN=LEFT src='" + System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "\\Images\\logo3DeMaio.png'/>";
+            cabecalho += "<tr><TD ALIGN=LEFT width=400><FONT FACE='VERDANA' SIZE='4'><b>&nbsp;&nbsp;&nbsp;&nbsp;S.R. 3 De Maio</b></TD><br /><TD ALIGN=RIGHT width=250><FONT FACE='VERDANA' SIZE='2'>" + DateTime.Now + "</FONT></TD></tr>";
+            cabecalho += "<tr><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Relação de mensalidades abertas</FONT></TD></tr>";
+            cabecalho += "</DIV>";
+            
             if (txtTitulo.Text.Trim() != "")
             {
-                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Título: " + txtTitulo.Text + "</FONT></TD></TR>";
+                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Título: " + txtTitulo.Text + "</FONT></TD></TR>";
             }
             if (txtNome.Text.Trim() != "")
             {
-                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Sócio: " + txtNome.Text + "</FONT></TD></TR>";
+                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sócio: " + txtNome.Text + "</FONT></TD></TR>";
             }
             if ((mskInicio.Text != "  /  /") && mskFim.Text != "  /  /")
             {
-                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>Período de: " + mskInicio.Text + " à " + mskFim.Text + "</FONT></TD></TR>";
+                cabecalho += "<TR><TD><FONT FACE = 'VERDANA' SIZE='2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Período de: " + mskInicio.Text + " à " + mskFim.Text + "</FONT></TD></TR>";
             }
-            cabecalho += "<TR><TD><br /></TD ></TR> ";
+            if((txtTitulo.Text.Trim() != "") && (txtNome.Text.Trim() != ""))
+            {
+                cabecalho += "<TR><TD COLSPAN=2><br /></TD ></TR> ";
+            }
+            if ((txtTitulo.Text.Trim() == "") && (txtNome.Text.Trim() == ""))
+            {
+                cabecalho += "<TR><TD COLSPAN=2><br /></TD ></TR> ";
+                cabecalho += "<TR><TD COLSPAN=2><br /></TD ></TR> ";
+            }
             try
             {
                 using (sw = File.AppendText(path))
@@ -177,7 +191,7 @@ namespace Teste.Forms.Reports
                 var cmd = new MySqlCommand(sql, mConn);
                 MySqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
-                {                    
+                {
                     if ((titulo == 0) || (titulo != long.Parse(rd["Titulo"].ToString())))
                     {
                         body = "</TABLE>";
@@ -230,7 +244,7 @@ namespace Teste.Forms.Reports
                         atraso = (DateTime.Now - dt).Days;
                         cont += 1;
                         valor = double.Parse(rd["Valor"].ToString());
-                        total += valor;                        
+                        total += valor;
 
                         body = "<tr>";
                         body += "<td  ALIGN=LEFT WIDTH=200><FONT FACE='VERDANA' SIZE='2'>" + rd["Documento"].ToString() + "</FONT></TD>";
@@ -248,9 +262,9 @@ namespace Teste.Forms.Reports
                         catch (IOException ex)
                         {
                             MessageBox.Show(ex.Message, "Aviso");
-                        }                       
+                        }
                     }
-                    titulo = long.Parse(rd["Titulo"].ToString());                   
+                    titulo = long.Parse(rd["Titulo"].ToString());
                 }
                 body = "</TABLE>";
                 body += "<TABLE CELLSPACING = 1 CELLPADDING = 1 STYLE = 'WIDTH=750'>";
@@ -276,7 +290,7 @@ namespace Teste.Forms.Reports
                         MessageBox.Show(ex.Message, "Aviso");
                     }
                 }
-                rd.Close();               
+                rd.Close();
 
                 body = "<TR><TD COLSPAN=4><hr /></TD ></TR> ";
                 body += "<tr>";
@@ -322,7 +336,7 @@ namespace Teste.Forms.Reports
         {
             string strConexao = Connection.Conexao();
             MySqlConnection mConn;
-            mConn = new MySqlConnection(strConexao);            
+            mConn = new MySqlConnection(strConexao);
             try
             {
                 // abre conexão com banco
@@ -352,7 +366,7 @@ namespace Teste.Forms.Reports
             {
                 mConn.Close();
             }
-            mConn.Close();            
+            mConn.Close();
         }
 
         private void cmdPesquisaSocio_Click(object sender, EventArgs e)
