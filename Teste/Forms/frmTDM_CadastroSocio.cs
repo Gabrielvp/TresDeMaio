@@ -759,10 +759,17 @@ namespace Teste
         {
             string cep = mskCep.Text.Replace(".", "");
             cep = cep.Replace(",", "");
-            //LocalizarCEP();
-            if (cep != "     -")
+            try
             {
-                BuscaCep();
+                //LocalizarCEP();
+                if (cep != "     -")
+                {
+                    BuscaCep();
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -886,7 +893,7 @@ namespace Teste
             {
                 string cpf = mskCpf.Text.Replace(".", "");
                 cpf = cpf.Replace(",", "");
-                if (cpf != "         -")
+                if ((cpf != "         -") && (cpf != null))
                 {
                     SocioDAL sDal = new SocioDAL();
                     Socio s = sDal.RetornaSocioByCpf(mskCpf.Text);
